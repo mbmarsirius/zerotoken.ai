@@ -5,7 +5,7 @@ export const StructuredData = () => {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "ZeroToken",
-    "description": "ZeroToken works inside ChatGPT, Claude, and Gemini. Shows memory left, creates handoff reports, and keeps conversations fresh with AI Detox.",
+    "description": "Our extension works inside ChatGPT, Claude, and Gemini. Shows memory left, creates handoff reports, and keeps conversations fresh with AI Detox.",
     "url": "https://zerotoken.com",
     "applicationCategory": "BrowserApplication",
     "operatingSystem": "Chrome, Desktop",

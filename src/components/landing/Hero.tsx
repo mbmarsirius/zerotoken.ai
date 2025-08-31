@@ -32,7 +32,6 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Main Headline */}
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
             Your AI chats,{" "}
             <span className="bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">
@@ -42,7 +41,7 @@ export const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            ZeroToken works inside ChatGPT, Claude, and Gemini. It shows you how much memory your AI has left, 
+            Our extension works inside ChatGPT, Claude, and Gemini. It shows you how much memory your AI has left, 
             turns long chats into narrative handoff reports, and keeps conversations fresh with AI Detox.
           </p>
 
@@ -70,7 +69,7 @@ export const Hero = () => {
           <div className="bg-white/60 backdrop-blur-sm border border-white/20 rounded-2xl p-6 max-w-2xl mx-auto">
             <p className="text-lg text-foreground font-medium">
               <span className="text-accent-pink font-semibold">Ever had ChatGPT forget what you said?</span> 
-              {" "}That's the memory wall. ZeroToken makes sure you never hit it.
+              {" "}That's the memory wall. Our extension makes sure you never hit it.
             </p>
           </div>
         </div>

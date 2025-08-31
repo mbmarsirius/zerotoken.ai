@@ -1,4 +1,5 @@
 import marsirusLogo from "/assets/marsirius-logo.png";
+import zerotokenLogoText from "@/assets/zerotoken-logo-text.png";
 
 export const Footer = () => {
   return (
@@ -7,9 +8,14 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright and links */}
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 mb-8 md:mb-0">
-            <p className="text-center md:text-left">
-              © 2025 ZeroToken · Created by ZeroToken · Powered by Marsirius AI Labs
-            </p>
+            <div className="flex items-center space-x-4">
+              <img 
+                src={zerotokenLogoText} 
+                alt="ZeroToken" 
+                className="h-8 w-auto"
+              />
+              <span className="text-sm">· Created by ZeroToken · Powered by Marsirius AI Labs</span>
+            </div>
             
             <div className="flex space-x-6 text-sm">
               <a 

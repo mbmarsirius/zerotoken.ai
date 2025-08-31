@@ -1,21 +1,21 @@
-import { FileText, RefreshCw, Zap } from "lucide-react";
+import zerotokenIcon from "@/assets/zerotoken-icon.png";
 
 export const Features = () => {
   const features = [
     {
-      icon: <FileText className="h-8 w-8" />,
+      icon: <img src={zerotokenIcon} alt="Feature icon" className="h-8 w-8" />,
       title: "Narrative Handoff Reports",
       description: "Summarize sprawling threads into structured briefs: Decisions, Facts, Open Questions. Copy, PDF, or email instantly."
     },
     {
-      icon: <RefreshCw className="h-8 w-8" />,
+      icon: <img src={zerotokenIcon} alt="Feature icon" className="h-8 w-8" />,
       title: "AI Detox (Context Refresh)",
       description: "One tap offloads stale context, injects a dense recap, and lightens your prompt window — faster, clearer answers."
     },
     {
-      icon: <Zap className="h-8 w-8" />,
+      icon: <img src={zerotokenIcon} alt="Feature icon" className="h-8 w-8" />,
       title: "Auto-Prompt Engineer Mode",
-      description: "Write like a human. ZeroToken instantly translates it into a flawless prompt and pastes it under your text: 'What you really meant.'"
+      description: "Write like a human. Our extension instantly translates it into a flawless prompt and pastes it under your text: 'What you really meant.'"
     }
   ];
 

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import zerotokenLogo from "/assets/zerotoken-logo.png";
+import zerotokenLogoText from "@/assets/zerotoken-logo-text.png";
 
 import { upgradeToProStripe } from "@/utils/stripe";
 import { toast } from "sonner";
@@ -20,15 +20,12 @@ export const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center">
             <img 
-              src={zerotokenLogo} 
+              src={zerotokenLogoText} 
               alt="ZeroToken" 
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
-            <span className="font-display font-semibold text-xl text-text-dark">
-              ZeroToken
-            </span>
           </div>
 
           {/* Navigation */}
