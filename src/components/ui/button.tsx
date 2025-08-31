@@ -18,11 +18,18 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        
+        // ZeroToken brand variants
+        "lime-pill": "bg-lime text-text-light rounded-full font-semibold hover:bg-lime/90 hover:shadow-lg transition-all duration-300 hover:scale-105",
+        "pink-outline": "border-2 border-accent-pink text-accent-pink bg-transparent rounded-full font-semibold hover:bg-accent-pink hover:text-white transition-all duration-300",
+        "hero-primary": "bg-lime text-text-light rounded-full font-semibold text-base hover:bg-lime/90 hover:shadow-xl hover:scale-105 transition-all duration-300",
+        "hero-secondary": "border-2 border-white/20 text-white bg-white/10 backdrop-blur-sm rounded-full font-medium hover:bg-white/20 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-14 px-10 py-4 text-lg",
         icon: "h-10 w-10",
       },
     },

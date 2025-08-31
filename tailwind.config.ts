@@ -18,7 +18,18 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'display': ['Museo Moderno', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				'sans': ['Inter', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+			},
 			colors: {
+				lime: 'hsl(var(--lime))',
+				pink: 'hsl(var(--pink))',
+				lavender: 'hsl(var(--lavender))',
+				ink: 'hsl(var(--ink))',
+				'text-dark': 'hsl(var(--text-dark))',
+				'text-light': 'hsl(var(--text-light))',
+				
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -32,6 +43,10 @@ export default {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
+				'accent-pink': {
+					DEFAULT: 'hsl(var(--accent-pink))',
+					foreground: 'hsl(var(--accent-pink-foreground))'
+				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -40,10 +55,6 @@ export default {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
 				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
-				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
@@ -51,16 +62,6 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
 			borderRadius: {
