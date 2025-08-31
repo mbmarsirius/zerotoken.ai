@@ -31,8 +31,14 @@ All colors MUST be HSL.
     --accent-pink: var(--pink);
     --accent-pink-foreground: 0 0% 100%;
     
-    --hero-bg: linear-gradient(135deg, hsl(var(--lavender) / 0.1), hsl(var(--pink) / 0.05));
+    /* Section Backgrounds */
+    --hero-bg: linear-gradient(135deg, hsl(var(--lavender) / 0.15), hsl(var(--pink) / 0.08));
     --hero-gradient: linear-gradient(135deg, hsl(var(--lavender)), hsl(var(--pink) / 0.8));
+    --features-bg: linear-gradient(180deg, hsl(0 0% 100%), hsl(var(--lavender) / 0.03));
+    --how-it-works-bg: linear-gradient(135deg, hsl(var(--lime) / 0.95), hsl(var(--lime) / 0.85));
+    --how-it-works-text: var(--text-light);
+    --pricing-bg: linear-gradient(180deg, hsl(0 0% 98%), hsl(0 0% 100%));
+    --faq-bg: linear-gradient(135deg, hsl(var(--lavender) / 0.08), hsl(var(--pink) / 0.04));
     
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;

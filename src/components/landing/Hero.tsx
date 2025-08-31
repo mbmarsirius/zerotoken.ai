@@ -19,9 +19,9 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-lavender/10 via-background to-pink/5 py-20 overflow-hidden">
+    <section className="relative py-20 overflow-hidden" style={{ background: 'var(--hero-bg)' }}>
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-lavender/20 via-transparent to-pink/20 animate-pulse opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-lavender/15 via-transparent to-pink/15 animate-pulse opacity-60"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">

@@ -20,7 +20,7 @@ export const Features = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20" style={{ background: 'var(--features-bg)' }}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => (
