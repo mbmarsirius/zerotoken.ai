@@ -22,7 +22,7 @@ export const Header = () => {
             <img 
               src="/lovable-uploads/e02e11bb-6f61-4b2b-b2f7-46329f251243.png" 
               alt="ZeroToken" 
-              className="h-8 w-auto transition-transform duration-300 hover:scale-105"
+              className="h-11 w-auto transition-transform duration-300 hover:scale-105"
             />
           </div>
 
