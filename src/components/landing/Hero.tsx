@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { upgradeToProStripe } from "@/utils/stripe";
-import zerotokenIcon from "@/assets/zerotoken-icon-official.png";
 
 export const Hero = () => {
   const handleUpgrade = async () => {
@@ -39,7 +38,7 @@ export const Hero = () => {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <img 
-                src={zerotokenIcon} 
+                src="/lovable-uploads/2e61421b-cd0f-46c9-82b5-8ccc803e9625.png" 
                 alt="ZeroToken" 
                 className="h-20 w-auto drop-shadow-2xl transition-transform duration-500 hover:scale-110" 
               />
