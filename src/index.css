@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* ZeroToken Brand Colors */
+    /* ZeroToken Brand Colors - Exact from assets */
     --lime: 85 100% 72%; /* #c1ff72 */
     --pink: 315 100% 70%; /* #ff66c4 */
     --lavender: 228 100% 82%; /* #99acff */
@@ -24,21 +24,19 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: var(--text-light);
     
-    --primary: var(--lime);
-    --primary-foreground: var(--text-light);
-    --secondary: var(--lavender);
+    --primary: var(--pink);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--lime);
     --secondary-foreground: var(--text-light);
-    --accent-pink: var(--pink);
-    --accent-pink-foreground: 0 0% 100%;
+    --accent: var(--lavender);
+    --accent-foreground: var(--text-light);
     
-    /* Section Backgrounds */
-    --hero-bg: #99acff;
-    --hero-gradient: linear-gradient(135deg, hsl(var(--lavender)), hsl(var(--pink) / 0.8));
-    --features-bg: linear-gradient(180deg, hsl(0 0% 100%), hsl(var(--lavender) / 0.03));
-    --how-it-works-bg: linear-gradient(135deg, hsl(var(--lime) / 0.95), hsl(var(--lime) / 0.85));
-    --how-it-works-text: var(--text-light);
+    /* Clean section backgrounds */
+    --hero-bg: linear-gradient(135deg, hsl(var(--lavender)), hsl(var(--lavender) / 0.8));
+    --features-bg: 0 0% 100%;
+    --how-it-works-bg: linear-gradient(135deg, hsl(var(--lime) / 0.08), hsl(var(--lime) / 0.05));
     --pricing-bg: linear-gradient(180deg, hsl(0 0% 98%), hsl(0 0% 100%));
-    --faq-bg: linear-gradient(135deg, hsl(var(--lavender) / 0.08), hsl(var(--pink) / 0.04));
+    --faq-bg: 0 0% 100%;
     
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -47,12 +45,15 @@ All colors MUST be HSL.
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: var(--primary);
-    --radius: 16px;
+    --radius: 20px;
     
-    /* Animations */
+    /* Enhanced animations and effects */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(var(--ink) / 0.1);
+    --transition-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 20px -2px hsl(var(--ink) / 0.08);
+    --shadow-card-hover: 0 10px 40px -4px hsl(var(--ink) / 0.12);
+    --shadow-pink-glow: 0 0 30px hsl(var(--pink) / 0.3);
   }
 
   .dark {

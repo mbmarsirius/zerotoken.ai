@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
-
-import { upgradeToProStripe } from "@/utils/stripe";
 import { toast } from "sonner";
+import { upgradeToProStripe } from "@/utils/stripe";
+import zerotokenIcon from "@/assets/zerotoken-icon-official.png";
 
 export const Hero = () => {
   const handleUpgrade = async () => {
     try {
       const checkoutUrl = await upgradeToProStripe();
-      // Open Stripe checkout in a new tab
       window.open(checkoutUrl, '_blank');
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Upgrade failed — please try again.");
+      console.error('Upgrade failed:', error);
+      toast.error("Upgrade failed. Please try again.");
     }
   };
 
@@ -19,57 +19,72 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative py-20 overflow-hidden" style={{ background: 'var(--hero-bg)' }}>
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-lavender/15 via-transparent to-pink/15 animate-pulse opacity-60"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'var(--hero-bg)' }}>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      </div>
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Pro Badge */}
-          <div className="inline-flex items-center justify-center mb-8">
-            <div className="border-2 border-accent-pink text-accent-pink bg-white/50 backdrop-blur-sm rounded-full px-6 py-2 font-semibold text-sm">
-              ✨ Pro is live — Stripe checkout
+      <div className="container mx-auto px-4 lg:px-6 text-center relative z-10">
+        <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up">
+          
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white border border-white/30">
+            <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+            Pro is live
+          </div>
+
+          {/* Brand Icon */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <img 
+                src={zerotokenIcon} 
+                alt="ZeroToken" 
+                className="h-20 w-auto drop-shadow-2xl transition-transform duration-500 hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl animate-glow-pulse"></div>
             </div>
           </div>
 
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
+          {/* Main Headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-tight">
             Your AI chats,{" "}
-            <span className="bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-secondary via-white to-secondary bg-clip-text text-transparent animate-fade-in">
               clear and under control
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Our extension works inside ChatGPT, Claude, and Gemini. It shows you how much memory your AI has left, 
-            turns long chats into narrative handoff reports, and keeps conversations fresh with AI Detox.
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-medium">
+            ZeroToken works inside ChatGPT, Claude, and Gemini. Shows memory left, creates handoff reports, and keeps conversations fresh with AI Detox.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button 
-              variant="hero-primary" 
-              size="xl"
               onClick={handleUpgrade}
-              className="w-full sm:w-auto"
+              variant="hero-primary"
+              size="xl"
+              className="min-w-48 shadow-2xl"
             >
               Upgrade to Pro →
             </Button>
+            
             <Button 
-              variant="hero-secondary" 
-              size="xl"
               onClick={scrollToHowItWorks}
-              className="w-full sm:w-auto"
+              variant="hero-outline"
+              size="xl"
+              className="min-w-48"
             >
               See how it works
             </Button>
           </div>
 
           {/* Pain Point */}
-          <div className="bg-white/60 backdrop-blur-sm border border-white/20 rounded-2xl p-6 max-w-2xl mx-auto">
-            <p className="text-lg text-foreground font-medium">
-              <span className="text-accent-pink font-semibold">Ever had ChatGPT forget what you said?</span> 
-              {" "}That's the memory wall. Our extension makes sure you never hit it.
+          <div className="pt-12 opacity-90">
+            <p className="text-white/80 text-lg italic max-w-2xl mx-auto">
+              "Your AI keeps forgetting things mid-conversation, and you're copy-pasting the same context over and over..."
             </p>
           </div>
         </div>
