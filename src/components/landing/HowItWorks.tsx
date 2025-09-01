@@ -20,13 +20,13 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="relative py-24 bg-gray-50/50">
+    <section id="how-it-works" className="relative py-24 transition-all duration-1000" style={{ backgroundColor: '#c1ff72' }}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-black">
             How ZeroToken Works
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black/80 max-w-3xl mx-auto leading-relaxed">
             Transform your AI conversations in three simple steps with our powerful browser extension
           </p>
         </div>
@@ -39,22 +39,22 @@ export const HowItWorks = () => {
                 key={step.title}
                 className="group text-center"
               >
-                <div className="p-8 rounded-2xl bg-white border border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="p-8 rounded-2xl bg-black/80 border border-pink/30 shadow-sm hover:shadow-lg hover:shadow-pink/20 transition-all duration-300 backdrop-blur-sm">
                   {/* Step number */}
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-pink text-white text-lg font-semibold mb-6">
                     {index + 1}
                   </div>
                   
                   {/* Icon */}
-                  <div className="inline-flex p-3 rounded-xl bg-lime/10 text-lime mb-6">
+                  <div className="inline-flex p-3 rounded-xl bg-pink/20 text-pink mb-6">
                     <Icon size={28} strokeWidth={1.5} />
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-4 text-foreground">
+                  <h3 className="text-xl font-semibold mb-4 text-white">
                     {step.title}
                   </h3>
                   
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-white/80 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -63,7 +63,7 @@ export const HowItWorks = () => {
                 {index < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 transform -translate-y-1/2" 
                        style={{ left: `${(index + 1) * 33.33 - 8}%` }}>
-                    <div className="w-16 h-px bg-border"></div>
+                    <div className="w-16 h-px bg-black/50"></div>
                   </div>
                 )}
               </div>

@@ -50,13 +50,13 @@ export const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="relative py-24 bg-white">
+    <section id="pricing" className="relative py-24 transition-all duration-1000" style={{ backgroundColor: '#99acff' }}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
             Choose Your Plan
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Start free and upgrade when you're ready for more advanced AI conversation management.
           </p>
         </div>
@@ -67,8 +67,8 @@ export const Pricing = () => {
               key={plan.name}
               className={`p-8 transition-all duration-300 hover:-translate-y-1 ${
                 plan.popular 
-                  ? 'border-2 border-pink shadow-lg bg-white' 
-                  : 'border border-border/50 shadow-sm bg-white hover:shadow-md'
+                  ? 'border-2 border-pink shadow-lg bg-black/90 backdrop-blur-sm' 
+                  : 'border border-lime/50 shadow-sm bg-white/90 backdrop-blur-sm hover:shadow-md'
               }`}
             >
               {plan.popular && (
@@ -81,9 +81,9 @@ export const Pricing = () => {
               )}
               
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-semibold text-foreground">{plan.name}</h3>
+                <h3 className={`text-xl font-semibold ${plan.popular ? 'text-lime' : 'text-black'}`}>{plan.name}</h3>
                 {plan.popular && (
-                  <div className="p-2 rounded-lg bg-pink/10">
+                  <div className="p-2 rounded-lg bg-pink/20">
                     <Zap className="w-5 h-5 text-pink" />
                   </div>
                 )}
@@ -91,12 +91,12 @@ export const Pricing = () => {
               
               <div className="mb-6">
                 <div className="flex items-baseline space-x-1 mb-2">
-                  <span className="text-3xl font-bold text-foreground">{plan.price}</span>
+                  <span className={`text-3xl font-bold ${plan.popular ? 'text-lime' : 'text-black'}`}>{plan.price}</span>
                   {plan.price !== "Free" && (
-                    <span className="text-muted-foreground">/month</span>
+                    <span className={plan.popular ? 'text-white/70' : 'text-black/70'}>/month</span>
                   )}
                 </div>
-                <p className="text-muted-foreground">
+                <p className={plan.popular ? 'text-white/80' : 'text-black/70'}>
                   {plan.name === "Free" 
                     ? "Perfect for trying out ZeroToken's basic features" 
                     : "Unlock the full potential of AI interactions"
@@ -110,7 +110,7 @@ export const Pricing = () => {
                     <div className="flex-shrink-0 w-4 h-4 rounded-full bg-lime flex items-center justify-center mt-0.5">
                       <Check size={10} className="text-white" strokeWidth={3} />
                     </div>
-                    <span className="text-muted-foreground text-sm">{feature}</span>
+                    <span className={`${plan.popular ? 'text-white/80' : 'text-black/70'} text-sm`}>{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -132,9 +132,9 @@ export const Pricing = () => {
 
         {/* Bottom Note */}
         <div className="text-center mt-12">
-          <div className="bg-gray-50 rounded-xl p-4 max-w-2xl mx-auto border border-border/50">
-            <p className="text-muted-foreground">
-              All plans include access to <span className="font-semibold text-foreground">ChatGPT, Claude, and Gemini</span> integrations
+          <div className="bg-black/20 backdrop-blur-sm rounded-xl p-4 max-w-2xl mx-auto border border-white/20">
+            <p className="text-white/90">
+              All plans include access to <span className="font-semibold text-lime">ChatGPT, Claude, and Gemini</span> integrations
             </p>
           </div>
         </div>

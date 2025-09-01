@@ -48,13 +48,8 @@ export const Header = () => {
             </a>
           </nav>
 
-          {/* Marsirius Icon & CTA */}
+          {/* CTA & Marsirius Icon */}
           <div className="flex items-center space-x-4">
-            <img 
-              src="/lovable-uploads/94bcfd29-e1f6-4f86-87af-920406bc33dc.png" 
-              alt="Marsirius" 
-              className="h-6 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
-            />
             <Button 
               onClick={handleUpgrade}
               variant="default"
@@ -63,6 +58,11 @@ export const Header = () => {
             >
               Upgrade to Pro
             </Button>
+            <img 
+              src="/lovable-uploads/94bcfd29-e1f6-4f86-87af-920406bc33dc.png" 
+              alt="Marsirius" 
+              className="h-6 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+            />
           </div>
         </div>
       </div>

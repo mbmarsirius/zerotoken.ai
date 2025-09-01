@@ -20,13 +20,13 @@ export const Features = () => {
   ];
 
   return (
-    <section className="relative py-24 bg-white">
+    <section className="relative py-24 transition-all duration-1000" style={{ backgroundColor: '#000000' }}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-lime">
             Advanced AI Features
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-pink max-w-2xl mx-auto leading-relaxed">
             Experience the next generation of AI interaction with our powerful enhancement suite
           </p>
         </div>
@@ -37,17 +37,17 @@ export const Features = () => {
             return (
               <div
                 key={feature.title}
-                className="group p-8 rounded-2xl bg-white border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="group p-8 rounded-2xl bg-white/5 border border-pink/20 shadow-sm hover:shadow-lg hover:shadow-pink/10 transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm"
               >
-                <div className="inline-flex p-3 rounded-xl bg-pink/10 text-pink mb-6 group-hover:bg-pink/20 transition-colors duration-300">
+                <div className="inline-flex p-3 rounded-xl bg-lime/20 text-lime mb-6 group-hover:bg-lime/30 transition-colors duration-300">
                   <Icon size={28} strokeWidth={1.5} />
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-4 text-foreground">
+                <h3 className="text-xl font-semibold mb-4 text-lime">
                   {feature.title}
                 </h3>
                 
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-pink/90 leading-relaxed">
                   {feature.description}
                 </p>
               </div>

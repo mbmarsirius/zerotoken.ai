@@ -42,13 +42,13 @@ export const FAQ = () => {
   ];
 
   return (
-    <section className="relative py-24 bg-gray-50/30">
+    <section className="relative py-24 transition-all duration-1000" style={{ backgroundColor: '#ffffff' }}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-black">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-black/70 max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about ZeroToken and how it enhances your AI experience
           </p>
         </div>
@@ -61,20 +61,20 @@ export const FAQ = () => {
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="border border-border/50 rounded-xl px-6 py-2 bg-white shadow-sm hover:shadow-md transition-all duration-300"
+                  className="border border-gray-200 rounded-xl px-6 py-2 bg-white shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   <AccordionTrigger className="hover:no-underline py-4">
                     <div className="flex items-center space-x-3 text-left">
                       <div className="p-2 rounded-lg bg-pink/10 text-pink">
                         <Icon size={18} strokeWidth={1.5} />
                       </div>
-                      <span className="font-medium text-foreground">
+                      <span className="font-medium text-black">
                         {faq.question}
                       </span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="pb-4 pt-2 px-12">
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-black/70 leading-relaxed">
                       {faq.answer}
                     </p>
                   </AccordionContent>
@@ -85,9 +85,9 @@ export const FAQ = () => {
         </div>
 
         {/* Contact Support */}
-        <div className="text-center mt-12 p-6 rounded-xl bg-gray-50 border border-border/50 max-w-xl mx-auto">
-          <h3 className="text-xl font-semibold mb-3 text-foreground">Still have questions?</h3>
-          <p className="text-muted-foreground mb-4">
+        <div className="text-center mt-12 p-6 rounded-xl bg-gray-50 border border-gray-200 max-w-xl mx-auto">
+          <h3 className="text-xl font-semibold mb-3 text-black">Still have questions?</h3>
+          <p className="text-black/70 mb-4">
             Our support team is here to help you get the most out of ZeroToken
           </p>
           <Button 
