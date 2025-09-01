@@ -19,20 +19,18 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'var(--hero-bg)' }}>
-      {/* Enhanced cinematic background elements */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-1/4 left-1/4 w-40 h-40 bg-white/15 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-56 h-56 bg-white/8 rounded-full blur-3xl animate-float delay-1000"></div>
-        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-lime/20 rounded-full blur-2xl animate-breathe delay-500"></div>
-        <div className="absolute bottom-1/3 left-1/2 w-32 h-32 bg-pink/15 rounded-full blur-2xl animate-breathe delay-700"></div>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
       </div>
       
       <div className="container mx-auto px-4 lg:px-6 text-center relative z-10">
         <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up">
           
-          {/* Enhanced Status Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/25 backdrop-blur-md rounded-full px-5 py-2.5 text-sm font-semibold text-white border border-white/40 shadow-lg hover-lift cursor-pointer">
-            <div className="w-2 h-2 bg-secondary rounded-full animate-glow-lime"></div>
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white border border-white/30">
+            <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
             Pro is live
           </div>
 
@@ -42,18 +40,19 @@ export const Hero = () => {
               <img 
                 src="/lovable-uploads/895885eb-c61d-4842-9597-0866e843d5e6.png" 
                 alt="ZeroToken Cross Logo" 
-                className="h-40 w-auto transition-all duration-700 hover:scale-125 animate-breathe cursor-pointer" 
+                className="h-40 w-auto transition-transform duration-500 hover:scale-110" 
                 style={{ 
-                  filter: 'drop-shadow(0 0 25px rgba(236,72,153,0.4)) drop-shadow(0 0 50px rgba(193,255,114,0.2))',
+                  filter: 'drop-shadow(0 0 15px rgba(236,72,153,0.3))',
+                  animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
                 }}
               />
             </div>
           </div>
 
-          {/* Enhanced Main Headline */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.95] tracking-tight">
+          {/* Main Headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-tight">
             Your AI chats,{" "}
-            <span className="bg-gradient-to-r from-secondary via-white to-secondary bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%] font-extrabold">
+            <span className="bg-gradient-to-r from-secondary via-white to-secondary bg-clip-text text-transparent animate-fade-in">
               clear and under control
             </span>
           </h1>
@@ -63,13 +62,13 @@ export const Hero = () => {
             ZeroToken works inside ChatGPT, Claude, and Gemini. Shows memory left, creates handoff reports, and keeps conversations fresh with AI Detox.
           </p>
 
-          {/* Enhanced CTA Buttons */}
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button 
               onClick={handleUpgrade}
               variant="hero-primary"
               size="xl"
-              className="min-w-48 shadow-2xl ripple-effect hover-lift transition-all duration-300 hover:shadow-pink-glow animate-glow-pulse"
+              className="min-w-48 shadow-2xl"
             >
               Upgrade to Pro →
             </Button>
@@ -78,21 +77,21 @@ export const Hero = () => {
               onClick={scrollToHowItWorks}
               variant="hero-outline"
               size="xl"
-              className="min-w-48 hover-lift transition-all duration-300"
+              className="min-w-48"
             >
               See how it works
             </Button>
           </div>
 
-          {/* Enhanced Pain Point with Premium Glassmorphism */}
+          {/* Pain Point - More Impactful */}
           <div className="pt-16 opacity-100">
-            <div className="relative max-w-4xl mx-auto hover-lift">
-              <div className="absolute inset-0 bg-gradient-to-r from-pink/30 to-lime/30 rounded-3xl blur-2xl animate-glow-pulse"></div>
-              <div className="relative bg-black/30 backdrop-blur-xl rounded-3xl p-10 border border-white/30 shadow-dramatic">
-                <p className="text-white text-2xl md:text-3xl font-bold leading-relaxed tracking-tight">
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-pink/20 to-lime/20 rounded-2xl blur-xl"></div>
+              <div className="relative bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <p className="text-white text-2xl md:text-3xl font-bold leading-relaxed">
                   "Your AI keeps forgetting things mid-conversation, and you're copy-pasting the same context over and over..."
                 </p>
-                <div className="mt-6 text-lime text-xl font-bold animate-fade-in-left">
+                <div className="mt-4 text-lime text-lg font-semibold">
                   → ZeroToken fixes this forever.
                 </div>
               </div>

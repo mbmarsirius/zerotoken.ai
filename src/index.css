@@ -47,38 +47,13 @@ All colors MUST be HSL.
     --ring: var(--primary);
     --radius: 20px;
     
-    /* Premium effects system */
+    /* Enhanced animations and effects */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --shadow-glow: 0 0 40px hsl(var(--primary) / 0.2);
     --shadow-card: 0 4px 20px -2px hsl(var(--ink) / 0.08);
     --shadow-card-hover: 0 10px 40px -4px hsl(var(--ink) / 0.12);
     --shadow-pink-glow: 0 0 30px hsl(var(--pink) / 0.3);
-    --shadow-lime-glow: 0 0 30px hsl(var(--lime) / 0.3);
-    --shadow-elegant: 0 20px 60px -10px hsl(var(--ink) / 0.15);
-    --shadow-dramatic: 0 30px 80px -15px hsl(var(--ink) / 0.2);
-    
-    /* Glassmorphism effects */
-    --glass-bg: hsl(var(--lime) / 0.1);
-    --glass-border: hsl(var(--lime) / 0.2);
-    --glass-bg-dark: hsl(var(--ink) / 0.8);
-    --glass-border-dark: hsl(var(--text-dark) / 0.1);
-    
-    /* Typography scale */
-    --text-xs: 0.75rem; /* 12px */
-    --text-sm: 0.875rem; /* 14px */
-    --text-base: 1rem; /* 16px */
-    --text-lg: 1.125rem; /* 18px */
-    --text-xl: 1.25rem; /* 20px */
-    --text-2xl: 1.5rem; /* 24px */
-    --text-3xl: 1.875rem; /* 30px */
-    --text-4xl: 2.25rem; /* 36px */
-    --text-5xl: 3rem; /* 48px */
-    --text-6xl: 3.75rem; /* 60px */
-    --text-7xl: 4.5rem; /* 72px */
-    --text-8xl: 6rem; /* 96px */
-    --text-9xl: 8rem; /* 128px */
   }
 
   .dark {
@@ -104,65 +79,9 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans;
     font-family: Inter, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-feature-settings: "cv03", "cv04", "cv11";
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
-    letter-spacing: -0.025em;
-  }
-  
-  /* Premium interactive elements */
-  .glass-effect {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-  }
-  
-  .hover-lift {
-    transition: var(--transition-spring);
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-elegant);
-  }
-  
-  .ripple-effect {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .ripple-effect::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: hsl(var(--primary) / 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-  
-  .ripple-effect:active::after {
-    width: 300px;
-    height: 300px;
-  }
-  
-  /* Smooth scroll */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Focus states */
-  *:focus-visible {
-    outline: 2px solid hsl(var(--ring));
-    outline-offset: 2px;
   }
 }
