@@ -5,24 +5,34 @@ export const Features = () => {
     {
       icon: MessageCircle,
       title: "Narrative Handoff Reports",
-      description: "Summarize sprawling threads into structured briefs: Decisions, Facts, Open Questions. Copy, PDF, or email instantly."
+      description: "Summarize sprawling threads into structured briefs: Decisions, Facts, Open Questions. Copy, PDF, or email instantly.",
+      gradient: "from-pink/20 to-lime/20",
+      iconColor: "text-pink group-hover:text-lime"
     },
     {
       icon: Zap,
       title: "AI Detox (Context Refresh)",
-      description: "One tap offloads stale context, injects a dense recap, and lightens your prompt window — faster, clearer answers."
+      description: "One tap offloads stale context, injects a dense recap, and lightens your prompt window — faster, clearer answers.",
+      gradient: "from-lime/20 to-pink/20",
+      iconColor: "text-lime group-hover:text-pink"
     },
     {
       icon: Edit3,
       title: "Auto-Prompt Engineer Mode",
-      description: "Write like a human. Our extension instantly translates it into a flawless prompt and pastes it under your text: 'What you really meant.'"
+      description: "Write like a human. Our extension instantly translates it into a flawless prompt and pastes it under your text: 'What you really meant.'",
+      gradient: "from-pink/20 to-lime/20",
+      iconColor: "text-pink group-hover:text-lime"
     }
   ];
 
   return (
-    <section className="py-32 bg-white">
-      <div className="container mx-auto px-4 lg:px-6">
-        <div className="text-center mb-20">
+    <section className="py-32 bg-gray-50 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-pink/10 to-lime/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-lime/10 to-pink/10 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 lg:px-6 relative">
+        <div className="text-center mb-20 animate-fade-in">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
             Three powerful features
           </h2>
@@ -37,19 +47,31 @@ export const Features = () => {
             return (
               <div
                 key={feature.title}
-                className="group text-center"
+                className="group text-center transform transition-all duration-500 hover:scale-105 animate-fade-in"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="w-16 h-16 mx-auto mb-8 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-lime/10 transition-colors duration-300">
-                  <Icon size={28} className="text-gray-700 group-hover:text-lime transition-colors duration-300" strokeWidth={1.5} />
+                {/* Gradient background card */}
+                <div className={`relative p-8 rounded-3xl bg-gradient-to-br ${feature.gradient} border border-white/50 backdrop-blur-sm transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-pink/20`}>
+                  {/* Icon container with animation */}
+                  <div className="w-20 h-20 mx-auto mb-8 bg-white rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-500 shadow-lg">
+                    <Icon 
+                      size={32} 
+                      className={`${feature.iconColor} transition-all duration-500 group-hover:scale-110`} 
+                      strokeWidth={1.5} 
+                    />
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 group-hover:text-gray-800 transition-colors">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors">
+                    {feature.description}
+                  </p>
+
+                  {/* Hover effect overlay */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
               </div>
             );
           })}
