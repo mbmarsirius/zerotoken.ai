@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { upgradeToProStripe } from "@/utils/stripe";
-
 export const Hero = () => {
   const handleUpgrade = async () => {
     try {
@@ -12,13 +11,14 @@ export const Hero = () => {
       toast.error("Upgrade failed. Please try again.");
     }
   };
-
   const scrollToHowItWorks = () => {
-    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('how-it-works')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'var(--hero-bg)' }}>
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{
+    background: 'var(--hero-bg)'
+  }}>
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse"></div>
@@ -37,15 +37,10 @@ export const Hero = () => {
           {/* Brand Icon */}
           <div className="flex justify-center mb-8">
             <div className="relative">
-              <img 
-                src="/lovable-uploads/895885eb-c61d-4842-9597-0866e843d5e6.png" 
-                alt="ZeroToken Cross Logo" 
-                className="h-40 w-auto transition-transform duration-500 hover:scale-110" 
-                style={{ 
-                  filter: 'drop-shadow(0 0 15px rgba(236,72,153,0.3))',
-                  animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-                }}
-              />
+              <img src="/lovable-uploads/895885eb-c61d-4842-9597-0866e843d5e6.png" alt="ZeroToken Cross Logo" className="h-40 w-auto transition-transform duration-500 hover:scale-110" style={{
+              filter: 'drop-shadow(0 0 15px rgba(236,72,153,0.3))',
+              animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+            }} />
             </div>
           </div>
 
@@ -64,21 +59,11 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button 
-              onClick={handleUpgrade}
-              variant="hero-primary"
-              size="xl"
-              className="min-w-48 shadow-2xl"
-            >
+            <Button onClick={handleUpgrade} variant="hero-primary" size="xl" className="min-w-48 shadow-2xl">
               Upgrade to Pro →
             </Button>
             
-            <Button 
-              onClick={scrollToHowItWorks}
-              variant="hero-outline"
-              size="xl"
-              className="min-w-48"
-            >
+            <Button onClick={scrollToHowItWorks} variant="hero-outline" size="xl" className="min-w-48">
               See how it works
             </Button>
           </div>
@@ -87,7 +72,7 @@ export const Hero = () => {
           <div className="pt-16 opacity-100">
             <div className="relative max-w-4xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-pink/20 to-lime/20 rounded-2xl blur-xl"></div>
-              <div className="relative bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 -mt-[50px]">
+              <div className="relative bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 -mt-6 my-[40px]">
                 <p className="text-white text-2xl md:text-3xl font-bold leading-relaxed">
                   "Your AI keeps forgetting things mid-conversation, and you're copy-pasting the same context over and over..."
                 </p>
@@ -99,6 +84,5 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
