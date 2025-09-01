@@ -43,7 +43,7 @@ export const Hero = () => {
                 className="h-20 w-auto drop-shadow-2xl transition-transform duration-500 hover:scale-110" 
               />
               <img 
-                src="/lovable-uploads/9f9351a1-fddd-4061-94ca-286506329c62.png" 
+                src="/lovable-uploads/cf940a8e-0a56-41b8-854e-79531b316565.png" 
                 alt="Background cross" 
                 className="absolute inset-0 w-full h-full object-contain opacity-30 blur-xl animate-glow-pulse"
               />
