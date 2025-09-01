@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { upgradeToProStripe } from "@/utils/stripe";
 import { CheckCircle } from "lucide-react";
-
 export const Pricing = () => {
   const handleUpgrade = async () => {
     try {
@@ -13,31 +12,21 @@ export const Pricing = () => {
       toast.error("Upgrade failed. Please try again.");
     }
   };
-
-  const freeFeatures = [
-    "Basic memory monitoring",
-    "Simple context refresh", 
-    "5 handoff reports per month",
-    "Community support"
-  ];
-
-  const proFeatures = [
-    "Unlimited handoff reports",
-    "Advanced AI Detox modes",
-    "Auto-prompt engineering",
-    "PDF export & email sharing",
-    "Priority support",
-    "Custom memory thresholds"
-  ];
-
-  return (
-    <section id="pricing" className="py-32 bg-gradient-to-br from-pink/25 via-pink/15 to-white relative overflow-hidden">
+  const freeFeatures = ["Basic memory monitoring", "Simple context refresh", "5 handoff reports per month", "Community support"];
+  const proFeatures = ["Unlimited handoff reports", "Advanced AI Detox modes", "Auto-prompt engineering", "PDF export & email sharing", "Priority support", "Custom memory thresholds"];
+  return <section id="pricing" className="py-32 bg-gradient-to-br from-pink/25 via-pink/15 to-white relative overflow-hidden bg-cyan-300">
       {/* Decorative background elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-pink/30 to-lime/25 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-lime/25 to-pink/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-lime/25 to-pink/30 rounded-full blur-3xl animate-pulse" style={{
+      animationDelay: '2s'
+    }}></div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-pink/20 to-transparent rounded-full blur-2xl"></div>
-      <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-pink/35 to-transparent rounded-full blur-2xl animate-bounce" style={{ animationDelay: '3s' }}></div>
-      <div className="absolute bottom-10 left-20 w-60 h-60 bg-gradient-to-br from-lime/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+      <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-pink/35 to-transparent rounded-full blur-2xl animate-bounce" style={{
+      animationDelay: '3s'
+    }}></div>
+      <div className="absolute bottom-10 left-20 w-60 h-60 bg-gradient-to-br from-lime/20 to-transparent rounded-full blur-3xl animate-pulse" style={{
+      animationDelay: '4s'
+    }}></div>
 
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="text-center mb-20 animate-fade-in">
@@ -64,21 +53,15 @@ export const Pricing = () => {
               </div>
               
               <ul className="space-y-4 mb-8">
-                {freeFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start text-gray-700 group-hover:text-gray-800 transition-colors">
+                {freeFeatures.map((feature, index) => <li key={index} className="flex items-start text-gray-700 group-hover:text-gray-800 transition-colors">
                     <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-lime/20 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-4 h-4 text-lime" />
                     </div>
                     <span>{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
               
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="w-full border-lime/30 text-gray-700 hover:bg-lime/10 hover:border-lime/50 transition-all duration-300"
-              >
+              <Button variant="outline" size="lg" className="w-full border-lime/30 text-gray-700 hover:bg-lime/10 hover:border-lime/50 transition-all duration-300">
                 Get Started Free
               </Button>
 
@@ -88,7 +71,9 @@ export const Pricing = () => {
           </div>
 
           {/* Pro Plan */}
-          <div className="group transform transition-all duration-500 hover:scale-105 animate-fade-in relative" style={{ animationDelay: '0.2s' }}>
+          <div className="group transform transition-all duration-500 hover:scale-105 animate-fade-in relative" style={{
+          animationDelay: '0.2s'
+        }}>
             {/* Popular badge with enhanced styling */}
             <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
               <div className="bg-gradient-to-r from-pink to-lime text-white text-sm font-semibold px-6 py-3 rounded-full shadow-lg animate-pulse">
@@ -111,21 +96,15 @@ export const Pricing = () => {
               </div>
               
               <ul className="space-y-4 mb-8">
-                {proFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start text-gray-700 group-hover:text-gray-800 transition-colors">
+                {proFeatures.map((feature, index) => <li key={index} className="flex items-start text-gray-700 group-hover:text-gray-800 transition-colors">
                     <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-pink/20 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-4 h-4 text-pink" />
                     </div>
                     <span>{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
               
-              <Button 
-                onClick={handleUpgrade}
-                size="lg" 
-                className="w-full bg-gradient-to-r from-pink to-lime text-white hover:from-pink/90 hover:to-lime/90 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
+              <Button onClick={handleUpgrade} size="lg" className="w-full bg-gradient-to-r from-pink to-lime text-white hover:from-pink/90 hover:to-lime/90 font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                 Upgrade to Pro →
               </Button>
 
@@ -135,6 +114,5 @@ export const Pricing = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
