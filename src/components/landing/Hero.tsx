@@ -29,7 +29,7 @@ export const Hero = () => {
         <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up">
           
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white border border-white/30">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white border border-white/30 mt-10">
             <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
             Pro is live
           </div>
