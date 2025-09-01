@@ -38,9 +38,9 @@ export const Hero = () => {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <img 
-                src="/lovable-uploads/1e279643-003e-43bb-a7a4-6ccfac0829bb.png" 
+                src="/lovable-uploads/b9aec509-eab8-4090-939f-71823a39ab06.png" 
                 alt="ZeroToken Cross Logo" 
-                className="h-20 w-auto shadow-2xl transition-transform duration-500 hover:scale-110" 
+                className="h-20 w-auto transition-transform duration-500 hover:scale-110" 
               />
             </div>
           </div>
