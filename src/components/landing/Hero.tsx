@@ -38,9 +38,10 @@ export const Hero = () => {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <img 
-                src="/lovable-uploads/b9aec509-eab8-4090-939f-71823a39ab06.png" 
+                src="/lovable-uploads/895885eb-c61d-4842-9597-0866e843d5e6.png" 
                 alt="ZeroToken Cross Logo" 
-                className="h-20 w-auto transition-transform duration-500 hover:scale-110" 
+                className="h-20 w-auto transition-all duration-500 hover:scale-110 filter drop-shadow-2xl hover:drop-shadow-[0_0_30px_rgba(236,72,153,0.6)] animate-pulse" 
+                style={{ filter: 'drop-shadow(0 10px 30px rgba(236,72,153,0.4)) drop-shadow(0 0 20px rgba(255,255,255,0.3))' }}
               />
             </div>
           </div>
