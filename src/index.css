@@ -32,7 +32,7 @@ All colors MUST be HSL.
     --accent-foreground: var(--text-light);
     
     /* Clean section backgrounds */
-    --hero-bg: linear-gradient(135deg, hsl(var(--lavender)), hsl(var(--lavender) / 0.8));
+    --hero-bg: hsl(var(--lavender));
     --features-bg: 0 0% 100%;
     --how-it-works-bg: linear-gradient(135deg, hsl(var(--lime) / 0.08), hsl(var(--lime) / 0.05));
     --pricing-bg: linear-gradient(180deg, hsl(0 0% 98%), hsl(0 0% 100%));
