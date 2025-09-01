@@ -14,7 +14,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-xl border-b border-border/20 transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full backdrop-blur-xl border-b border-border/20 transition-all duration-300" style={{ backgroundColor: '#c1ff72' }}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
