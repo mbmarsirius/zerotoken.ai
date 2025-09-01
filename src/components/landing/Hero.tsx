@@ -38,14 +38,9 @@ export const Hero = () => {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <img 
-                src="/lovable-uploads/5774a51e-3cc7-4bea-82b1-30b3248f94df.png" 
+                src="/lovable-uploads/27039274-4d2a-4aaa-9533-74934395a859.png" 
                 alt="ZeroToken" 
-                className="h-20 w-auto drop-shadow-2xl transition-transform duration-500 hover:scale-110" 
-              />
-              <img 
-                src="/lovable-uploads/cf940a8e-0a56-41b8-854e-79531b316565.png" 
-                alt="Background cross" 
-                className="absolute inset-0 w-full h-full object-contain opacity-30 blur-xl animate-glow-pulse"
+                className="h-20 w-auto shadow-2xl transition-transform duration-500 hover:scale-110" 
               />
             </div>
           </div>
