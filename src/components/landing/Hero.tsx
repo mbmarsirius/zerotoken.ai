@@ -38,7 +38,7 @@ export const Hero = () => {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <img 
-                src="/lovable-uploads/2e61421b-cd0f-46c9-82b5-8ccc803e9625.png" 
+                src="/lovable-uploads/5774a51e-3cc7-4bea-82b1-30b3248f94df.png" 
                 alt="ZeroToken" 
                 className="h-20 w-auto drop-shadow-2xl transition-transform duration-500 hover:scale-110" 
               />
