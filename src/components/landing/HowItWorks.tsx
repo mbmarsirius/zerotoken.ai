@@ -3,109 +3,72 @@ import { Download, Eye, Sparkles } from "lucide-react";
 export const HowItWorks = () => {
   const steps = [
     {
-      icon: <Download className="h-10 w-10" />,
+      icon: Download,
       title: "Install Extension",
       description: "Add ZeroToken to Chrome and it instantly integrates with ChatGPT, Claude, and Gemini."
     },
     {
-      icon: <Eye className="h-10 w-10" />,
+      icon: Eye,
       title: "Monitor Memory",
       description: "See exactly how much context memory you have left in real-time as you chat."
     },
     {
-      icon: <Sparkles className="h-10 w-10" />,
+      icon: Sparkles,
       title: "Stay Organized", 
       description: "Generate reports, refresh context, and optimize prompts — all without leaving your AI chat."
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-32 relative overflow-hidden" style={{ background: 'var(--how-it-works-bg)' }}>
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-lime/10 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-32 right-32 w-24 h-24 bg-pink/10 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-10 w-20 h-20 bg-lavender/10 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
-      
-      <div className="container mx-auto px-4 lg:px-6 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center mb-20 animate-fade-in-up">
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-foreground mb-6">
-            How it <span className="bg-gradient-to-r from-lime via-secondary to-pink bg-clip-text text-transparent">works</span>
+    <section id="how-it-works" className="relative py-24 bg-gray-50/50">
+      <div className="container mx-auto px-4 lg:px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+            How ZeroToken Works
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Get started in minutes and transform your AI conversations instantly.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Transform your AI conversations in three simple steps with our powerful browser extension
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto relative">
-          
-          {/* Enhanced Connection Lines */}
-          <div className="hidden md:block absolute top-1/2 left-1/3 w-1/3 h-1 bg-gradient-to-r from-lime via-lime/50 to-pink transform -translate-y-1/2 opacity-60 rounded-full">
-            <div className="absolute inset-0 bg-gradient-to-r from-lime to-pink animate-pulse rounded-full"></div>
-          </div>
-          <div className="hidden md:block absolute top-1/2 right-1/3 w-1/3 h-1 bg-gradient-to-r from-pink via-pink/50 to-lavender transform -translate-y-1/2 opacity-60 rounded-full">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink to-lavender animate-pulse rounded-full" style={{ animationDelay: '0.5s' }}></div>
-          </div>
-
-          {steps.map((step, index) => (
-            <div 
-              key={index} 
-              className="relative text-center group animate-fade-in-up"
-              style={{ animationDelay: `${index * 250}ms` }}
-            >
-              {/* Enhanced Step Number */}
-              <div className="absolute -top-6 -right-6 w-12 h-12 flex items-center justify-center text-lg font-bold shadow-xl group-hover:scale-125 transition-all duration-500 z-20"
-                style={{
-                  background: index === 0 ? 'hsl(var(--lime))' : index === 1 ? 'hsl(var(--pink))' : 'hsl(var(--lavender))',
-                  color: 'hsl(var(--text-light))',
-                  borderRadius: '50%',
-                  filter: 'drop-shadow(0 4px 15px rgba(0,0,0,0.1))'
-                }}>
-                {index + 1}
-              </div>
-
-              {/* Enhanced Icon Container */}
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-10 mb-8 transition-all duration-700 group-hover:-translate-y-6 overflow-hidden border border-gray-100/50"
-                style={{ boxShadow: 'var(--shadow-card)' }}>
-                
-                {/* Glow Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
-                  style={{
-                    background: index === 0 ? 'linear-gradient(135deg, hsl(var(--lime) / 0.1), transparent)' : 
-                               index === 1 ? 'linear-gradient(135deg, hsl(var(--pink) / 0.1), transparent)' :
-                               'linear-gradient(135deg, hsl(var(--lavender) / 0.1), transparent)'
-                  }}></div>
-                
-                {/* Icon */}
-                <div className="relative z-10 mx-auto w-fit p-6 rounded-2xl transition-all duration-500 group-hover:scale-110"
-                  style={{
-                    background: index === 0 ? 'linear-gradient(135deg, hsl(var(--lime) / 0.1), hsl(var(--lime) / 0.05))' : 
-                               index === 1 ? 'linear-gradient(135deg, hsl(var(--pink) / 0.1), hsl(var(--pink) / 0.05))' :
-                               'linear-gradient(135deg, hsl(var(--lavender) / 0.1), hsl(var(--lavender) / 0.05))'
-                  }}>
-                  <div className="transition-all duration-300 group-hover:animate-pulse"
-                    style={{
-                      color: index === 0 ? 'hsl(var(--lime))' : index === 1 ? 'hsl(var(--pink))' : 'hsl(var(--lavender))'
-                    }}>
-                    {step.icon}
+        <div className="grid lg:grid-cols-3 gap-8 relative">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div 
+                key={step.title}
+                className="group text-center"
+              >
+                <div className="p-8 rounded-2xl bg-white border border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+                  {/* Step number */}
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-pink text-white text-lg font-semibold mb-6">
+                    {index + 1}
                   </div>
+                  
+                  {/* Icon */}
+                  <div className="inline-flex p-3 rounded-xl bg-lime/10 text-lime mb-6">
+                    <Icon size={28} strokeWidth={1.5} />
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">
+                    {step.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-              </div>
 
-              {/* Content */}
-              <h3 className="font-display text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                {step.title}
-              </h3>
-              
-              <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-foreground/90 transition-colors duration-300">
-                {step.description}
-              </p>
-            </div>
-          ))}
+                {/* Connection arrow for desktop */}
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 transform -translate-y-1/2" 
+                       style={{ left: `${(index + 1) * 33.33 - 8}%` }}>
+                    <div className="w-16 h-px bg-border"></div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

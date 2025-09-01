@@ -14,8 +14,8 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-xl border-b border-border/50 transition-all duration-300">
-      <div className="container mx-auto px-4 lg:px-6 bg-secondary">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-xl border-b border-border/20 transition-all duration-300">
+      <div className="container mx-auto px-4 lg:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
@@ -48,15 +48,22 @@ export const Header = () => {
             </a>
           </nav>
 
-          {/* CTA Button */}
-          <Button 
-            onClick={handleUpgrade}
-            variant="brand-primary"
-            size="default"
-            className="font-semibold shadow-lg"
-          >
-            Upgrade to Pro
-          </Button>
+          {/* Marsirius Icon & CTA */}
+          <div className="flex items-center space-x-4">
+            <img 
+              src="/assets/marsirius-logo.png" 
+              alt="Marsirius" 
+              className="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
+            />
+            <Button 
+              onClick={handleUpgrade}
+              variant="default"
+              size="default"
+              className="font-semibold bg-gradient-to-r from-pink to-pink/90 hover:from-pink/90 hover:to-pink text-white shadow-lg border-0"
+            >
+              Upgrade to Pro
+            </Button>
+          </div>
         </div>
       </div>
     </header>
