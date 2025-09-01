@@ -87,7 +87,7 @@ export const Hero = () => {
           <div className="pt-16 opacity-100">
             <div className="relative max-w-4xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-pink/20 to-lime/20 rounded-2xl blur-xl"></div>
-              <div className="relative bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 -mt-6">
+              <div className="relative bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/20 -mt-[50px]">
                 <p className="text-white text-2xl md:text-3xl font-bold leading-relaxed">
                   "Your AI keeps forgetting things mid-conversation, and you're copy-pasting the same context over and over..."
                 </p>
