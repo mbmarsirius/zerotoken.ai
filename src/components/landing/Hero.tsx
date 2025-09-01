@@ -42,7 +42,11 @@ export const Hero = () => {
                 alt="ZeroToken" 
                 className="h-20 w-auto drop-shadow-2xl transition-transform duration-500 hover:scale-110" 
               />
-              <div className="absolute inset-0 bg-primary/20 rounded-lg blur-xl animate-glow-pulse"></div>
+              <img 
+                src="/lovable-uploads/9f9351a1-fddd-4061-94ca-286506329c62.png" 
+                alt="Background cross" 
+                className="absolute inset-0 w-full h-full object-contain opacity-30 blur-xl animate-glow-pulse"
+              />
             </div>
           </div>
 
