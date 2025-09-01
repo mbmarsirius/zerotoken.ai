@@ -3,10 +3,11 @@ import marsirusLogo from "/assets/marsirius-logo.png";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-50 to-white border-t border-gray-200 py-16 relative overflow-hidden">
+    <footer className="bg-gradient-to-t from-lavender/40 via-lavender/20 to-white border-t border-lavender/30 py-16 relative overflow-hidden">
       {/* Subtle background decoration */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-pink/5 to-transparent"></div>
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-lime/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-lavender/30 to-transparent"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-lime/15 to-pink/15 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 left-20 w-48 h-48 bg-gradient-to-br from-pink/15 to-lavender/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0">

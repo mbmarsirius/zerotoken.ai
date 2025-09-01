@@ -26,10 +26,11 @@ export const Features = () => {
   ];
 
   return (
-    <section className="py-32 bg-gray-50 relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-b from-lavender/30 via-white to-white relative overflow-hidden">
       {/* Decorative background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-pink/10 to-lime/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-lime/10 to-pink/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-pink/15 to-lime/15 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-lime/15 to-pink/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-lavender/10 to-transparent rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="text-center mb-20 animate-fade-in">

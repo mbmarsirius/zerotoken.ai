@@ -26,11 +26,12 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-32 bg-gray-50 relative overflow-hidden">
+    <section id="how-it-works" className="py-32 bg-gradient-to-br from-lime/20 via-lime/10 to-white relative overflow-hidden">
       {/* Decorative background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-pink/15 to-lime/15 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-lime/15 to-pink/15 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-pink/10 to-lime/10 rounded-full blur-2xl"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-lime/25 to-pink/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-pink/20 to-lime/25 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-lime/15 to-transparent rounded-full blur-2xl"></div>
+      <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-lime/30 to-transparent rounded-full blur-2xl animate-bounce" style={{ animationDelay: '3s' }}></div>
 
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="text-center mb-20 animate-fade-in">
