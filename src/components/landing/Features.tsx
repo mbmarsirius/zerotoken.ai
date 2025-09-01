@@ -20,34 +20,34 @@ export const Features = () => {
   ];
 
   return (
-    <section className="relative py-24 transition-all duration-1000" style={{ backgroundColor: '#000000' }}>
+    <section className="py-32 bg-white">
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-lime">
-            Advanced AI Features
+        <div className="text-center mb-20">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
+            Three powerful features
           </h2>
-          <p className="text-xl text-pink max-w-2xl mx-auto leading-relaxed">
-            Experience the next generation of AI interaction with our powerful enhancement suite
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Everything you need to keep your AI conversations organized and efficient
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
                 key={feature.title}
-                className="group p-8 rounded-2xl bg-white/5 border border-pink/20 shadow-sm hover:shadow-lg hover:shadow-pink/10 transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm"
+                className="group text-center"
               >
-                <div className="inline-flex p-3 rounded-xl bg-lime/20 text-lime mb-6 group-hover:bg-lime/30 transition-colors duration-300">
-                  <Icon size={28} strokeWidth={1.5} />
+                <div className="w-16 h-16 mx-auto mb-8 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-lime/10 transition-colors duration-300">
+                  <Icon size={28} className="text-gray-700 group-hover:text-lime transition-colors duration-300" strokeWidth={1.5} />
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-4 text-lime">
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">
                   {feature.title}
                 </h3>
                 
-                <p className="text-pink/90 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
               </div>

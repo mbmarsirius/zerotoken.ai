@@ -42,41 +42,43 @@ export const FAQ = () => {
   ];
 
   return (
-    <section className="relative py-24 transition-all duration-1000" style={{ backgroundColor: '#ffffff' }}>
+    <section className="py-32 bg-gray-50">
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-black">
-            Frequently Asked Questions
+        <div className="text-center mb-20">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
+            Questions & answers
           </h2>
-          <p className="text-xl text-black/70 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to know about ZeroToken and how it enhances your AI experience
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Everything you need to know about ZeroToken
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, index) => {
               const Icon = faq.icon;
               return (
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="border border-gray-200 rounded-xl px-6 py-2 bg-white shadow-sm hover:shadow-md transition-all duration-300"
+                  className="border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-200"
                 >
-                  <AccordionTrigger className="hover:no-underline py-4">
-                    <div className="flex items-center space-x-3 text-left">
-                      <div className="p-2 rounded-lg bg-pink/10 text-pink">
-                        <Icon size={18} strokeWidth={1.5} />
+                  <AccordionTrigger className="hover:no-underline px-6 py-5">
+                    <div className="flex items-center space-x-4 text-left">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <Icon size={16} className="text-gray-600" strokeWidth={1.5} />
                       </div>
-                      <span className="font-medium text-black">
+                      <span className="font-semibold text-gray-900">
                         {faq.question}
                       </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="pb-4 pt-2 px-12">
-                    <p className="text-black/70 leading-relaxed">
-                      {faq.answer}
-                    </p>
+                  <AccordionContent className="px-6 pb-5">
+                    <div className="pl-12">
+                      <p className="text-gray-600 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               );
@@ -85,20 +87,22 @@ export const FAQ = () => {
         </div>
 
         {/* Contact Support */}
-        <div className="text-center mt-12 p-6 rounded-xl bg-gray-50 border border-gray-200 max-w-xl mx-auto">
-          <h3 className="text-xl font-semibold mb-3 text-black">Still have questions?</h3>
-          <p className="text-black/70 mb-4">
-            Our support team is here to help you get the most out of ZeroToken
-          </p>
-          <Button 
-            asChild
-            variant="outline"
-            className="border border-pink text-pink hover:bg-pink hover:text-white"
-          >
-            <a href="mailto:support@zerotoken.ai">
-              Contact Support
-            </a>
-          </Button>
+        <div className="text-center mt-16">
+          <div className="max-w-md mx-auto">
+            <h3 className="text-xl font-semibold mb-3 text-gray-900">Still have questions?</h3>
+            <p className="text-gray-600 mb-6">
+              Our support team is here to help
+            </p>
+            <Button 
+              asChild
+              variant="outline"
+              className="border-gray-300 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900"
+            >
+              <a href="mailto:support@zerotoken.ai">
+                Contact Support
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
