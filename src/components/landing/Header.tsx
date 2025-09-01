@@ -51,9 +51,9 @@ export const Header = () => {
           {/* Marsirius Icon & CTA */}
           <div className="flex items-center space-x-4">
             <img 
-              src="/assets/marsirius-logo.png" 
+              src="/lovable-uploads/94bcfd29-e1f6-4f86-87af-920406bc33dc.png" 
               alt="Marsirius" 
-              className="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
+              className="h-6 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
             />
             <Button 
               onClick={handleUpgrade}
