@@ -40,7 +40,8 @@ export const Hero = () => {
               <img 
                 src="/lovable-uploads/895885eb-c61d-4842-9597-0866e843d5e6.png" 
                 alt="ZeroToken Cross Logo" 
-                className="h-40 w-auto transition-transform duration-500 hover:scale-110" 
+                className="h-40 w-auto transition-transform duration-500 hover:scale-110 animate-pulse" 
+                style={{ filter: 'drop-shadow(0 0 15px rgba(236,72,153,0.3))' }}
               />
             </div>
           </div>
