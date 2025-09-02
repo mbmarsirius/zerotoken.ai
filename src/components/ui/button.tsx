@@ -19,13 +19,18 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground hover:scale-105",
         link: "text-primary underline-offset-4 hover:underline",
         
-        // ZeroToken brand variants - Clean & Modern
+        // Enhanced liquid glass variants
+        "hero-primary": "relative bg-gradient-to-r from-pink to-pink/90 hover:from-pink/90 hover:to-pink text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-skew-x-12 before:translate-x-[-100%] hover:before:translate-x-[200%] before:transition-transform before:duration-700",
+        "hero-outline": "bg-white/10 text-white border border-white/30 hover:bg-white/20 backdrop-blur-xl transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-white/10 hover:border-white/50",
+        "glass": "bg-white/10 backdrop-blur-2xl text-white border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:scale-105",
+        "liquid": "bg-gradient-to-br from-lime/20 to-pink/20 backdrop-blur-xl text-foreground border border-white/30 hover:from-lime/30 hover:to-pink/30 transition-all duration-500 shadow-xl hover:shadow-2xl hover:scale-105 relative overflow-hidden after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent after:-skew-x-12 after:translate-x-[-100%] hover:after:translate-x-[200%] after:transition-transform after:duration-700",
+        "aurora": "bg-gradient-to-r from-pink via-lime to-lavender bg-[length:200%_200%] animate-aurora text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105",
+        
+        // ZeroToken brand variants - Clean & Modern  
         "brand-primary": "bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 hover:shadow-xl hover:scale-105 transition-all duration-300",
         "brand-secondary": "bg-secondary text-secondary-foreground rounded-full font-semibold hover:bg-secondary/90 hover:shadow-lg hover:scale-105 transition-all duration-300", 
         "brand-outline": "border-2 border-primary text-primary bg-transparent rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105",
         "ghost-modern": "text-foreground hover:bg-muted rounded-full transition-all duration-300 hover:scale-105",
-        "hero-primary": "bg-primary text-primary-foreground rounded-full font-bold text-lg hover:bg-primary/90 hover:shadow-xl hover:scale-110 transition-all duration-300 animate-glow-pulse",
-        "hero-outline": "border-2 border-white/30 text-white bg-white/10 backdrop-blur-sm rounded-full font-medium hover:bg-white/20 hover:border-white/50 transition-all duration-300",
         
         // Legacy variants for compatibility 
         "lime-pill": "bg-secondary text-secondary-foreground rounded-full font-semibold hover:bg-secondary/90 hover:shadow-lg transition-all duration-300 hover:scale-105",
