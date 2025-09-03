@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { TrendingUp, CheckCircle, Zap, Clock, Users, Star } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { TrendingUp, CheckCircle, Zap, Clock, Users, Star, ChevronRight, Play, Info } from "lucide-react";
 
 interface ResultAnimationProps {
   isActive: boolean;
@@ -11,6 +11,8 @@ export const ResultAnimation = ({ isActive }: ResultAnimationProps) => {
   const [timeSaved, setTimeSaved] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
   const [activeMetrics, setActiveMetrics] = useState<number[]>([]);
+  const [selectedMetric, setSelectedMetric] = useState<number | null>(null);
+  const [showMetricDetails, setShowMetricDetails] = useState(false);
 
   useEffect(() => {
     if (!isActive) {
@@ -81,7 +83,13 @@ export const ResultAnimation = ({ isActive }: ResultAnimationProps) => {
       value: `${productivity}%`,
       color: "from-green-500 to-emerald-500",
       bgColor: "bg-green-50",
-      borderColor: "border-green-200"
+      borderColor: "border-green-200",
+      details: [
+        "3.4x faster task completion",
+        "Unlimited conversation length", 
+        "Zero context switching time",
+        "Perfect memory retention"
+      ]
     },
     {
       icon: Users,
@@ -89,7 +97,13 @@ export const ResultAnimation = ({ isActive }: ResultAnimationProps) => {
       value: conversations,
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50",
-      borderColor: "border-blue-200"
+      borderColor: "border-blue-200",
+      details: [
+        "Simultaneous AI sessions",
+        "Each with full context",
+        "No memory limits",
+        "Seamless switching between topics"
+      ]
     },
     {
       icon: Clock,
@@ -97,7 +111,13 @@ export const ResultAnimation = ({ isActive }: ResultAnimationProps) => {
       value: `${timeSaved.toFixed(1)}h`,
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-50",
-      borderColor: "border-purple-200"
+      borderColor: "border-purple-200",
+      details: [
+        "No more re-explaining context",
+        "Instant conversation resumption",
+        "Auto-checkpoint recovery",
+        "Smart handoff generation"
+      ]
     }
   ];
 
@@ -129,9 +149,13 @@ export const ResultAnimation = ({ isActive }: ResultAnimationProps) => {
           const isActive = activeMetrics.includes(index);
           
           return (
-            <div 
+            <button 
               key={index}
-              className={`${metric.bgColor} ${metric.borderColor} rounded-3xl border-2 p-8 text-center transition-all duration-1000 ${
+              onClick={() => {
+                setSelectedMetric(index);
+                setShowMetricDetails(true);
+              }}
+              className={`${metric.bgColor} ${metric.borderColor} rounded-3xl border-2 p-8 text-center transition-all duration-1000 hover:scale-110 cursor-pointer ${
                 isActive ? 'scale-105 shadow-2xl' : 'scale-95 opacity-60'
               }`}
             >
@@ -155,18 +179,81 @@ export const ResultAnimation = ({ isActive }: ResultAnimationProps) => {
               </div>
 
               {isActive && (
-                <div className="mt-4 flex justify-center">
+                <div className="mt-4 flex justify-center items-center space-x-2">
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-gradient-to-r from-lime to-pink rounded-full animate-pulse" />
                     <div className="w-2 h-2 bg-gradient-to-r from-lime to-pink rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
                     <div className="w-2 h-2 bg-gradient-to-r from-lime to-pink rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
                   </div>
+                  <ChevronRight size={16} className="text-gray-400" />
+                  <span className="text-xs text-gray-500">Click for details</span>
                 </div>
               )}
-            </div>
+            </button>
           );
         })}
       </div>
+
+      {/* Metric Details Modal */}
+      {showMetricDetails && selectedMetric !== null && (
+        <div className="mt-8 animate-fade-in">
+          <div className="bg-white rounded-3xl border-2 border-gray-200 shadow-2xl p-8">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-4">
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${metrics[selectedMetric].color} flex items-center justify-center`}>
+                  {React.createElement(metrics[selectedMetric].icon, { size: 28, className: "text-white" })}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">{metrics[selectedMetric].label}</h3>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">
+                    {metrics[selectedMetric].value}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowMetricDetails(false)}
+                className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-bold text-gray-900 mb-4">Key Benefits:</h4>
+                <div className="space-y-3">
+                  {metrics[selectedMetric].details.map((detail, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${metrics[selectedMetric].color}`} />
+                      <span className="text-gray-700">{detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className={`${metrics[selectedMetric].bgColor} rounded-2xl p-6 border ${metrics[selectedMetric].borderColor}`}>
+                <h4 className="font-bold text-gray-900 mb-4">Real Impact:</h4>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Before ZeroToken</span>
+                    <span className="text-red-600 font-semibold">Limited</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">After ZeroToken</span>
+                    <span className="text-green-600 font-semibold">Unlimited</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Improvement</span>
+                    <span className="font-bold bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">
+                      {metrics[selectedMetric].value}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Success Stories Simulation */}
       <div className="grid lg:grid-cols-2 gap-8 mb-12">

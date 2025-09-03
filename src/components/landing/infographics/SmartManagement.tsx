@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FileText, Zap, RefreshCw, Sparkles, ArrowRight } from "lucide-react";
+import { FileText, Zap, RefreshCw, Sparkles, ArrowRight, Play, Info, Download } from "lucide-react";
 
 interface SmartManagementProps {
   isActive: boolean;
@@ -10,6 +10,8 @@ export const SmartManagement = ({ isActive }: SmartManagementProps) => {
   const [showHandoff, setShowHandoff] = useState(false);
   const [optimizing, setOptimizing] = useState(false);
   const [handoffCount, setHandoffCount] = useState(0);
+  const [activeFeature, setActiveFeature] = useState<string | null>(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
     if (!isActive) {
@@ -130,18 +132,28 @@ export const SmartManagement = ({ isActive }: SmartManagementProps) => {
                   </p>
                 </div>
 
-                <button className={`w-full py-3 rounded-2xl font-semibold transition-all duration-500 ${
-                  showHandoff 
-                    ? 'bg-gradient-to-r from-pink to-purple text-white hover:scale-105' 
-                    : 'bg-gray-200 text-gray-500'
-                }`}>
+                <button 
+                  onClick={() => {
+                    setActiveFeature('handoff');
+                    setShowDetails(true);
+                  }}
+                  className={`w-full py-3 rounded-2xl font-semibold transition-all duration-500 hover:scale-105 ${
+                    showHandoff 
+                      ? 'bg-gradient-to-r from-pink to-purple text-white' 
+                      : 'bg-gray-200 text-gray-500'
+                  }`}
+                >
                   {showHandoff ? (
                     <div className="flex items-center justify-center space-x-2">
-                      <Sparkles size={16} />
-                      <span>Generate Report</span>
+                      <Download size={16} />
+                      <span>Download Report</span>
+                      <Info size={14} />
                     </div>
                   ) : (
-                    'Generate Handoff'
+                    <div className="flex items-center justify-center space-x-2">
+                      <Play size={16} />
+                      <span>Generate Handoff</span>
+                    </div>
                   )}
                 </button>
 
@@ -235,20 +247,118 @@ export const SmartManagement = ({ isActive }: SmartManagementProps) => {
         </div>
       </div>
 
-      {/* Bottom Stats */}
+      {/* Interactive Feature Details */}
+      {showDetails && activeFeature && (
+        <div className="mt-8 animate-fade-in">
+          <div className="bg-white rounded-3xl border-2 border-lime/40 shadow-2xl p-8">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">
+                {activeFeature === 'handoff' ? 'Smart Handoff Generation' : 'Feature Details'}
+              </h3>
+              <button
+                onClick={() => setShowDetails(false)}
+                className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+              >
+                ×
+              </button>
+            </div>
+            
+            {activeFeature === 'handoff' && (
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-gradient-to-br from-pink/10 to-purple/10 rounded-2xl p-6 border border-pink/20">
+                    <h4 className="font-bold text-gray-900 mb-4">What gets included:</h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-pink rounded-full"></div>
+                        <span>Key conversation points</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-pink rounded-full"></div>
+                        <span>Important decisions made</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-pink rounded-full"></div>
+                        <span>Action items & next steps</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-pink rounded-full"></div>
+                        <span>Context for future sessions</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-lime/10 to-green/10 rounded-2xl p-6 border border-lime/20">
+                    <h4 className="font-bold text-gray-900 mb-4">Smart compression:</h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">Original tokens</span>
+                        <span className="font-bold text-red-600">15,642</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">Compressed to</span>
+                        <span className="font-bold text-green-600">3,241</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">Efficiency</span>
+                        <span className="font-bold text-lime-600">79% saved</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <button className="w-full py-4 bg-gradient-to-r from-pink to-purple text-white rounded-2xl font-semibold hover:scale-105 transition-transform">
+                  Generate & Download Handoff Report
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Bottom Interactive Stats */}
       <div className="mt-8 grid grid-cols-3 gap-4">
-        <div className="text-center p-4 bg-lime/20 rounded-2xl border border-lime/40">
+        <button
+          onClick={() => {
+            setActiveFeature('checkpoints');
+            setShowDetails(true);
+          }}
+          className="text-center p-4 bg-lime/20 rounded-2xl border border-lime/40 hover:scale-105 transition-transform hover:shadow-lg"
+        >
           <div className="text-2xl font-bold text-lime-700">Auto</div>
           <div className="text-sm text-lime-800">Checkpoints</div>
-        </div>
-        <div className="text-center p-4 bg-pink/20 rounded-2xl border border-pink/40">
+          <div className="mt-2">
+            <Info size={16} className="text-lime-600 mx-auto" />
+          </div>
+        </button>
+        
+        <button
+          onClick={() => {
+            setActiveFeature('handoff');
+            setShowDetails(true);
+          }}
+          className="text-center p-4 bg-pink/20 rounded-2xl border border-pink/40 hover:scale-105 transition-transform hover:shadow-lg"
+        >
           <div className="text-2xl font-bold text-pink-700">{handoffCount}</div>
           <div className="text-sm text-pink-800">Smart Reports</div>
-        </div>
-        <div className="text-center p-4 bg-purple-50 rounded-2xl border border-purple-200">
-          <div className="text-2xl font-bold text-purple-600">47%</div>
+          <div className="mt-2">
+            <Play size={16} className="text-pink-600 mx-auto" />
+          </div>
+        </button>
+        
+        <button
+          onClick={() => {
+            setActiveFeature('optimization');
+            setShowDetails(true);
+          }}
+          className="text-center p-4 bg-purple-50 rounded-2xl border border-purple-200 hover:scale-105 transition-transform hover:shadow-lg"
+        >
+          <div className="text-2xl font-bold text-purple-600">79%</div>
           <div className="text-sm text-purple-800">Token Saved</div>
-        </div>
+          <div className="mt-2">
+            <Zap size={16} className="text-purple-600 mx-auto" />
+          </div>
+        </button>
       </div>
     </div>
   );

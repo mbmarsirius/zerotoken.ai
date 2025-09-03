@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Eye, Save, BarChart3, Clock, Zap, Activity, Shield } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Monitor, Zap, CheckCircle, AlertCircle, Activity, Play, Info, X, ChevronRight, Eye, Save, BarChart3, Clock, Shield } from "lucide-react";
 
 interface MonitoringMagicProps {
   isActive: boolean;
@@ -13,6 +13,8 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
   const [glowEffect, setGlowEffect] = useState(false);
   const [pulseIntensity, setPulseIntensity] = useState(0);
   const [dataFlow, setDataFlow] = useState(0);
+  const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
     if (!isActive) {
@@ -23,6 +25,8 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
       setGlowEffect(false);
       setPulseIntensity(0);
       setDataFlow(0);
+      setSelectedFeature(null);
+      setShowDetails(false);
       return;
     }
 
@@ -53,17 +57,162 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
     };
   }, [isActive]);
 
+  const handleFeatureClick = (feature: string) => {
+    setSelectedFeature(feature);
+    setShowDetails(true);
+  };
+
+  const features = [
+    {
+      id: 'realtime',
+      title: 'Real-time Monitoring',
+      icon: Activity,
+      description: 'Track token usage instantly',
+      details: [
+        'Live token counter display',
+        'Real-time conversation tracking',
+        'Instant notifications on limits',
+        'Visual progress indicators'
+      ]
+    },
+    {
+      id: 'smart-alerts',
+      title: 'Smart Alerts',
+      icon: AlertCircle,
+      description: 'Get notified before limits',
+      details: [
+        'Context limit warnings at 80%',
+        'Smart checkpoint suggestions',
+        'Proactive handoff generation',
+        'Customizable alert thresholds'
+      ]
+    },
+    {
+      id: 'ui-recreation',
+      title: 'UI Recreation',
+      icon: Monitor,
+      description: 'Beautiful overlay interface',
+      details: [
+        'Non-intrusive overlay design',
+        'Seamless integration with ChatGPT',
+        'Customizable themes and positions',
+        'One-click feature access'
+      ]
+    }
+  ];
+
   return (
     <div className="relative w-full max-w-6xl mx-auto">
+      {/* Interactive Feature Selection */}
+      <div className="grid md:grid-cols-3 gap-4 mb-8">
+        {features.map((feature) => {
+          const Icon = feature.icon;
+          return (
+            <button
+              key={feature.id}
+              onClick={() => handleFeatureClick(feature.id)}
+              className={`p-6 rounded-2xl border-2 transition-all duration-500 hover:scale-105 ${
+                selectedFeature === feature.id 
+                  ? 'bg-green-50 border-green-300 shadow-xl' 
+                  : 'bg-gray-50 border-gray-200 hover:border-green-200'
+              }`}
+            >
+              <div className="text-center">
+                <div className={`w-12 h-12 mx-auto mb-3 rounded-xl flex items-center justify-center ${
+                  selectedFeature === feature.id 
+                    ? 'bg-gradient-to-r from-lime to-green-500' 
+                    : 'bg-gray-300'
+                }`}>
+                  <Icon size={20} className="text-white" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-600 mb-3">{feature.description}</p>
+                <div className="flex items-center justify-center space-x-2">
+                  <Play size={14} className="text-green-500" />
+                  <span className="text-xs text-green-600">Click to explore</span>
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Feature Details Modal */}
+      {showDetails && selectedFeature && (
+        <div className="mb-8 animate-fade-in">
+          <div className="bg-white rounded-3xl border-2 border-green-200 shadow-2xl p-8">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-lime to-green-500 rounded-2xl flex items-center justify-center">
+                  {React.createElement(features.find(f => f.id === selectedFeature)?.icon || Activity, { size: 28, className: "text-white" })}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {features.find(f => f.id === selectedFeature)?.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {features.find(f => f.id === selectedFeature)?.description}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowDetails(false)}
+                className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
+              >
+                <X size={16} className="text-gray-600" />
+              </button>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-bold text-gray-900 mb-4">Key Features:</h4>
+                <div className="space-y-3">
+                  {features.find(f => f.id === selectedFeature)?.details.map((detail, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-lime to-green-500" />
+                      <span className="text-gray-700">{detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="bg-green-50 rounded-2xl p-6 border border-green-200">
+                <h4 className="font-bold text-gray-900 mb-4">Live Preview:</h4>
+                <div className="space-y-3">
+                  <div className="bg-white rounded-lg p-3 border border-green-200">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">Status</span>
+                      <span className="text-green-600 font-semibold">Active</span>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg p-3 border border-green-200">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">Monitoring</span>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        <span className="text-green-600 font-semibold">Live</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="grid lg:grid-cols-2 gap-8 items-start">
         {/* Left: ZeroToken UI Recreation */}
         <div className="space-y-6">
-          {/* Enhanced Main Token Counter */}
-          <div className={`bg-white/95 backdrop-blur-md rounded-3xl border shadow-2xl p-6 transition-all duration-500 ${
-            glowEffect 
-              ? 'border-lime/50 shadow-lime/20 shadow-2xl' 
-              : 'border-gray-200'
-          }`}>
+          {/* Interactive Monitoring Panel */}
+          <button
+            onClick={() => handleFeatureClick('realtime')}
+            className={`w-full bg-white/95 backdrop-blur-md rounded-3xl border shadow-2xl p-6 transition-all duration-500 hover:scale-105 ${
+              glowEffect 
+                ? 'border-lime/50 shadow-lime/20 shadow-2xl' 
+                : 'border-gray-200'
+            }`}
+          >
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-3">
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${
@@ -75,7 +224,7 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
                     glowEffect ? 'animate-bounce' : ''
                   }`} />
                 </div>
-                <div>
+                <div className="text-left">
                   <h3 className="font-bold text-gray-900 text-lg">ZeroToken Monitor</h3>
                   <p className="text-sm text-gray-600">Real-time AI tracking</p>
                 </div>
@@ -95,7 +244,7 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
               </div>
             </div>
 
-            {/* Enhanced Token Counter */}
+            {/* Token Counter Display */}
             <div className="space-y-5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
@@ -120,9 +269,7 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
                   }`}>
                     {tokenCount.toLocaleString()} tokens • {percentage.toFixed(1)}%
                   </span>
-                  {glowEffect && (
-                    <Zap size={12} className="text-lime animate-spin" />
-                  )}
+                  <Info size={12} className="text-gray-400" />
                 </div>
               </div>
               
@@ -138,7 +285,6 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
                     }`}
                     style={{ width: `${percentage}%` }}
                   >
-                    {/* Animated data flow */}
                     <div 
                       className="absolute top-0 left-0 h-full w-8 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 animate-pulse"
                       style={{ 
@@ -148,124 +294,38 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
                     />
                   </div>
                 </div>
-                
-                {/* Progress indicators */}
-                <div className="absolute -top-1 left-0 right-0 flex justify-between">
-                  {[25, 50, 75].map((mark, i) => (
-                    <div key={i} className={`w-1 h-6 rounded-full transition-all duration-300 ${
-                      percentage > mark ? 'bg-lime' : 'bg-gray-300'
-                    }`} style={{ marginLeft: `${mark}%` }} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Enhanced Auto-save indicator */}
-              <div className={`flex items-center justify-between p-3 rounded-xl transition-all duration-500 ${
-                showAutoSave 
-                  ? 'bg-gradient-to-r from-green-50 to-lime/10 border border-green-200 scale-105' 
-                  : 'bg-gray-50 border border-gray-200'
-              }`}>
-                <div className="flex items-center space-x-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                    showAutoSave 
-                      ? 'bg-green-500 animate-pulse shadow-lg shadow-green-500/30' 
-                      : 'bg-gray-400'
-                  }`}>
-                    <Save size={14} className="text-white" />
-                  </div>
-                  <div>
-                    <span className={`text-sm font-medium transition-colors duration-300 ${
-                      showAutoSave ? 'text-green-700' : 'text-gray-600'
-                    }`}>
-                      Auto-saved {showAutoSave ? '✓ just now' : '• 30s ago'}
-                    </span>
-                    {showAutoSave && (
-                      <div className="text-xs text-green-600 mt-1">Checkpoint created successfully</div>
-                    )}
-                  </div>
-                </div>
-                
-                {showAutoSave && (
-                  <div className="flex items-center space-x-1">
-                    <Shield size={12} className="text-green-500 animate-pulse" />
-                    <span className="text-xs text-green-600 font-medium">SECURE</span>
-                  </div>
-                )}
               </div>
             </div>
+          </button>
+
+          {/* Interactive Features Grid */}
+          <div className="grid grid-cols-2 gap-4">
+            <button
+              onClick={() => handleFeatureClick('smart-alerts')}
+              className="p-4 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl border-2 border-orange-200 hover:scale-105 transition-transform"
+            >
+              <div className="text-center">
+                <AlertCircle size={24} className="text-orange-500 mx-auto mb-2" />
+                <h4 className="font-bold text-gray-900 mb-1">Smart Alerts</h4>
+                <p className="text-xs text-gray-600">Get notified early</p>
+                <Play size={14} className="text-orange-500 mx-auto mt-2" />
+              </div>
+            </button>
+
+            <button
+              onClick={() => handleFeatureClick('ui-recreation')}
+              className="p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl border-2 border-blue-200 hover:scale-105 transition-transform"
+            >
+              <div className="text-center">
+                <Monitor size={24} className="text-blue-500 mx-auto mb-2" />
+                <h4 className="font-bold text-gray-900 mb-1">UI Integration</h4>
+                <p className="text-xs text-gray-600">Beautiful interface</p>
+                <Info size={14} className="text-blue-500 mx-auto mt-2" />
+              </div>
+            </button>
           </div>
 
-          {/* Enhanced Features Panel */}
-          <div className={`bg-gradient-to-br from-lime/15 to-pink/15 rounded-3xl border-2 p-6 transition-all duration-500 ${
-            glowEffect 
-              ? 'border-lime/50 shadow-lg shadow-lime/20' 
-              : 'border-lime/30'
-          }`}>
-            <div className="flex items-center justify-between mb-5">
-              <h4 className="font-bold text-gray-900 text-lg">Smart Features</h4>
-              <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                glowEffect ? 'bg-lime animate-pulse' : 'bg-lime/50'
-              }`}>
-                <Zap size={12} className="text-white" />
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              {[
-                { icon: Save, label: "Auto-save: Unlimited", active: true, status: "ACTIVE" },
-                { icon: BarChart3, label: "Token Analytics", active: isActive, status: "MONITORING" },
-                { icon: Clock, label: "Context History", active: true, status: "READY" }
-              ].map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div key={index} className={`flex items-center justify-between p-3 rounded-xl border transition-all duration-300 ${
-                    feature.active 
-                      ? 'bg-white/80 border-lime/30 shadow-sm' 
-                      : 'bg-gray-50/80 border-gray-200'
-                  }`}>
-                    <div className="flex items-center space-x-3">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                        feature.active 
-                          ? glowEffect && index === 1
-                            ? 'bg-gradient-to-r from-lime to-green-400 animate-pulse shadow-lg' 
-                            : 'bg-lime text-white shadow-sm' 
-                          : 'bg-gray-200 text-gray-500'
-                      }`}>
-                        <Icon size={16} className={glowEffect && feature.active && index === 1 ? 'animate-bounce' : ''} />
-                      </div>
-                      <div>
-                        <span className={`text-sm font-medium transition-colors duration-300 ${
-                          feature.active ? 'text-gray-900' : 'text-gray-500'
-                        }`}>
-                          {feature.label}
-                        </span>
-                        {feature.active && (
-                          <div className="text-xs text-gray-600 mt-1">{feature.status}</div>
-                        )}
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center space-x-2">
-                      {feature.active && (
-                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          glowEffect && index === 1 
-                            ? 'bg-lime animate-ping' 
-                            : 'bg-green-500 animate-pulse'
-                        }`} />
-                      )}
-                      <span className={`text-xs font-bold transition-colors duration-300 ${
-                        feature.active ? 'text-green-600' : 'text-gray-400'
-                      }`}>
-                        {feature.active ? 'ON' : 'OFF'}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Enhanced Pro Badge */}
+          {/* Pro Badge */}
           <div className={`bg-gradient-to-r from-pink via-purple-500 to-lime rounded-3xl p-5 text-white text-center shadow-2xl transition-all duration-500 ${
             glowEffect ? 'shadow-pink/30 scale-105' : 'shadow-pink/20'
           }`}>
@@ -274,24 +334,16 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
               <span className="font-bold text-lg">ZeroToken Pro</span>
               <Zap size={18} className={glowEffect ? 'animate-spin' : ''} style={{ animationDirection: 'reverse' }} />
             </div>
-            <p className="text-sm opacity-90">Active • Unlimited handoffs & monitoring</p>
-            {glowEffect && (
-              <div className="mt-2 flex justify-center space-x-1">
-                <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-              </div>
-            )}
+            <p className="text-sm opacity-90">Active • Unlimited monitoring & features</p>
           </div>
         </div>
 
-        {/* Right: Enhanced Live Chat Simulation */}
+        {/* Right: Live Chat Simulation */}
         <div className={`bg-white rounded-3xl border shadow-2xl overflow-hidden transition-all duration-500 ${
           typing 
             ? 'border-blue-300 shadow-blue-500/20' 
             : 'border-gray-200'
         }`}>
-          {/* Enhanced Chat Header */}
           <div className={`border-b px-6 py-4 transition-all duration-300 ${
             typing 
               ? 'bg-gradient-to-r from-blue-50 to-green-50 border-blue-200' 
@@ -324,9 +376,7 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
             </div>
           </div>
 
-          {/* Enhanced Chat Messages */}
           <div className="p-6 space-y-5 h-96 overflow-y-auto relative">
-            {/* Floating token counter overlay */}
             <div className={`absolute top-2 right-2 px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 ${
               typing 
                 ? 'bg-blue-500 text-white animate-pulse' 
@@ -335,7 +385,6 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
               {typing ? 'Tracking...' : `${Math.floor(percentage)}%`}
             </div>
             
-            {/* User message */}
             <div className="flex justify-end">
               <div className={`bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-3xl max-w-xs shadow-lg transition-all duration-300 ${
                 typing ? 'scale-105 shadow-blue-500/30' : ''
@@ -345,13 +394,12 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
                   <span className="text-xs opacity-80">You</span>
                 </div>
                 <p className="text-sm leading-relaxed">
-                  Help me analyze this complex dataset and provide insights on customer behavior patterns...
+                  Help me analyze this complex dataset and provide insights...
                   {typing && <span className="animate-pulse ml-1">|</span>}
                 </p>
               </div>
             </div>
 
-            {/* AI response */}
             <div className="flex justify-start">
               <div className={`bg-gradient-to-r from-gray-100 to-gray-50 text-gray-900 p-4 rounded-3xl max-w-xs border shadow-sm transition-all duration-300 ${
                 typing ? 'border-blue-200 shadow-blue-500/10' : 'border-gray-200'
@@ -362,12 +410,11 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
                   <Activity size={10} className={`text-gray-500 ${typing ? 'animate-spin' : ''}`} />
                 </div>
                 <p className="text-sm leading-relaxed text-gray-800">
-                  I'll help you analyze the dataset. Based on the patterns I can see, there are several interesting trends in customer behavior...
+                  I'll help you analyze the dataset. Based on the patterns I can see...
                 </p>
               </div>
             </div>
 
-            {/* Enhanced Typing indicator */}
             {typing && (
               <div className="flex justify-start animate-fade-in">
                 <div className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 p-4 rounded-3xl shadow-lg shadow-blue-500/20">
@@ -378,88 +425,48 @@ export const MonitoringMagic = ({ isActive }: MonitoringMagicProps) => {
                       <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                     <span className="text-xs text-blue-600 font-medium">AI is thinking...</span>
-                    <Zap size={12} className="text-blue-500 animate-spin" />
                   </div>
                 </div>
               </div>
             )}
-
-            {/* Data flow visualization */}
-            {typing && (
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-blue-500 to-lime animate-pulse" style={{ width: '70%' }}></div>
-                </div>
-                <div className="text-xs text-center text-gray-500 mt-1">Processing context...</div>
-              </div>
-            )}
-          </div>
-
-          {/* Enhanced Chat Input */}
-          <div className={`border-t p-4 transition-all duration-300 ${
-            typing ? 'border-blue-200 bg-blue-50/30' : 'border-gray-200'
-          }`}>
-            <div className="flex items-center space-x-3">
-              <div className={`flex-1 rounded-2xl px-4 py-3 transition-all duration-300 ${
-                typing 
-                  ? 'bg-white border border-blue-200 shadow-sm' 
-                  : 'bg-gray-100'
-              }`}>
-                <span className={`text-sm transition-colors duration-300 ${
-                  typing ? 'text-blue-600' : 'text-gray-500'
-                }`}>
-                  {typing ? 'ZeroToken is monitoring context...' : 'Type your message...'}
-                </span>
-              </div>
-              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-                typing 
-                  ? 'bg-gradient-to-r from-blue-500 to-blue-600 animate-pulse shadow-lg shadow-blue-500/30' 
-                  : 'bg-blue-500 hover:bg-blue-600'
-              }`}>
-                {typing ? (
-                  <Activity size={16} className="text-white animate-spin" />
-                ) : (
-                  <span className="text-white font-bold">→</span>
-                )}
-              </div>
-            </div>
-            
-            {/* Token usage indicator in input area */}
-            {typing && (
-              <div className="mt-2 flex items-center justify-between text-xs">
-                <span className="text-blue-600">Context: {percentage.toFixed(1)}% used</span>
-                <span className="text-green-600">Auto-save ready</span>
-              </div>
-            )}
           </div>
         </div>
       </div>
 
-      {/* Live Stats */}
+      {/* Interactive Bottom Stats */}
       <div className="mt-8 grid grid-cols-4 gap-4">
-        <div className="text-center p-4 bg-green-50 rounded-2xl border border-green-200">
+        <button
+          onClick={() => handleFeatureClick('realtime')}
+          className="text-center p-4 bg-green-50 rounded-2xl border border-green-200 hover:scale-105 transition-transform"
+        >
           <div className="text-2xl font-bold text-green-600">{percentage.toFixed(1)}%</div>
           <div className="text-sm text-green-800">Tokens Used</div>
-        </div>
-        <div className="text-center p-4 bg-blue-50 rounded-2xl border border-blue-200">
-          <div className="text-2xl font-bold text-blue-600">Real-time</div>
+          <Info size={16} className="text-green-500 mx-auto mt-2" />
+        </button>
+        <button
+          onClick={() => handleFeatureClick('realtime')}
+          className="text-center p-4 bg-blue-50 rounded-2xl border border-blue-200 hover:scale-105 transition-transform"
+        >
+          <div className="text-2xl font-bold text-blue-600">Live</div>
           <div className="text-sm text-blue-800">Monitoring</div>
-        </div>
-        <div className="text-center p-4 bg-lime/20 rounded-2xl border border-lime/40">
+          <Play size={16} className="text-blue-500 mx-auto mt-2" />
+        </button>
+        <button
+          onClick={() => handleFeatureClick('smart-alerts')}
+          className="text-center p-4 bg-lime/20 rounded-2xl border border-lime/40 hover:scale-105 transition-transform"
+        >
           <div className="text-2xl font-bold text-lime-700">∞</div>
           <div className="text-sm text-lime-800">Auto-saves</div>
-        </div>
-        <div className="text-center p-4 bg-pink/20 rounded-2xl border border-pink/40">
+          <Activity size={16} className="text-lime-600 mx-auto mt-2" />
+        </button>
+        <button
+          onClick={() => handleFeatureClick('ui-recreation')}
+          className="text-center p-4 bg-pink/20 rounded-2xl border border-pink/40 hover:scale-105 transition-transform"
+        >
           <div className="text-2xl font-bold text-pink-700">24/7</div>
           <div className="text-sm text-pink-800">Active</div>
-        </div>
-      </div>
-
-      {/* Floating Monitoring Icon */}
-      <div className="absolute -top-4 -left-4 animate-bounce" style={{ animationDelay: '0.5s' }}>
-        <div className="w-12 h-12 bg-gradient-to-r from-lime to-pink rounded-full flex items-center justify-center shadow-lg">
-          <Eye size={20} className="text-white" />
-        </div>
+          <ChevronRight size={16} className="text-pink-600 mx-auto mt-2" />
+        </button>
       </div>
     </div>
   );
