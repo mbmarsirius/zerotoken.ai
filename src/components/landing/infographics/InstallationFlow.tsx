@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Chrome, Download, Check, Zap, Sparkles, Star, Shield } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
+import { Chrome, Download, Check, Zap, Sparkles, Star, Shield, Play, RotateCcw, Mouse, ArrowRight } from "lucide-react";
 
 interface InstallationFlowProps {
   isActive: boolean;
@@ -11,61 +11,321 @@ export const InstallationFlow = ({ isActive }: InstallationFlowProps) => {
   const [glowEffect, setGlowEffect] = useState(false);
   const [sparkles, setSparkles] = useState(0);
   const [downloadProgress, setDownloadProgress] = useState(0);
+  const [isUserControlled, setIsUserControlled] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+  const [buttonHover, setButtonHover] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showClickIndicator, setShowClickIndicator] = useState(false);
+  const [platformConnections, setPlatformConnections] = useState([false, false, false]);
 
   const steps = [
-    { icon: Chrome, label: "Open Chrome Store", delay: 0, color: "from-blue-500 to-blue-600" },
-    { icon: Download, label: "Click Install", delay: 1200, color: "from-orange-500 to-red-500" },
-    { icon: Zap, label: "Extension Added", delay: 2400, color: "from-purple-500 to-pink-500" },
-    { icon: Check, label: "Ready to Use", delay: 3600, color: "from-green-500 to-lime" }
+    { 
+      icon: Chrome, 
+      label: "Open Chrome Store", 
+      delay: 0, 
+      color: "from-blue-500 to-blue-600",
+      action: "Store opened! Extension found.",
+      interactive: true
+    },
+    { 
+      icon: Download, 
+      label: "Click Install", 
+      delay: 800, 
+      color: "from-orange-500 to-red-500",
+      action: "Downloading extension...",
+      interactive: true
+    },
+    { 
+      icon: Zap, 
+      label: "Extension Added", 
+      delay: 1200, 
+      color: "from-purple-500 to-pink-500",
+      action: "Installation complete!",
+      interactive: true
+    },
+    { 
+      icon: Check, 
+      label: "Ready to Use", 
+      delay: 600, 
+      color: "from-green-500 to-lime",
+      action: "Connecting to AI platforms...",
+      interactive: true
+    }
   ];
 
-  useEffect(() => {
-    if (!isActive) {
-      setCurrentStep(0);
-      setShowSuccess(false);
-      setGlowEffect(false);
-      setSparkles(0);
-      setDownloadProgress(0);
-      return;
-    }
-
-    // Enhanced animation sequence
-    const timers = steps.map((step, index) => 
+  // Interactive Functions
+  const handleStepClick = useCallback((stepIndex: number) => {
+    if (stepIndex === currentStep) {
+      setGlowEffect(true);
+      setShowClickIndicator(true);
+      
+      // Animate to next step
       setTimeout(() => {
-        setCurrentStep(index + 1);
-        setGlowEffect(true);
-        setSparkles(prev => prev + 5);
-        
-        // Simulate download progress
-        if (index === 1) {
-          const progressInterval = setInterval(() => {
-            setDownloadProgress(prev => {
-              if (prev >= 100) {
-                clearInterval(progressInterval);
-                return 100;
-              }
-              return prev + 5;
+        setCurrentStep(prev => Math.min(prev + 1, steps.length));
+        setGlowEffect(false);
+        setShowClickIndicator(false);
+        setSparkles(prev => prev + 3);
+
+        // Handle specific step animations
+        if (stepIndex === 0) {
+          // Chrome store opened
+          setIsUserControlled(true);
+        } else if (stepIndex === 1) {
+          // Download progress
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += 8;
+            setDownloadProgress(progress);
+            if (progress >= 100) {
+              clearInterval(interval);
+            }
+          }, 60);
+        } else if (stepIndex === 2) {
+          // Platform connections
+          const connectPlatforms = () => {
+            [0, 1, 2].forEach((index) => {
+              setTimeout(() => {
+                setPlatformConnections(prev => {
+                  const newConnections = [...prev];
+                  newConnections[index] = true;
+                  return newConnections;
+                });
+              }, index * 400);
             });
-          }, 50);
-        }
-        
-        if (index === steps.length - 1) {
+          };
+          setTimeout(connectPlatforms, 200);
+        } else if (stepIndex === 3) {
+          // Final success
           setTimeout(() => {
             setShowSuccess(true);
-            setSparkles(20);
-          }, 500);
+            setSparkles(25);
+          }, 400);
         }
-        
-        setTimeout(() => setGlowEffect(false), 800);
-      }, step.delay)
-    );
+      }, 300);
+    }
+  }, [currentStep, steps.length]);
 
-    return () => timers.forEach(clearTimeout);
-  }, [isActive]);
+  const handleAutoPlay = useCallback(() => {
+    setIsAutoPlaying(!isAutoPlaying);
+    if (!isAutoPlaying && currentStep < steps.length) {
+      const timer = setInterval(() => {
+        setCurrentStep(prev => {
+          if (prev >= steps.length) {
+            clearInterval(timer);
+            setIsAutoPlaying(false);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, 1500);
+    }
+  }, [isAutoPlaying, currentStep, steps.length]);
+
+  const resetDemo = useCallback(() => {
+    setCurrentStep(0);
+    setShowSuccess(false);
+    setGlowEffect(false);
+    setSparkles(0);
+    setDownloadProgress(0);
+    setPlatformConnections([false, false, false]);
+    setIsAutoPlaying(false);
+    setIsUserControlled(false);
+  }, []);
+
+  // Mouse tracking for interactive effects
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: ((e.clientX - rect.left) / rect.width) * 100,
+      y: ((e.clientY - rect.top) / rect.height) * 100
+    });
+  }, []);
+
+  // Auto-animation when not user controlled
+  useEffect(() => {
+    if (!isActive || isUserControlled) return;
+
+    // Show initial click indicator
+    const clickIndicatorTimer = setTimeout(() => {
+      setShowClickIndicator(true);
+      setTimeout(() => setShowClickIndicator(false), 2000);
+    }, 1000);
+
+    return () => clearTimeout(clickIndicatorTimer);
+  }, [isActive, isUserControlled]);
 
   return (
     <div className="relative w-full max-w-5xl mx-auto">
-      {/* Enhanced Sparkle Effects */}
+      {/* Interactive Control Panel */}
+      <div className="mb-8 flex justify-center">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20">
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={handleAutoPlay}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 ${
+                isAutoPlaying 
+                  ? 'bg-red-500 text-white shadow-lg shadow-red-500/30' 
+                  : 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
+              }`}
+            >
+              <Play size={16} className={isAutoPlaying ? 'animate-pulse' : ''} />
+              <span>{isAutoPlaying ? 'Pause' : 'Auto Play'}</span>
+            </button>
+            
+            <button
+              onClick={resetDemo}
+              className="flex items-center space-x-2 px-4 py-2 rounded-xl font-medium bg-gray-500 text-white transition-all duration-300 hover:bg-gray-600 shadow-lg shadow-gray-500/30"
+            >
+              <RotateCcw size={16} />
+              <span>Reset</span>
+            </button>
+
+            <div className="w-px h-8 bg-gray-300"></div>
+
+            <div className="flex items-center space-x-2 text-sm text-gray-600">
+              <Mouse size={16} />
+              <span>Click steps to control</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive Step Navigator */}
+      <div className="mb-12 flex justify-center">
+        <div className="bg-gradient-to-r from-lime/20 via-white to-pink/20 rounded-2xl p-6 shadow-xl backdrop-blur-sm border border-white/30">
+          <div className="flex items-center space-x-6">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              const isClickable = index === currentStep;
+              const isCompleted = currentStep > index;
+              
+              return (
+                <button
+                  key={index}
+                  onClick={() => handleStepClick(index)}
+                  disabled={!isClickable}
+                  className={`relative flex flex-col items-center space-y-2 p-4 rounded-xl transition-all duration-500 ${
+                    isClickable 
+                      ? 'bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-2xl shadow-blue-500/40 scale-110 animate-pulse cursor-pointer hover:scale-115' 
+                      : isCompleted
+                        ? 'bg-gradient-to-br from-green-500 to-lime text-white shadow-lg shadow-green-500/30 scale-105'
+                        : 'bg-gray-100 text-gray-400 scale-90 cursor-not-allowed'
+                  }`}
+                >
+                  {/* Glowing ring for active step */}
+                  {isClickable && (
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-xl blur-sm animate-pulse"></div>
+                  )}
+                  
+                  {/* Step icon */}
+                  <div className="relative z-10">
+                    <Icon size={24} className={isClickable ? 'animate-bounce' : isCompleted ? 'animate-pulse' : ''} />
+                  </div>
+                  
+                  {/* Step label */}
+                  <span className="relative z-10 text-xs font-medium text-center">
+                    {step.label}
+                  </span>
+                  
+                  {/* Click indicator */}
+                  {isClickable && showClickIndicator && (
+                    <div className="absolute -top-2 -right-2 flex items-center space-x-1 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold animate-bounce shadow-lg">
+                      <ArrowRight size={12} />
+                      <span>CLICK</span>
+                    </div>
+                  )}
+                  
+                  {/* Success check */}
+                  {isCompleted && (
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg">
+                      <Check size={12} className="text-green-500" />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+          
+          {/* Progress bar */}
+          <div className="mt-4 w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-lime via-blue-500 to-pink transition-all duration-1000 relative"
+              style={{ width: `${(currentStep / steps.length) * 100}%` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent animate-pulse"></div>
+            </div>
+          </div>
+          
+          {/* Step counter */}
+          <div className="mt-2 text-center">
+            <span className="text-sm font-medium text-gray-600">
+              Step {currentStep} of {steps.length}
+            </span>
+            {currentStep > 0 && (
+              <span className="ml-2 text-xs text-green-600 font-medium">
+                • {steps[currentStep - 1]?.action}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Animated mouse cursor for guidance */}
+      {showClickIndicator && currentStep === 0 && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-50">
+          <div className="relative">
+            <div className="w-8 h-8 bg-yellow-400 rounded-full animate-ping"></div>
+            <div className="absolute inset-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center animate-bounce">
+              <Mouse size={16} className="text-white" />
+            </div>
+            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white px-2 py-1 rounded text-xs font-medium whitespace-nowrap">
+              Click to start!
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Dynamic background effects based on mouse position */}
+      <div 
+        className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl"
+        onMouseMove={handleMouseMove}
+      >
+        <div 
+          className="absolute w-64 h-64 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl transition-all duration-1000"
+          style={{
+            left: `${mousePosition.x}%`,
+            top: `${mousePosition.y}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        />
+        <div 
+          className="absolute w-48 h-48 bg-gradient-to-br from-lime/20 to-pink/20 rounded-full blur-2xl transition-all duration-1500"
+          style={{
+            left: `${100 - mousePosition.x}%`,
+            top: `${100 - mousePosition.y}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        />
+      </div>
+
+      {/* Installation feedback messages */}
+      {currentStep > 0 && (
+        <div className="mt-6 flex justify-center">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-xl border border-white/20 animate-fade-in">
+            <div className="flex items-center space-x-3">
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-gray-700">
+                {steps[currentStep - 1]?.action || "Processing..."}
+              </span>
+              <div className="flex space-x-1">
+                <div className="w-1 h-1 bg-blue-500 rounded-full animate-bounce"></div>
+                <div className="w-1 h-1 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-1 h-1 bg-pink rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {showSuccess && Array.from({ length: sparkles }).map((_, i) => (
         <div
           key={i}
