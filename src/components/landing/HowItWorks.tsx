@@ -1,95 +1,160 @@
-import { Download, Eye, Sparkles } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { AlertTriangle, Chrome, MessageSquare, Zap, TrendingUp } from "lucide-react";
+import { ProblemAnimation } from "./infographics/ProblemAnimation";
+import { InstallationFlow } from "./infographics/InstallationFlow";
+import { MonitoringMagic } from "./infographics/MonitoringMagic";
+import { SmartManagement } from "./infographics/SmartManagement";
+import { ResultAnimation } from "./infographics/ResultAnimation";
 
 export const HowItWorks = () => {
-  const steps = [
+  const [activeSection, setActiveSection] = useState(0);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = sectionRefs.current.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) {
+              setActiveSection(index);
+            }
+          }
+        });
+      },
+      { threshold: 0.6, rootMargin: "-100px 0px" }
+    );
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const sections = [
     {
-      icon: Download,
-      title: "Install Extension",
-      description: "Add ZeroToken to Chrome and it instantly integrates with ChatGPT, Claude, and Gemini.",
-      gradient: "from-pink/20 to-lime/20",
-      iconColor: "text-pink group-hover:text-lime"
+      id: "problem",
+      title: "The Problem",
+      subtitle: "Context overload kills productivity",
+      component: ProblemAnimation,
+      color: "from-red-500/20 to-orange-500/20",
+      delay: 0
     },
     {
-      icon: Eye,
-      title: "Monitor Memory",
-      description: "See exactly how much context memory you have left in real-time as you chat.",
-      gradient: "from-lime/20 to-pink/20",
-      iconColor: "text-lime group-hover:text-pink"
+      id: "installation", 
+      title: "Easy Installation",
+      subtitle: "One-click Chrome extension",
+      component: InstallationFlow,
+      color: "from-blue-500/20 to-cyan-500/20", 
+      delay: 0.2
+    },  
+    {
+      id: "monitoring",
+      title: "Real-time Monitoring", 
+      subtitle: "Watch your tokens in action",
+      component: MonitoringMagic,
+      color: "from-lime/20 to-green-500/20",
+      delay: 0.4
     },
     {
-      icon: Sparkles,
-      title: "Stay Organized", 
-      description: "Generate reports, refresh context, and optimize prompts — all without leaving your AI chat.",
-      gradient: "from-pink/20 to-lime/20",
-      iconColor: "text-pink group-hover:text-lime"
+      id: "management",
+      title: "Smart Management",
+      subtitle: "Auto-save and handoff generation", 
+      component: SmartManagement,
+      color: "from-pink/20 to-purple-500/20",
+      delay: 0.6
+    },
+    {
+      id: "result", 
+      title: "The Result",
+      subtitle: "Unlimited AI productivity",
+      component: ResultAnimation,
+      color: "from-lime/30 to-pink/30",
+      delay: 0.8
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-32 bg-gradient-to-br from-lime/20 via-lime/10 to-white relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-lime/25 to-pink/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-pink/20 to-lime/25 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-lime/15 to-transparent rounded-full blur-2xl"></div>
-      <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-lime/30 to-transparent rounded-full blur-2xl animate-bounce" style={{ animationDelay: '3s' }}></div>
+    <section id="how-it-works" className="py-32 bg-gradient-to-br from-lime/10 via-white to-pink/10 relative overflow-hidden">
+      {/* Dynamic background that changes with active section */}
+      <div className="absolute inset-0 transition-all duration-1000">
+        <div className={`absolute top-20 left-10 w-96 h-96 bg-gradient-to-br ${sections[activeSection]?.color || 'from-lime/20 to-pink/20'} rounded-full blur-3xl animate-pulse`}></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-pink/25 to-lime/25 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-lime/15 to-transparent rounded-full blur-2xl"></div>
+      </div>
 
       <div className="container mx-auto px-4 lg:px-6 relative">
+        {/* Header */}
         <div className="text-center mb-20 animate-fade-in">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
-            How it works
+            How ZeroToken Works
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Get started in minutes with our simple browser extension
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            From context chaos to organized AI conversations in minutes
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
+        {/* Progress indicator */}
+        <div className="flex justify-center mb-16">
+          <div className="flex space-x-2">
+            {sections.map((_, index) => (
+              <div
+                key={index}
+                className={`w-12 h-1 rounded-full transition-all duration-500 ${
+                  index === activeSection 
+                    ? 'bg-gradient-to-r from-pink to-lime' 
+                    : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Animated sections */}
+        <div className="space-y-32">
+          {sections.map((section, index) => {
+            const Component = section.component;
             return (
-              <div 
-                key={step.title}
-                className="group text-center transform transition-all duration-500 hover:scale-105 animate-fade-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
+              <div
+                key={section.id}
+                ref={(el) => (sectionRefs.current[index] = el)}
+                className={`transition-all duration-1000 ${
+                  activeSection === index ? 'animate-fade-in' : 'opacity-60'
+                }`}
+                style={{ animationDelay: `${section.delay}s` }}
               >
-                {/* Gradient background card */}
-                <div className={`relative p-8 rounded-3xl bg-gradient-to-br ${step.gradient} border border-white/50 backdrop-blur-sm transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-pink/20`}>
-                  {/* Step number with gradient */}
-                  <div className="absolute -top-4 left-8 w-12 h-12 bg-gradient-to-br from-pink to-lime rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-500">
-                    {index + 1}
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center space-x-3 mb-4">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink to-lime flex items-center justify-center text-white font-bold text-sm">
+                      {index + 1}
+                    </div>
+                    <h3 className="text-2xl lg:text-4xl font-bold text-gray-900">
+                      {section.title}
+                    </h3>
                   </div>
-                  
-                  {/* Icon container with animation */}
-                  <div className="w-20 h-20 mx-auto mb-8 mt-4 bg-white rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-500 shadow-lg">
-                    <Icon 
-                      size={32} 
-                      className={`${step.iconColor} transition-all duration-500 group-hover:scale-110`} 
-                      strokeWidth={1.5} 
-                    />
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 group-hover:text-gray-800 transition-colors">
-                    {step.title}
-                  </h3>
-                  
-                  <p className="text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors">
-                    {step.description}
+                  <p className="text-lg text-gray-600 max-w-xl mx-auto">
+                    {section.subtitle}
                   </p>
-
-                  {/* Hover effect overlay */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-
-                {/* Animated connection line for desktop */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 left-full z-10 transform -translate-y-1/2">
-                    <div className="w-12 h-0.5 bg-gradient-to-r from-pink to-lime animate-pulse"></div>
-                    <div className="absolute -right-1 -top-1 w-2 h-2 bg-lime rounded-full animate-bounce"></div>
-                  </div>
-                )}
+                
+                <div className="max-w-6xl mx-auto">
+                  <Component isActive={activeSection === index} />
+                </div>
               </div>
             );
           })}
+        </div>
+
+        {/* CTA at the bottom */}
+        <div className="text-center mt-20 animate-fade-in" style={{ animationDelay: '1s' }}>
+          <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-lime/20 to-pink/20 rounded-full backdrop-blur-sm border border-white/50">
+            <Chrome size={24} className="text-lime" />
+            <span className="text-lg font-semibold text-gray-900">
+              Ready to transform your AI workflow?
+            </span>
+            <div className="w-2 h-2 bg-lime rounded-full animate-pulse"></div>
+          </div>
         </div>
       </div>
     </section>
