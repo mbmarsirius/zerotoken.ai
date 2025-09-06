@@ -1,58 +1,34 @@
 import { useEffect, useState, useRef } from "react";
-import { AlertTriangle, Chrome, Activity, Zap, TrendingUp } from "lucide-react";
-import { ProblemAnimation } from "./infographics/ProblemAnimation";
-import { InstallationFlow } from "./infographics/InstallationFlow";
-import { MonitoringMagic } from "./infographics/MonitoringMagic";
-import { SmartManagement } from "./infographics/SmartManagement";
-import { ResultAnimation } from "./infographics/ResultAnimation";
+import { Activity, TrendingUp, Zap, Chrome } from "lucide-react";
 
 export const HowItWorks = () => {
-  const [activeSection, setActiveSection] = useState(-1);
+  const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const sections = [
     {
-      id: "problem",
-      title: "The Problem",
-      subtitle: "Context chaos without ZeroToken",
-      component: ProblemAnimation,
-      icon: AlertTriangle,
-      color: "from-red-500/20 to-orange-500/20"
-    },
-    {
-      id: "installation", 
-      title: "Easy Installation",
-      subtitle: "Get ZeroToken in 30 seconds",
-      component: InstallationFlow,
-      icon: Chrome,
-      color: "from-blue-500/20 to-cyan-500/20"
-    },  
-    {
       id: "monitoring",
-      title: "Real-time Monitoring", 
-      subtitle: "Watch your tokens live",
-      component: MonitoringMagic,
-      icon: Activity,
+      title: "How It Works",
+      subtitle: "Monitor and manage your AI conversations",
+      steps: [
+        { icon: Activity, text: "Monitor Tokens", desc: "Track your usage in real-time" },
+        { icon: Zap, text: "Auto-Save Context", desc: "Never lose conversation history" },
+        { icon: Activity, text: "Keep Going", desc: "Continue seamlessly across sessions" }
+      ],
       color: "from-lime/20 to-green-500/20"
     },
     {
-      id: "management",
-      title: "Smart Management",
-      subtitle: "Auto-save and seamless handoffs", 
-      component: SmartManagement,
-      icon: Zap,
-      color: "from-pink/20 to-purple-500/20"
-    },
-    {
-      id: "result", 
-      title: "The Result",
-      subtitle: "Unlimited AI productivity",
-      component: ResultAnimation,
-      icon: TrendingUp,
+      id: "results",
+      title: "Results",
+      subtitle: "Unlimited productivity unlocked",
+      steps: [
+        { icon: TrendingUp, text: "340% Faster", desc: "Complete tasks without token limits" },
+        { icon: Zap, text: "Unlimited Context", desc: "Never start conversations from scratch" },
+        { icon: Activity, text: "Seamless Flow", desc: "Continuous AI productivity" }
+      ],
       color: "from-lime/30 to-pink/30"
     }
   ];
-
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,8 +43,8 @@ export const HowItWorks = () => {
         });
       },
       { 
-        threshold: 0.4,
-        rootMargin: "0px 0px -20% 0px" 
+        threshold: 0.3,
+        rootMargin: "0px 0px -30% 0px" 
       }
     );
 
@@ -84,6 +60,11 @@ export const HowItWorks = () => {
       id="how-it-works" 
       className="py-32 bg-gradient-to-br from-lime/10 via-white to-pink/10 relative overflow-hidden"
     >
+      {/* Subtle background decoration */}
+      <div className="absolute inset-0">
+        <div className={`absolute top-20 left-10 w-96 h-96 bg-gradient-to-br ${sections[activeSection]?.color || 'from-lime/20 to-pink/20'} rounded-full blur-3xl opacity-60 transition-all duration-1000`}></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-pink/20 to-lime/20 rounded-full blur-3xl opacity-60"></div>
+      </div>
 
       <div className="container mx-auto px-4 lg:px-6 relative">
         {/* Header */}
@@ -92,7 +73,7 @@ export const HowItWorks = () => {
             How ZeroToken Works
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Transform your AI workflow in 5 simple steps
+            Simple workflow in 2 steps
           </p>
         </div>
 
@@ -117,8 +98,6 @@ export const HowItWorks = () => {
         {/* Clean sections */}
         <div className="space-y-32">
           {sections.map((section, index) => {
-            const Component = section.component;
-            const Icon = section.icon;
             const isActive = activeSection === index;
             
             return (
@@ -128,31 +107,52 @@ export const HowItWorks = () => {
                 className="min-h-screen flex flex-col justify-center scroll-snap-section"
               >
                 <div className="text-center mb-12">
-                  <div className="inline-flex items-center space-x-4 mb-6">
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-pink to-lime shadow-lg'
-                        : 'bg-gray-200'
-                    }`}>
-                      <Icon size={24} className={isActive ? 'text-white' : 'text-gray-400'} />
-                    </div>
-                    <div>
-                      <h3 className={`text-3xl lg:text-4xl font-bold transition-colors duration-500 ${
-                        isActive ? 'text-gray-900' : 'text-gray-500'
-                      }`}>
-                        {section.title}
-                      </h3>
-                      <p className={`text-lg transition-colors duration-500 ${
-                        isActive ? 'text-gray-600' : 'text-gray-400'
-                      }`}>
-                        {section.subtitle}
-                      </p>
-                    </div>
-                  </div>
+                  <h3 className={`text-3xl lg:text-4xl font-bold mb-4 transition-colors duration-500 ${
+                    isActive ? 'text-gray-900' : 'text-gray-500'
+                  }`}>
+                    {section.title}
+                  </h3>
+                  <p className={`text-lg transition-colors duration-500 ${
+                    isActive ? 'text-gray-600' : 'text-gray-400'
+                  }`}>
+                    {section.subtitle}
+                  </p>
                 </div>
                 
-                <div className="max-w-6xl mx-auto">
-                  <Component isActive={isActive} />
+                <div className="max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {section.steps.map((step, stepIndex) => {
+                      const StepIcon = step.icon;
+                      return (
+                        <div
+                          key={stepIndex}
+                          className={`text-center p-6 rounded-2xl transition-all duration-500 ${
+                            isActive
+                              ? 'bg-white/80 backdrop-blur border border-gray-200 shadow-lg'
+                              : 'bg-white/40 backdrop-blur border border-gray-100'
+                          }`}
+                        >
+                          <div className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center transition-all duration-500 ${
+                            isActive
+                              ? 'bg-gradient-to-r from-pink to-lime shadow-lg'
+                              : 'bg-gray-200'
+                          }`}>
+                            <StepIcon size={24} className={isActive ? 'text-white' : 'text-gray-400'} />
+                          </div>
+                          <h4 className={`text-xl font-semibold mb-2 transition-colors duration-500 ${
+                            isActive ? 'text-gray-900' : 'text-gray-500'
+                          }`}>
+                            {step.text}
+                          </h4>
+                          <p className={`text-sm transition-colors duration-500 ${
+                            isActive ? 'text-gray-600' : 'text-gray-400'
+                          }`}>
+                            {step.desc}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             );
