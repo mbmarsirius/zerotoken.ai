@@ -32,7 +32,12 @@ const buttonVariants = cva(
         "brand-outline": "border-2 border-primary text-primary bg-transparent rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105",
         "ghost-modern": "text-foreground hover:bg-muted rounded-full transition-all duration-300 hover:scale-105",
         
-        // Legacy variants for compatibility 
+        // ZeroToken pricing button variants
+        "pricing-pink": "bg-pink/10 text-pink border border-pink/30 hover:bg-pink/40 hover:border-pink hover:text-white hover:shadow-lg hover:shadow-pink/25 active:bg-pink/50 active:scale-95 transition-all duration-300",
+        "pricing-lime": "bg-lime/10 text-lime border border-lime/30 hover:bg-lime/40 hover:border-lime hover:text-white hover:shadow-lg hover:shadow-lime/25 active:bg-lime/50 active:scale-95 transition-all duration-300",
+        "pricing-lavender": "bg-lavender/10 text-lavender border border-lavender/30 hover:bg-lavender/40 hover:border-lavender hover:text-white hover:shadow-lg hover:shadow-lavender/25 active:bg-lavender/50 active:scale-95 transition-all duration-300",
+        
+        // Legacy variants for compatibility
         "lime-pill": "bg-secondary text-secondary-foreground rounded-full font-semibold hover:bg-secondary/90 hover:shadow-lg transition-all duration-300 hover:scale-105",
         "pink-outline": "border-2 border-primary text-primary bg-transparent rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105",
       },

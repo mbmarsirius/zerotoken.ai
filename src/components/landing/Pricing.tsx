@@ -64,7 +64,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button variant="ghost-modern" size="lg" className="w-full bg-pink/10 text-pink border border-pink/30 hover:bg-pink/30 hover:border-pink hover:text-white hover:shadow-lg hover:shadow-pink/25 active:bg-pink/40 active:scale-95 transition-all duration-300">
+              <Button variant="pricing-pink" size="lg" className="w-full">
                 Get Started Free
               </Button>
 
@@ -105,7 +105,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button onClick={handleUpgrade} variant="ghost-modern" size="lg" className="w-full font-semibold text-lg bg-lime/10 text-lime border border-lime/30 hover:bg-lime/40 hover:border-lime hover:text-white hover:shadow-lg hover:shadow-lime/25 active:bg-lime/50 active:scale-95 transition-all duration-300">
+              <Button onClick={handleUpgrade} variant="pricing-lime" size="lg" className="w-full font-semibold text-lg">
                 Upgrade to Pro →
               </Button>
 
@@ -138,7 +138,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button variant="ghost-modern" size="lg" className="w-full bg-lavender/10 text-lavender border border-lavender/30 hover:bg-lavender/30 hover:border-lavender hover:text-white hover:shadow-lg hover:shadow-lavender/25 active:bg-lavender/40 active:scale-95 transition-all duration-300">
+              <Button variant="pricing-lavender" size="lg" className="w-full">
                 Contact Sales
               </Button>
 
