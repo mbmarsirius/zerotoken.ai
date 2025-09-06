@@ -121,12 +121,16 @@ export const HowItWorks = () => {
                 </div>
               </div>
               
-              <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+              <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10"></div>
                 <img 
                   src={interface1} 
-                  alt="Context limit error"
-                  className="w-full rounded-lg shadow-lg"
+                  alt="ZeroToken context limit error - actual interface"
+                  className="relative w-full rounded-lg shadow-lg border border-red-500/20"
                 />
+                <div className="absolute top-4 right-4 px-3 py-1 bg-red-500/90 text-white text-xs font-medium rounded-full">
+                  REAL UI
+                </div>
               </div>
             </div>
           </div>
@@ -167,12 +171,16 @@ export const HowItWorks = () => {
                 </div>
               </div>
 
-              <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+              <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10"></div>
                 <img 
                   src={interface2} 
-                  alt="ZeroToken installation"
-                  className="w-full rounded-lg shadow-lg"
+                  alt="ZeroToken installation interface - actual setup screen"
+                  className="relative w-full rounded-lg shadow-lg border border-blue-500/20"
                 />
+                <div className="absolute top-4 right-4 px-3 py-1 bg-blue-500/90 text-white text-xs font-medium rounded-full">
+                  REAL UI
+                </div>
               </div>
             </div>
           </div>
@@ -218,12 +226,16 @@ export const HowItWorks = () => {
                 </div>
               </div>
 
-              <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+              <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-lime/10 to-pink/10"></div>
                 <img 
                   src={interface3} 
-                  alt="ZeroToken in action"
-                  className="w-full rounded-lg shadow-lg"
+                  alt="ZeroToken active monitoring - unlimited context interface"
+                  className="relative w-full rounded-lg shadow-lg border border-lime/30"
                 />
+                <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-lime to-pink text-white text-xs font-medium rounded-full">
+                  REAL UI
+                </div>
               </div>
             </div>
           </div>
@@ -278,12 +290,16 @@ export const HowItWorks = () => {
                 </div>
               </div>
 
-              <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+              <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-lime/10 to-pink/10"></div>
                 <img 
                   src={interface4} 
-                  alt="ZeroToken success"
-                  className="w-full rounded-lg shadow-lg"
+                  alt="ZeroToken success dashboard - productivity results"
+                  className="relative w-full rounded-lg shadow-lg border border-lime/30"
                 />
+                <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-lime to-pink text-white text-xs font-medium rounded-full">
+                  REAL UI
+                </div>
               </div>
             </div>
           </div>
