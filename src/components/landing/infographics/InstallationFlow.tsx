@@ -74,8 +74,8 @@ export const InstallationFlow = ({ isActive }: InstallationFlowProps) => {
                 isActive ? 'border-green-300 shadow-green-500/20' : 'border-gray-200'
               }`}>
                 <div className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center transition-all duration-500 ${
-                  isCurrent ? 'bg-blue-500 animate-pulse shadow-lg' : 
-                  isActive ? 'bg-green-500' : 'bg-gray-200'
+                  isCurrent ? 'bg-lime animate-pulse shadow-lg' : 
+                  isActive ? 'bg-lime' : 'bg-gray-200'
                 }`}>
                   <Icon size={24} className={isActive || isCurrent ? 'text-white' : 'text-gray-400'} />
                 </div>
