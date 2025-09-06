@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Chrome, Download, CheckCircle, Zap } from "lucide-react";
 
 interface InstallationFlowProps {
@@ -7,12 +7,41 @@ interface InstallationFlowProps {
 
 export const InstallationFlow = ({ isActive }: InstallationFlowProps) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isActive) {
-      setCurrentStep(0);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Reset animation when coming into view
+          setCurrentStep(0);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      { threshold: 0.3 } // Trigger when 30% of the component is visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) {
       return;
     }
+
+    // Reset to initial state
+    setCurrentStep(0);
 
     const steps = [
       { delay: 500, step: 1 },
@@ -21,10 +50,15 @@ export const InstallationFlow = ({ isActive }: InstallationFlowProps) => {
       { delay: 3500, step: 4 }
     ];
 
-    steps.forEach(({ delay, step }) => {
-      setTimeout(() => setCurrentStep(step), delay);
-    });
-  }, [isActive]);
+    const timeouts = steps.map(({ delay, step }) => 
+      setTimeout(() => setCurrentStep(step), delay)
+    );
+
+    // Cleanup function to clear timeouts
+    return () => {
+      timeouts.forEach(timeout => clearTimeout(timeout));
+    };
+  }, [isVisible]);
 
   const installSteps = [
     {
@@ -50,7 +84,7 @@ export const InstallationFlow = ({ isActive }: InstallationFlowProps) => {
   ];
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto">
+    <div ref={sectionRef} className="relative w-full max-w-4xl mx-auto">
       <div className="text-center mb-8">
         <div className="text-2xl font-bold bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent mb-2">Simple Installation Process</div>
         <p className="text-muted-foreground">Get ZeroToken running in under 30 seconds</p>
