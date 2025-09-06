@@ -84,11 +84,6 @@ export const HowItWorks = () => {
       id="how-it-works" 
       className="py-32 bg-gradient-to-br from-lime/10 via-white to-pink/10 relative overflow-hidden"
     >
-      {/* Subtle background decoration */}
-      <div className="absolute inset-0">
-        <div className={`absolute top-20 left-10 w-96 h-96 bg-gradient-to-br ${sections[activeSection]?.color || 'from-lime/20 to-pink/20'} rounded-full blur-3xl opacity-60 transition-all duration-1000`}></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-pink/20 to-lime/20 rounded-full blur-3xl opacity-60"></div>
-      </div>
 
       <div className="container mx-auto px-4 lg:px-6 relative">
         {/* Header */}
