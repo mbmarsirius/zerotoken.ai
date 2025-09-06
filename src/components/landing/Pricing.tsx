@@ -64,7 +64,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button variant="outline" size="lg" className="w-full">
+              <Button variant="glass" size="lg" className="w-full">
                 Get Started Free
               </Button>
 
@@ -105,7 +105,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button onClick={handleUpgrade} variant="liquid" size="lg" className="w-full font-semibold text-lg">
+              <Button onClick={handleUpgrade} variant="aurora" size="lg" className="w-full font-semibold text-lg">
                 Upgrade to Pro →
               </Button>
 
@@ -138,7 +138,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button variant="outline" size="lg" className="w-full border-purple/30 text-purple hover:bg-purple/10 hover:border-purple/50">
+              <Button variant="glass" size="lg" className="w-full">
                 Contact Sales
               </Button>
 
