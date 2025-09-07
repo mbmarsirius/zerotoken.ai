@@ -32,7 +32,7 @@ export const HowItWorks = () => {
           <div className="text-center mb-12">
             <div className="inline-flex items-center space-x-4 mb-6">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-r from-pink to-lime shadow-lg">
-                <Chrome size={24} className="text-white" />
+                <img src="/lovable-uploads/a4f475ad-7b5e-4298-ade8-c142abdc1edd.png" alt="Pink Cross Icon" className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">
