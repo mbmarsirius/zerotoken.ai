@@ -1,5 +1,4 @@
 import zerotokenLogoOfficial from "@/assets/zerotoken-logo-official.png";
-import marsirusLogo from "/assets/marsirius-logo.png";
 
 export const Footer = () => {
   return (
@@ -51,13 +50,13 @@ export const Footer = () => {
             </nav>
           </div>
 
-          {/* Right Side - Powered By */}
+          {/* Right Side - Created & Powered By */}
           <div className="flex items-center space-x-3 group">
             <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">
-              Powered by
+              Created & Powered by
             </span>
             <img 
-              src={marsirusLogo} 
+              src="/lovable-uploads/9dca6b8d-c306-4bbd-be5c-1ecde2a8df1a.png" 
               alt="Marsirius AI Labs" 
               className="h-8 w-auto opacity-80 hover:opacity-100 transition-all duration-300 group-hover:scale-105"
             />
