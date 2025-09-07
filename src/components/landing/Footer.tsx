@@ -42,7 +42,7 @@ export const Footer = () => {
         {/* Bottom Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-500">
-            © 2024 ZeroToken. All rights reserved.
+            © 2025 ZeroToken. All rights reserved.
           </p>
         </div>
       </div>
