@@ -35,7 +35,9 @@ export const Footer = () => {
             <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">
               Created & Powered by
             </span>
-            <img src="/lovable-uploads/9dca6b8d-c306-4bbd-be5c-1ecde2a8df1a.png" alt="Marsirius AI Labs" className="h-11 w-auto opacity-80 hover:opacity-100 transition-all duration-300 group-hover:scale-105" />
+            <a href="https://www.marsirius.ai" target="_blank" rel="noopener noreferrer">
+              <img src="/lovable-uploads/9dca6b8d-c306-4bbd-be5c-1ecde2a8df1a.png" alt="Marsirius AI Labs" className="h-11 w-auto opacity-80 hover:opacity-100 transition-all duration-300 group-hover:scale-105" />
+            </a>
           </div>
         </div>
 
