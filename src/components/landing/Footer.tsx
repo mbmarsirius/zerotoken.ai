@@ -1,12 +1,6 @@
 import zerotokenLogoOfficial from "@/assets/zerotoken-logo-official.png";
 export const Footer = () => {
-  return <footer className="bg-background border-t border-lavender/30 py-16 relative overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-lavender/30 to-transparent"></div>
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-lime/15 to-pink/15 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 left-20 w-48 h-48 bg-gradient-to-br from-pink/15 to-lavender/20 rounded-full blur-3xl animate-pulse" style={{
-      animationDelay: '2s'
-    }}></div>
+  return <footer className="bg-white border-t border-gray-200 py-16">
       
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0">
@@ -47,7 +41,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="mt-12 pt-8 border-t border-gradient-to-r from-pink/20 via-gray-200 to-lime/20 text-center">
+        <div className="mt-12 pt-8 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-500">
             © 2024 ZeroToken. All rights reserved.
           </p>
