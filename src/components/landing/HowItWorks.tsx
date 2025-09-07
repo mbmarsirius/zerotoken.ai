@@ -1,15 +1,9 @@
 import { useState } from "react";
 import { Chrome } from "lucide-react";
 import { InstallationFlow } from "./infographics/InstallationFlow";
-
 export const HowItWorks = () => {
   const [isActive] = useState(true);
-
-  return (
-    <section 
-      id="how-it-works" 
-      className="py-32 bg-gradient-to-br from-lime/10 via-white to-pink/10 relative overflow-hidden"
-    >
+  return <section id="how-it-works" className="py-32 bg-gradient-to-br from-lime/10 via-white to-pink/10 relative overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl opacity-60"></div>
@@ -31,7 +25,7 @@ export const HowItWorks = () => {
         <div className="flex flex-col justify-center">
           <div className="text-center mb-12">
             <div className="inline-flex items-center space-x-4 mb-6">
-              <img src="/lovable-uploads/a4f475ad-7b5e-4298-ade8-c142abdc1edd.png" alt="Pink Cross Icon" className="w-24 h-24" />
+              <img src="/lovable-uploads/a4f475ad-7b5e-4298-ade8-c142abdc1edd.png" alt="Pink Cross Icon" className="w-36 h-24" />
               <div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">
                   Easy Installation
@@ -58,6 +52,5 @@ export const HowItWorks = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
