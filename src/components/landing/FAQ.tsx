@@ -64,14 +64,14 @@ export const FAQ = () => {
                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${isPink ? 'from-pink/20 to-pink/30' : 'from-lime/20 to-lime/30'} flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}>
                         <Icon size={20} className={`${isPink ? 'text-pink' : 'text-lime'} transition-all duration-300 group-hover:scale-110`} strokeWidth={1.5} />
                       </div>
-                      <span className="font-semibold text-gray-900 group-hover:text-gray-800 transition-colors">
+                      <span className="font-bold text-xl text-gray-900 group-hover:text-gray-800 transition-colors">
                         {faq.question}
                       </span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-8 pb-6 transition-all duration-300">
                     <div className="pl-16">
-                      <p className="text-gray-900 leading-relaxed text-lg">
+                      <p className="font-bold text-gray-900 leading-relaxed text-lg">
                         {faq.answer}
                       </p>
                     </div>
