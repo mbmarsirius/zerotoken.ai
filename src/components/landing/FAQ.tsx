@@ -56,7 +56,7 @@ export const FAQ = () => {
             {faqs.map((faq, index) => {
             const Icon = faq.icon;
             const isPink = faq.color === "pink";
-            return <AccordionItem key={index} value={`item-${index}`} className={`border-2 ${isPink ? 'border-pink/20 hover:border-pink/40' : 'border-lime/20 hover:border-lime/40'} rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl shadow-[0_8px_32px_rgba(255,255,255,0.1)] hover:shadow-[0_8px_32px_rgba(255,255,255,0.2)] border-white/20 hover:border-white/30 transition-all duration-300 animate-fade-in group`} style={{
+            return <AccordionItem key={index} value={`item-${index}`} className={`border-2 ${isPink ? 'border-pink/30 hover:border-pink/50' : 'border-lime/30 hover:border-lime/50'} rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in group`} style={{
               animationDelay: `${index * 0.1}s`
             }}>
                   <AccordionTrigger className="hover:no-underline px-8 py-6 group-hover:bg-gradient-to-r group-hover:from-transparent group-hover:to-gray-50/50 transition-all duration-300">
@@ -69,7 +69,7 @@ export const FAQ = () => {
                       </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="px-8 pb-6 transition-all duration-300">
+                  <AccordionContent className="px-8 pb-6 transition-all duration-300 text-black">
                     <div className="pl-16">
                       <p className="text-gray-600 leading-relaxed text-lg">
                         {faq.answer}
