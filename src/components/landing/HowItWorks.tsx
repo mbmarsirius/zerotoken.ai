@@ -31,7 +31,7 @@ export const HowItWorks = () => {
         <div className="flex flex-col justify-center">
           <div className="text-center mb-12">
             <div className="inline-flex items-center space-x-4 mb-6">
-              <img src="/lovable-uploads/a4f475ad-7b5e-4298-ade8-c142abdc1edd.png" alt="Pink Cross Icon" className="w-6 h-6" />
+              <img src="/lovable-uploads/a4f475ad-7b5e-4298-ade8-c142abdc1edd.png" alt="Pink Cross Icon" className="w-12 h-12" />
               <div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">
                   Easy Installation
