@@ -10,7 +10,7 @@ export const Footer = () => {
             
             {/* Brand Section */}
             <div className="flex items-center space-x-4 group">
-              <img src={zerotokenLogoOfficial} alt="ZeroToken" className="h-8 w-auto transition-transform duration-300 group-hover:scale-105" />
+              <img src={zerotokenLogoOfficial} alt="ZeroToken" className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" />
               <div className="hidden md:block w-px h-6 bg-gradient-to-b from-pink/30 to-lime/30"></div>
               <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
                 Created by ZeroToken
