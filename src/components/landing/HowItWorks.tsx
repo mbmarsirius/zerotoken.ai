@@ -18,11 +18,11 @@ export const HowItWorks = () => {
 
       <div className="container mx-auto px-4 lg:px-6 relative">
         {/* Header */}
-        <div className="mb-20">
-          <h2 className="text-xl font-bold mb-6 text-gray-900">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900">
             How ZeroToken Works
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Get started in under 30 seconds
           </p>
         </div>
