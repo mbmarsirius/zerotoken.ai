@@ -20,7 +20,7 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2 group">
             <img 
-              src="/lovable-uploads/e02e11bb-6f61-4b2b-b2f7-46329f251243.png" 
+              src="/lovable-uploads/713e3b96-9497-40e3-b983-51eb217c2ad1.png" 
               alt="ZeroToken" 
               className="h-11 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-lg"
             />
