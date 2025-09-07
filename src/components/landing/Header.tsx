@@ -60,11 +60,10 @@ export const Header = () => {
             </Button>
             <div className="relative group">
               <img 
-                src="/lovable-uploads/94bcfd29-e1f6-4f86-87af-920406bc33dc.png" 
+                src="/lovable-uploads/0218f9e8-86b2-4954-a6e1-bf4397000105.png" 
                 alt="Marsirius" 
                 className="h-6 w-auto opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-pink/20 to-transparent rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
         </div>
