@@ -58,7 +58,7 @@ export const FAQ = () => {
             {faqs.map((faq, index) => {
             const Icon = faq.icon;
             const isPink = faq.color === "pink";
-            return <AccordionItem key={index} value={`item-${index}`} className={`border-2 ${isPink ? 'border-pink/30 hover:border-pink/50' : 'border-lime/30 hover:border-lime/50'} rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in group`} style={{
+            return <AccordionItem key={index} value={`item-${index}`} className={`border-2 ${isPink ? 'border-pink/30 hover:border-pink/50' : 'border-lime/30 hover:border-lime/50'} rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate-fade-in group hover:bg-gradient-to-br hover:from-white/15 hover:via-white/8 hover:to-white/5`} style={{
               animationDelay: `${index * 0.1}s`
             }}>
                   <AccordionTrigger className="hover:no-underline px-8 py-6 group-hover:bg-gradient-to-r group-hover:from-transparent group-hover:to-gray-50/50 transition-all duration-300">
@@ -66,14 +66,14 @@ export const FAQ = () => {
                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${isPink ? 'from-pink/20 to-pink/30' : 'from-lime/20 to-lime/30'} flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}>
                         <Icon size={20} className={`${isPink ? 'text-pink' : 'text-lime'} transition-all duration-300 group-hover:scale-110`} strokeWidth={1.5} />
                       </div>
-                      <span className="font-semibold text-gray-900 group-hover:text-gray-800 transition-colors">
+                      <span className="font-semibold text-white group-hover:text-gray-100 transition-colors">
                         {faq.question}
                       </span>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-8 pb-6 transition-all duration-300">
                     <div className="pl-16">
-                      <p className="text-gray-600 leading-relaxed text-lg">
+                      <p className="text-gray-100 leading-relaxed text-lg">
                         {faq.answer}
                       </p>
                     </div>
