@@ -1,6 +1,6 @@
 import zerotokenLogoOfficial from "@/assets/zerotoken-logo-official.png";
 export const Footer = () => {
-  return <footer className="bg-gradient-to-t from-lavender/40 via-lavender/20 to-white border-t border-lavender/30 py-16 relative overflow-hidden bg-white/0">
+  return <footer className="bg-background border-t border-lavender/30 py-16 relative overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-lavender/30 to-transparent"></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-lime/15 to-pink/15 rounded-full blur-3xl animate-pulse"></div>
