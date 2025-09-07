@@ -47,9 +47,9 @@ export const Hero = () => {
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-pink/30 via-lime/30 to-pink/30 rounded-full blur-2xl animate-aurora opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
               <img 
-                src="/lovable-uploads/895885eb-c61d-4842-9597-0866e843d5e6.png" 
+                src="/lovable-uploads/fae4b52f-ca68-4783-acf7-f8ca0bc7856c.png" 
                 alt="ZeroToken Cross Logo" 
-                className="relative h-40 w-auto transition-all duration-700 hover:scale-110 group-hover:rotate-6" 
+                className="relative h-40 w-auto transition-all duration-700 hover:scale-110 group-hover:rotate-6"
                 style={{
                   filter: 'drop-shadow(0 0 20px rgba(236,72,153,0.4)) drop-shadow(0 0 40px rgba(193,255,114,0.3))',
                   animation: 'floating 6s ease-in-out infinite'
