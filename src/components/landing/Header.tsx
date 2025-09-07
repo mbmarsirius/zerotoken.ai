@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-2xl border-b border-white/10 transition-all duration-500 bg-gradient-to-r from-lime/90 via-lime/95 to-lime/90 shadow-lg shadow-lime/20">
-      <div className="container mx-auto px-4 lg:px-6">
+      <div className="container mx-auto px-4 lg:px-6" style={{ backgroundColor: '#c1ff72' }}>
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2 group">
