@@ -71,7 +71,7 @@ export const FAQ = () => {
                   </AccordionTrigger>
                   <AccordionContent className="px-8 pb-6 transition-all duration-300">
                     <div className="pl-16">
-                      <p className="text-gray-600 leading-relaxed text-lg">
+                      <p className="text-gray-900 leading-relaxed text-lg">
                         {faq.answer}
                       </p>
                     </div>
