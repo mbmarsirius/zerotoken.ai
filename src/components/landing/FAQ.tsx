@@ -34,6 +34,11 @@ export const FAQ = () => {
     color: "lime"
   }, {
     icon: HelpCircle,
+    question: "What is ZeroMeter?",
+    answer: "ZeroMeter is ZeroToken's live AI memory (token) gauge. It shows how much capacity is used and what's left for the current chat, with early warnings before you hit the limit—so you can avoid truncation and stay in control.",
+    color: "pink"
+  }, {
+    icon: HelpCircle,
     question: "What does \"Unlimited (Fair-Use)\" mean on Pro?",
     answer: "Soft limits keep things fast: up to 20/hour and 500/month per user. Most users never hit these limits.",
     color: "pink"

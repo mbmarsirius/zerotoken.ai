@@ -1,4 +1,4 @@
-import { MessageCircle, Zap, Edit3 } from "lucide-react";
+import { MessageCircle, Zap, Edit3, Activity } from "lucide-react";
 
 export const Features = () => {
   const features = [
@@ -22,6 +22,13 @@ export const Features = () => {
       description: "ZeroToken detects the wow moments—key insights, numbers, blockers, and decisions—and pins them into your handoff so the turning points never get lost.",
       gradient: "from-pink/20 to-lime/20",
       iconColor: "text-pink group-hover:text-lime"
+    },
+    {
+      icon: Activity,
+      title: "ZeroMeter (AI Memory Gauge)",
+      description: "See how much AI memory (tokens) you've used—live. A clear bar + percent shows used vs. left and warns before overflow, so you avoid cut-offs and keep responses sharp.",
+      gradient: "from-lime/20 to-pink/20",
+      iconColor: "text-lime group-hover:text-pink"
     }
   ];
 
@@ -46,14 +53,14 @@ export const Features = () => {
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="text-center mb-20 animate-fade-in">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
-            Three powerful features
+            Four powerful features
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Everything you need to keep your AI conversations organized and efficient
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (

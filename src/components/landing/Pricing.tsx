@@ -12,9 +12,9 @@ export const Pricing = () => {
       toast.error("Upgrade failed. Please try again.");
     }
   };
-  const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Checkpoints & basic privacy", "No credit card required"];
-  const proFeatures = ["Unlimited handoffs (Fair-Use applies)", "WOW Events Capture", "Faster recap engine", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
-  const enterpriseFeatures = ["Pay only when you need it", "One handoff includes the curated WOW Events", "Same continuity quality as Pro, no subscription"];
+  const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Checkpoints & basic privacy", "Includes ZeroMeter (live token gauge)", "No credit card required"];
+  const proFeatures = ["Unlimited handoffs (Fair-Use applies)", "WOW Events Capture", "Faster recap engine", "Includes ZeroMeter (live token gauge)", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
+  const enterpriseFeatures = ["Pay only when you need it", "One handoff includes the curated WOW Events", "Includes ZeroMeter (live token gauge)", "Same continuity quality as Pro, no subscription"];
   return <section id="pricing" className="py-32 bg-gradient-to-br from-lime/15 via-pink/10 to-lavender/15 relative overflow-hidden">
       {/* Enhanced decorative background elements */}
       <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-pink/40 to-lime/35 rounded-full blur-3xl animate-pulse"></div>
