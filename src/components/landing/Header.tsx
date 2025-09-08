@@ -59,11 +59,13 @@ export const Header = () => {
               Upgrade to Pro
             </Button>
             <div className="relative group">
-              <img 
-                src="/lovable-uploads/0218f9e8-86b2-4954-a6e1-bf4397000105.png" 
-                alt="Marsirius" 
-                className="h-6 w-auto opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
-              />
+              <a href="https://www.marsirius.ai" target="_blank" rel="noopener noreferrer">
+                <img 
+                  src="/lovable-uploads/0218f9e8-86b2-4954-a6e1-bf4397000105.png" 
+                  alt="Marsirius" 
+                  className="h-6 w-auto opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+                />
+              </a>
             </div>
           </div>
         </div>
