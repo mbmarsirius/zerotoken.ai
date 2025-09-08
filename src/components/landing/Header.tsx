@@ -1,6 +1,22 @@
 import { Button } from "@/components/ui/button";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string, hash?: string) => {
+    if (path === '/') {
+      navigate('/');
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      navigate(path);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-2xl border-b border-white/10 transition-all duration-500 bg-gradient-to-r from-lime/90 via-lime/95 to-lime/90 shadow-lg shadow-lime/20">
@@ -8,41 +24,41 @@ export const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2 group">
-            <a href="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
               <img 
                 src="/lovable-uploads/d3ceeec1-ae84-473a-a428-2343ef5e15c7.png" 
                 alt="ZeroToken" 
                 className="h-11 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-lg"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Navigation - Hidden on mobile, shown on larger screens */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a 
-              href="#pricing" 
+            <button 
+              onClick={() => handleNavigation('/', 'pricing')}
               className="relative text-sm font-medium text-ink hover:text-pink transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-pink after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               Pricing
-            </a>
-            <a 
-              href="#how-it-works" 
+            </button>
+            <button 
+              onClick={() => handleNavigation('/', 'how-it-works')}
               className="relative text-sm font-medium text-ink hover:text-pink transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-pink after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               How it works
-            </a>
-            <a 
-              href="/privacy" 
+            </button>
+            <Link 
+              to="/privacy" 
               className="relative text-sm font-medium text-ink/70 hover:text-ink transition-all duration-300 hover:scale-105 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-pink after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               Privacy
-            </a>
+            </Link>
           </nav>
 
           {/* CTA & Marsirius Icon */}
           <div className="flex items-center space-x-4">
             <Button 
-              onClick={() => window.location.href = '/pro'}
+              onClick={() => navigate('/pro')}
               variant="hero-primary"
               size="default"
               className="font-semibold"

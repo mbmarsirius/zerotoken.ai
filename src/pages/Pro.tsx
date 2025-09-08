@@ -40,22 +40,22 @@ const Pro = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/90 to-background/80">
       <Header />
       <main className="py-20 px-4">
         <div className="max-w-2xl mx-auto text-center space-y-12">
           
           {/* Clean, bold title */}
-          <div className="space-y-4">
-            <h1 className="text-6xl font-bold text-gray-900 tracking-tight">
-              ZeroToken 
+          <div className="space-y-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground tracking-tight">
+              ZeroToken{" "}
               <span className="bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent">
-                {" "}Pro
+                Pro
               </span>
             </h1>
-            <div className="text-4xl font-bold text-gray-800">
-              $9.99 
-              <span className="text-2xl text-gray-500 font-normal">/month</span>
+            <div className="text-3xl md:text-4xl font-bold text-foreground">
+              $9.99{" "}
+              <span className="text-xl md:text-2xl text-muted-foreground font-normal">/month</span>
             </div>
           </div>
 
@@ -66,7 +66,7 @@ const Pro = () => {
                 <div className="w-6 h-6 mr-4 flex-shrink-0 bg-gradient-to-r from-lime to-pink rounded-full flex items-center justify-center shadow-lg">
                   <CheckCircle className="w-4 h-4 text-white" strokeWidth={2} />
                 </div>
-                <span className="text-xl text-gray-700 leading-relaxed text-center">{feature}</span>
+                <span className="text-lg md:text-xl text-foreground/90 leading-relaxed">{feature}</span>
               </div>
             ))}
           </div>
@@ -77,12 +77,13 @@ const Pro = () => {
               id="proCheckoutBtn"
               onClick={handleProCheckout}
               disabled={loading}
-              className="px-12 py-4 text-xl font-bold bg-gradient-to-r from-pink to-lime text-white rounded-xl hover:shadow-2xl hover:shadow-pink/30 hover:scale-105 transition-all duration-300"
+              size="xl"
+              className="px-8 py-4 text-lg font-bold bg-gradient-to-r from-pink to-lime text-white rounded-xl hover:shadow-2xl hover:shadow-pink/30 hover:scale-105 transition-all duration-300 border-0"
             >
               {loading ? 'Loading...' : 'Upgrade to Pro →'}
             </Button>
             
-            <p className="text-gray-500 text-sm">
+            <p className="text-muted-foreground text-sm">
               Secure checkout powered by Stripe
             </p>
             
