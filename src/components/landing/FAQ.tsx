@@ -50,7 +50,7 @@ export const FAQ = () => {
   }];
   return <section className="py-32 bg-gradient-to-b from-ink via-ink/95 to-ink/90 relative overflow-hidden">
       {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-60 bg-[#774ee6]">
+      <div className="absolute top-0 left-0 w-full h-full opacity-60 bg-[#a782fa]">
         <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-pink/40 to-lime/40 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-lime/40 to-pink/40 rounded-full blur-3xl animate-pulse" style={{
         animationDelay: '2s'
