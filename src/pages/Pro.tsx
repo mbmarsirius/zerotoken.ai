@@ -62,11 +62,11 @@ const Pro = () => {
           {/* Clean feature list */}
           <div className="space-y-6 max-w-lg mx-auto">
             {proFeatures.map((feature, index) => (
-              <div key={index} className="flex items-center justify-center text-center">
+              <div key={index} className="flex items-center text-center justify-center">
                 <div className="w-6 h-6 mr-4 flex-shrink-0 bg-gradient-to-r from-lime to-pink rounded-full flex items-center justify-center shadow-lg">
                   <CheckCircle className="w-4 h-4 text-white" strokeWidth={2} />
                 </div>
-                <span className="text-lg md:text-xl text-foreground/90 leading-relaxed">{feature}</span>
+                <span className="text-lg md:text-xl text-foreground/90 leading-relaxed text-center">{feature}</span>
               </div>
             ))}
           </div>
