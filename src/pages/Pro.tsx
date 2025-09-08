@@ -11,30 +11,17 @@ const Pro = () => {
   const handleProCheckout = async () => {
     setLoading(true);
     setError('');
-    
     try {
-      const response = await fetch('https://ppvergvfxththbwtjsmu.supabase.co/functions/v1/stripe_create_checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          sku: 'pro_monthly_usd_999',
-          userId: 'USER_UUID',
-          email: 'user@example.com'
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to create checkout session');
-      }
-
-      const data = await response.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error('No checkout URL received');
-      }
+      const base = 'https://buy.stripe.com/28E00j16MaAOcwk4vF1sQ01';
+      const url = new URL(base);
+      // Optional user id propagation for webhook association
+      try{
+        const uidFromQuery = new URLSearchParams(window.location.search).get('uid');
+        const uidFromStorage = localStorage.getItem('zt_user_id') || '';
+        const uid = uidFromQuery || uidFromStorage || '';
+        if (uid) url.searchParams.set('client_reference_id', uid);
+      }catch {}
+      window.location.href = url.toString();
     } catch (err) {
       setError('Failed to start checkout. Please try again.');
       console.error('Checkout error:', err);

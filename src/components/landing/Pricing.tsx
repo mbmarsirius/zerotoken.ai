@@ -85,10 +85,7 @@ export const Pricing = () => {
               </ul>
               
               <Button 
-                onClick={() => {
-                  console.log('Pro button clicked');
-                  navigate('/pro');
-                }}
+                onClick={() => navigate('/pro')}
                 size="lg" 
                 type="button"
                 className="w-full relative bg-gradient-to-br from-pink/90 to-pink backdrop-blur-lg text-white border border-pink/30 hover:from-pink hover:to-pink/80 hover:shadow-2xl hover:shadow-pink/50 hover:scale-105 transition-all duration-500 font-bold text-lg overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 cursor-pointer pointer-events-auto z-20"
