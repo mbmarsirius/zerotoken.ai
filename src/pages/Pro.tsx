@@ -53,56 +53,57 @@ const Pro = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-lavender via-lavender/80 to-lavender/60">
-        <div className="container mx-auto px-4 lg:px-6 text-center">
-          <div className="max-w-4xl mx-auto space-y-8">
-            
-            {/* Title */}
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight">
-              ZeroToken Pro — $9.99 / month
+      <main className="py-20 px-4">
+        <div className="max-w-2xl mx-auto text-center space-y-12">
+          
+          {/* Clean, bold title */}
+          <div className="space-y-4">
+            <h1 className="text-6xl font-bold text-gray-900 tracking-tight">
+              ZeroToken 
+              <span className="bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent">
+                {" "}Pro
+              </span>
             </h1>
-
-            {/* Features */}
-            <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl">
-              <ul className="space-y-4 text-left max-w-2xl mx-auto">
-                {proFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start text-white">
-                    <div className="w-6 h-6 mr-4 flex-shrink-0 mt-0.5 bg-gradient-to-br from-pink/30 to-lime/30 rounded-full flex items-center justify-center border border-pink/40">
-                      <CheckCircle className="w-4 h-4 text-pink" />
-                    </div>
-                    <span className="text-lg font-medium">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="text-4xl font-bold text-gray-800">
+              $9.99 
+              <span className="text-2xl text-gray-500 font-normal">/month</span>
             </div>
+          </div>
 
-            {/* CTA Button */}
-            <div className="pt-8">
-              <Button 
-                id="proCheckoutBtn"
-                onClick={handleProCheckout}
-                disabled={loading}
-                variant="hero-primary" 
-                size="xl" 
-                className="min-w-64 shadow-2xl"
-              >
-                {loading ? 'Loading...' : 'Upgrade to Pro →'}
-              </Button>
-              
-              {/* Stripe note */}
-              <p className="text-white/60 text-sm mt-3">
-                Stripe checkout opens in a new tab.
+          {/* Clean feature list */}
+          <div className="space-y-6">
+            {proFeatures.map((feature, index) => (
+              <div key={index} className="flex items-start justify-center text-left">
+                <div className="w-6 h-6 mr-4 flex-shrink-0 mt-1 bg-gradient-to-r from-lime to-pink rounded-full flex items-center justify-center shadow-lg">
+                  <CheckCircle className="w-4 h-4 text-white" strokeWidth={2} />
+                </div>
+                <span className="text-xl text-gray-700 leading-relaxed max-w-md">{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Simple CTA */}
+          <div className="pt-8 space-y-4">
+            <Button 
+              id="proCheckoutBtn"
+              onClick={handleProCheckout}
+              disabled={loading}
+              className="px-12 py-4 text-xl font-bold bg-gradient-to-r from-pink to-lime text-white rounded-xl hover:shadow-2xl hover:shadow-pink/30 hover:scale-105 transition-all duration-300"
+            >
+              {loading ? 'Loading...' : 'Upgrade to Pro →'}
+            </Button>
+            
+            <p className="text-gray-500 text-sm">
+              Secure checkout powered by Stripe
+            </p>
+            
+            {error && (
+              <p className="text-red-500 text-sm bg-red-50 px-4 py-2 rounded-lg border border-red-200">
+                {error}
               </p>
-              
-              {/* Error message */}
-              {error && (
-                <p className="text-red-300 text-sm mt-2">
-                  {error}
-                </p>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </main>
