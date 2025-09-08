@@ -110,16 +110,14 @@ All colors MUST be HSL.
     @apply font-display;
   }
 
-  /* Enhanced scroll behavior for smooth auto-flow */
+  /* Enhanced scroll behavior for seamless flow */
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
   }
 
   /* Smooth scroll padding for better section alignment */
   section {
     scroll-margin-top: 2rem;
-    scroll-snap-align: start;
   }
 }
 
@@ -160,10 +158,9 @@ All colors MUST be HSL.
     animation: float-in 1s ease-out forwards;
   }
 
-  /* Scroll snap for better section breaks */
+  /* Seamless scroll sections */
   .scroll-snap-section {
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
+    /* Removed snap behavior for seamless flow */
   }
 
   /* Enhanced fade animations for auto-flow */
