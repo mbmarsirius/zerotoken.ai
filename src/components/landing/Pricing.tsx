@@ -1,19 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { upgradeToProStripe } from "@/utils/stripe";
 import { CheckCircle } from "lucide-react";
+
 export const Pricing = () => {
-  const handleUpgrade = async () => {
-    try {
-      const checkoutUrl = await upgradeToProStripe();
-      window.open(checkoutUrl, '_blank');
-    } catch (error) {
-      console.error('Upgrade failed:', error);
-      toast.error("Upgrade failed. Please try again.");
-    }
-  };
-  const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Checkpoints & basic privacy", "Includes ZeroMeter (live token gauge)", "No credit card required"];
-  const proFeatures = ["Unlimited handoffs (Fair-Use applies)", "WOW Events Capture", "Faster recap engine", "Includes ZeroMeter (live token gauge)", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
+  const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Includes ZeroMeter (live token gauge)", "Checkpoints & basic privacy", "No credit card required"];
+  const proFeatures = ["Unlimited handoffs (Fair-Use applies: 20/hour · 500/month)", "WOW Events Capture", "Faster recap engine", "Includes ZeroMeter (live token gauge)", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
   const enterpriseFeatures = ["Pay only when you need it", "One handoff includes the curated WOW Events", "Includes ZeroMeter (live token gauge)", "Same continuity quality as Pro, no subscription"];
   return <section id="pricing" className="py-32 bg-gradient-to-br from-lime/15 via-pink/10 to-lavender/15 relative overflow-hidden">
       {/* Enhanced decorative background elements */}
@@ -66,7 +56,12 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button variant="brand-outline" size="lg" className="w-full bg-white text-gray-900 border-2 border-lime hover:bg-lime hover:text-white hover:shadow-xl hover:shadow-lime/30 transition-all duration-300 font-semibold">
+              <Button 
+                onClick={() => window.location.href = '/install'}
+                variant="brand-outline" 
+                size="lg" 
+                className="w-full bg-white text-gray-900 border-2 border-lime hover:bg-lime hover:text-white hover:shadow-xl hover:shadow-lime/30 transition-all duration-300 font-semibold"
+              >
                 Get Started Free
               </Button>
 
@@ -107,7 +102,11 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button onClick={handleUpgrade} size="lg" className="w-full bg-gradient-to-r from-pink to-lime text-white font-bold text-lg hover:from-pink/90 hover:to-lime/90 hover:scale-105 hover:shadow-2xl hover:shadow-pink/40 active:scale-95 transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-skew-x-12 before:translate-x-[-100%] hover:before:translate-x-[200%] before:transition-transform before:duration-600">
+              <Button 
+                onClick={() => window.location.href = '/pro'}
+                size="lg" 
+                className="w-full bg-gradient-to-r from-pink to-lime text-white font-bold text-lg hover:from-pink/90 hover:to-lime/90 hover:scale-105 hover:shadow-2xl hover:shadow-pink/40 active:scale-95 transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-skew-x-12 before:translate-x-[-100%] hover:before:translate-x-[200%] before:transition-transform before:duration-600"
+              >
                 Upgrade to Pro →
               </Button>
 
@@ -140,7 +139,11 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button size="lg" className="w-full bg-white text-lavender border-2 border-lavender hover:bg-lavender hover:text-white hover:shadow-xl hover:shadow-lavender/30 transition-all duration-300 font-semibold hover:scale-105 active:scale-95">
+              <Button 
+                onClick={() => window.location.href = '/lite'}
+                size="lg" 
+                className="w-full bg-white text-lavender border-2 border-lavender hover:bg-lavender hover:text-white hover:shadow-xl hover:shadow-lavender/30 transition-all duration-300 font-semibold hover:scale-105 active:scale-95"
+              >
                 Buy a credit →
               </Button>
 

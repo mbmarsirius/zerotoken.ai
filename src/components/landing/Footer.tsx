@@ -11,9 +11,9 @@ export const Footer = () => {
             <div className="flex items-center space-x-4 group">
               <img src="/lovable-uploads/de4c65bd-ce26-4102-933a-3c69f1021774.png" alt="ZeroToken" className="h-8 w-auto transition-transform duration-300 group-hover:scale-105" />
               <div className="hidden md:block w-px h-6 bg-gradient-to-b from-pink/30 to-lime/30"></div>
-              <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
+              <a href="/" className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors duration-300">
                 Created by ZeroToken
-              </span>
+              </a>
             </div>
             
             {/* Navigation Links */}
@@ -35,7 +35,7 @@ export const Footer = () => {
             <span className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">
               Created & Powered by
             </span>
-            <a href="https://www.marsirius.ai" target="_blank" rel="noopener noreferrer">
+            <a href="https://marsirius.ai" target="_blank" rel="noopener noreferrer">
               <img src="/lovable-uploads/9dca6b8d-c306-4bbd-be5c-1ecde2a8df1a.png" alt="Marsirius AI Labs" className="h-11 w-auto opacity-80 hover:opacity-100 transition-all duration-300 group-hover:scale-105" />
             </a>
           </div>

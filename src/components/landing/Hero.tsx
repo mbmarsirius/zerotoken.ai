@@ -1,16 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { upgradeToProStripe } from "@/utils/stripe";
+
 export const Hero = () => {
-  const handleUpgrade = async () => {
-    try {
-      const checkoutUrl = await upgradeToProStripe();
-      window.open(checkoutUrl, '_blank');
-    } catch (error) {
-      console.error('Upgrade failed:', error);
-      toast.error("Upgrade failed. Please try again.");
-    }
-  };
   const scrollToHowItWorks = () => {
     document.getElementById('how-it-works')?.scrollIntoView({
       behavior: 'smooth'
@@ -74,7 +64,7 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button onClick={handleUpgrade} variant="hero-primary" size="xl" className="min-w-48 shadow-2xl">
+            <Button onClick={() => window.location.href = '/pro'} variant="hero-primary" size="xl" className="min-w-48 shadow-2xl">
               Upgrade to Pro →
             </Button>
             

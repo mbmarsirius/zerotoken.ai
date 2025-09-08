@@ -8,6 +8,11 @@ import Index from "./pages/Index";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
+import Install from "./pages/Install";
+import Pro from "./pages/Pro";
+import Lite from "./pages/Lite";
+import BillingSuccess from "./pages/BillingSuccess";
+import BillingCancel from "./pages/BillingCancel";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +29,11 @@ const App = () => (
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/install" element={<Install />} />
+            <Route path="/pro" element={<Pro />} />
+            <Route path="/lite" element={<Lite />} />
+            <Route path="/billing/success" element={<BillingSuccess />} />
+            <Route path="/billing/cancel" element={<BillingCancel />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
