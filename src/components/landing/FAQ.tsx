@@ -5,33 +5,48 @@ export const FAQ = () => {
   const faqs = [{
     icon: Globe,
     question: "How does ZeroToken work with different AI platforms?",
-    answer: "ZeroToken is a browser extension that integrates seamlessly with ChatGPT, Claude, and Gemini. Once installed, it adds a small interface that monitors your conversation memory and provides tools without interrupting your workflow.",
+    answer: "ZeroToken runs inside ChatGPT today. Support for Claude and Gemini is planned. The continuity recap is designed so the next model can continue seamlessly.",
     color: "pink"
   }, {
     icon: HelpCircle,
-    question: "What are handoff reports?",
-    answer: "Handoff reports are structured summaries of your AI conversations that extract key decisions, facts, and open questions. You can export them as PDFs, copy to clipboard, or email them directly to team members.",
+    question: "What is a \"continuity handoff\"?",
+    answer: "A short brief of your long chat, structured as Facts, Decisions, Open Questions, Next Steps. It lets you resume instantly without rereading the whole thread.",
     color: "lime"
   }, {
     icon: Zap,
-    question: "How does AI Detox work?",
-    answer: "AI Detox analyzes your conversation history, identifies outdated or redundant context, and creates a condensed summary. This frees up memory space and helps the AI provide more focused, relevant responses.",
+    question: "What are \"WOW Events\"?",
+    answer: "WOW Events are the moments that matter—key decisions, metrics, blockers, or insights. ZeroToken detects and pins them into the handoff so you never lose the turning points.",
     color: "pink"
   }, {
     icon: Shield,
-    question: "Is my conversation data secure?",
-    answer: "Yes, ZeroToken processes your conversations locally in your browser. We don't store or transmit your private conversations to our servers. Only anonymized usage analytics are collected to improve the product.",
+    question: "How do I resume the conversation now?",
+    answer: "Open a fresh ChatGPT chat and paste your recap to keep going. (Automatic paste and cross-AI handoff are on the roadmap.)",
     color: "lime"
   }, {
     icon: CreditCard,
-    question: "Can I cancel my Pro subscription anytime?",
-    answer: "Absolutely. You can cancel your Pro subscription at any time from your account settings. You'll continue to have Pro access until the end of your current billing period.",
+    question: "Is my conversation data secure?",
+    answer: "ZeroToken is built privacy-first. We only capture what's necessary to build your recap and operate your account (email, plan/credits, basic usage). We do not sell data. See Privacy for details.",
     color: "pink"
   }, {
     icon: Chrome,
-    question: "Which browsers are supported?",
-    answer: "ZeroToken currently supports Chrome and Chrome-based browsers (Edge, Brave, etc.). We're working on Firefox support and will announce it soon.",
+    question: "How many handoffs do I get for free?",
+    answer: "Three total (one-time trial). After that, choose Lite PAYG (per handoff) or Pro (monthly).",
     color: "lime"
+  }, {
+    icon: HelpCircle,
+    question: "What does \"Unlimited (Fair-Use)\" mean on Pro?",
+    answer: "Soft limits keep things fast: up to 20/hour and 500/month per user. Most users never hit these limits.",
+    color: "pink"
+  }, {
+    icon: CreditCard,
+    question: "Can I cancel Pro anytime?",
+    answer: "Yes. Pro is monthly and can be cancelled anytime from your billing page.",
+    color: "lime"
+  }, {
+    icon: Chrome,
+    question: "Which browsers are supported?",
+    answer: "Chrome and Chromium-based browsers (Arc, Brave, Edge). Safari/Firefox support is planned.",
+    color: "pink"
   }];
   return <section className="py-32 bg-gradient-to-b from-ink via-ink/95 to-ink/90 relative overflow-hidden">
       {/* Decorative background elements */}

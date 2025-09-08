@@ -12,9 +12,9 @@ export const Pricing = () => {
       toast.error("Upgrade failed. Please try again.");
     }
   };
-  const freeFeatures = ["Basic memory monitoring", "Simple context refresh", "5 handoff reports per month", "Community support"];
-  const proFeatures = ["Unlimited handoff reports", "Advanced AI Detox modes", "Auto-prompt engineering", "PDF export & email sharing", "Priority support", "Custom memory thresholds"];
-  const enterpriseFeatures = ["Everything in Pro", "Custom AI model training", "White-label solution", "Advanced analytics dashboard", "Dedicated account manager", "24/7 phone support", "Custom integrations", "SLA guarantee"];
+  const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Checkpoints & basic privacy", "No credit card required"];
+  const proFeatures = ["Unlimited handoffs (Fair-Use applies)", "WOW Events Capture", "Faster recap engine", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
+  const enterpriseFeatures = ["Pay only when you need it", "One handoff includes the curated WOW Events", "Same continuity quality as Pro, no subscription"];
   return <section id="pricing" className="py-32 bg-gradient-to-br from-pink/25 via-pink/15 to-white relative overflow-hidden bg-cyan-300">
       {/* Decorative background elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-pink/30 to-lime/25 rounded-full blur-3xl animate-pulse"></div>
@@ -47,7 +47,7 @@ export const Pricing = () => {
                 <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-lime/30 to-lime/10 rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-500 shadow-xl border border-white/30">
                   <span className="text-2xl font-bold text-lime">F</span>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Free</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Free (Trial)</h3>
                 <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors">Perfect for getting started</p>
                 <div className="text-5xl font-bold text-lime mb-2">$0</div>
                 <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">Forever free</p>
@@ -90,8 +90,8 @@ export const Pricing = () => {
                 </div>
                 <h3 className="text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Pro</h3>
                 <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors text-lg">For power users</p>
-                <div className="text-6xl font-bold bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent mb-2">$9</div>
-                <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">per month, billed monthly</p>
+                <div className="text-6xl font-bold bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent mb-2">$9.99</div>
+                <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">per month</p>
               </div>
               
               <ul className="space-y-4 mb-8 min-h-[240px]">
@@ -121,10 +121,10 @@ export const Pricing = () => {
                 <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple/30 to-purple/10 rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-500 shadow-xl border border-white/30">
                   <span className="text-2xl font-bold text-purple">E</span>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-purple transition-colors">Enterprise</h3>
-                <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors">For large teams</p>
-                <div className="text-4xl font-bold text-purple mb-2">Custom</div>
-                <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">Contact for pricing</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-purple transition-colors">Lite PAYG</h3>
+                <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors">For occasional use</p>
+                <div className="text-4xl font-bold text-purple mb-2">$2.99</div>
+                <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">per handoff</p>
               </div>
               
               <ul className="space-y-4 mb-8 min-h-[240px]">
@@ -139,7 +139,7 @@ export const Pricing = () => {
               </ul>
               
               <Button variant="pricing-lavender" size="lg" className="w-full">
-                Contact Sales
+                Buy a credit →
               </Button>
 
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

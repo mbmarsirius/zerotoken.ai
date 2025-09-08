@@ -4,22 +4,22 @@ export const Features = () => {
   const features = [
     {
       icon: MessageCircle,
-      title: "Narrative Handoff Reports",
-      description: "Summarize sprawling threads into structured briefs: Decisions, Facts, Open Questions. Copy, PDF, or email instantly.",
+      title: "Flawless Continuity Handoff",
+      description: "Convert sprawling chats into a tight recap with Facts, Decisions, Open Questions, Next Steps. Built for \"pick up exactly where we left off.\"",
       gradient: "from-pink/20 to-lime/20",
       iconColor: "text-pink group-hover:text-lime"
     },
     {
       icon: Zap,
-      title: "AI Detox (Context Refresh)",
-      description: "One tap offloads stale context, injects a dense recap, and lightens your prompt window — faster, clearer answers.",
+      title: "Checkpoints & Auto-Save",
+      description: "ZeroToken quietly takes safe checkpoints while you work. Roll back and regenerate whenever you need.",
       gradient: "from-lime/20 to-pink/20",
       iconColor: "text-lime group-hover:text-pink"
     },
     {
       icon: Edit3,
-      title: "Auto-Prompt Engineer Mode",
-      description: "Write like a human. Our extension instantly translates it into a flawless prompt and pastes it under your text: 'What you really meant.'",
+      title: "WOW Events Capture",
+      description: "ZeroToken detects the wow moments—key insights, numbers, blockers, and decisions—and pins them into your handoff so the turning points never get lost.",
       gradient: "from-pink/20 to-lime/20",
       iconColor: "text-pink group-hover:text-lime"
     }

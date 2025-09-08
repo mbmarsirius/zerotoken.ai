@@ -44,7 +44,7 @@ export const Footer = () => {
         {/* Bottom Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-500">
-            © 2025 ZeroToken. All rights reserved.
+            © 2025 ZeroToken · Built by Marsirius AI Labs · Unlimited applies to Fair-Use (20/hour · 500/month). "Works in ChatGPT"; Claude & Gemini coming soon.
           </p>
         </div>
       </div>

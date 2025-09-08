@@ -38,7 +38,7 @@ export const Hero = () => {
           {/* Status Badge - Enhanced liquid glass */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-2xl rounded-full px-6 py-3 text-sm font-medium text-white border border-white/20 shadow-xl hover:bg-white/20 hover:scale-105 transition-all duration-500 mt-10 relative overflow-hidden group">
             <div className="w-2 h-2 bg-gradient-to-r from-lime to-lime/80 rounded-full animate-glow-pulse shadow-lg shadow-lime/50"></div>
-            Pro is live
+            ● Works in ChatGPT (Beta) — Claude & Gemini coming soon
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-700"></div>
           </div>
 
@@ -69,7 +69,7 @@ export const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-medium">
-            ZeroToken works inside ChatGPT, Claude, and Gemini. Shows memory left, creates handoff reports, and keeps conversations fresh with AI Detox.
+            ZeroToken runs inside ChatGPT. It turns long threads into a concise continuity recap so you can keep going without re-explaining.
           </p>
 
           {/* CTA Buttons */}

@@ -28,10 +28,10 @@ export const HowItWorks = () => {
               <img src="/lovable-uploads/a4f475ad-7b5e-4298-ade8-c142abdc1edd.png" alt="Pink Cross Icon" className="w-36 h-24" />
               <div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">
-                  Easy Installation
+                  Install the Chrome extension
                 </h3>
                 <p className="text-lg text-gray-600">
-                  Get ZeroToken in 30 seconds
+                  Works inside ChatGPT. No setup, no prompts.
                 </p>
               </div>
             </div>
