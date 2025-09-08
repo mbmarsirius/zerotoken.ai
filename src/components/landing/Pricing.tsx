@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const Pricing = () => {
+  const navigate = useNavigate();
   const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Includes ZeroMeter (live token gauge)", "Checkpoints & basic privacy", "No credit card required"];
   const proFeatures = ["Unlimited handoffs (Fair-Use applies: 20/hour · 500/month)", "WOW Events Capture", "Faster recap engine", "Includes ZeroMeter (live token gauge)", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
   const enterpriseFeatures = ["Pay only when you need it", "One handoff includes the curated WOW Events", "Includes ZeroMeter (live token gauge)", "Same continuity quality as Pro, no subscription"];
@@ -42,7 +44,7 @@ export const Pricing = () => {
               </ul>
               
               <Button 
-                onClick={() => window.location.href = '/install'}
+                onClick={() => navigate('/install')}
                 size="lg" 
                 className="w-full relative bg-gradient-to-br from-lime/80 to-lime backdrop-blur-lg text-ink border border-lime/30 hover:from-lime hover:to-lime/90 hover:shadow-2xl hover:shadow-lime/40 hover:scale-105 transition-all duration-500 font-semibold overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
               >
@@ -83,7 +85,7 @@ export const Pricing = () => {
               </ul>
               
               <Button 
-                onClick={() => window.location.href = '/pro'}
+                onClick={() => navigate('/pro')}
                 size="lg" 
                 className="w-full relative bg-gradient-to-br from-pink/90 to-pink backdrop-blur-lg text-white border border-pink/30 hover:from-pink hover:to-pink/80 hover:shadow-2xl hover:shadow-pink/50 hover:scale-105 transition-all duration-500 font-bold text-lg overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
               >
@@ -117,7 +119,7 @@ export const Pricing = () => {
               </ul>
               
               <Button 
-                onClick={() => window.location.href = '/lite'}
+                onClick={() => navigate('/lite')}
                 size="lg" 
                 className="w-full relative bg-gradient-to-br from-lavender/80 to-lavender backdrop-blur-lg text-ink border border-lavender/30 hover:from-lavender hover:to-lavender/90 hover:shadow-2xl hover:shadow-lavender/40 hover:scale-105 transition-all duration-500 font-semibold overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
               >
