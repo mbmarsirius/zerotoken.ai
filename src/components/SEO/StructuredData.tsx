@@ -6,7 +6,7 @@ export const StructuredData = () => {
     "@type": "SoftwareApplication",
     "name": "ZeroToken",
     "description": "Our extension works inside ChatGPT, Claude, and Gemini. Shows memory left, creates handoff reports, and keeps conversations fresh with AI Detox.",
-    "url": "https://zerotoken.com",
+    "url": "https://www.zerotoken.ai",
     "applicationCategory": "BrowserApplication",
     "operatingSystem": "Chrome, Desktop",
     "offers": [
@@ -29,7 +29,7 @@ export const StructuredData = () => {
     "creator": {
       "@type": "Organization",
       "name": "ZeroToken",
-      "url": "https://zerotoken.com"
+      "url": "https://www.zerotoken.ai"
     },
     "publisher": {
       "@type": "Organization", 

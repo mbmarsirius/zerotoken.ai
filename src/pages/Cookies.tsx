@@ -1,9 +1,15 @@
+import { Meta } from "@/components/SEO/Meta";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 
 const Cookies = () => {
   return (
     <div className="min-h-screen">
+      <Meta
+        title="Cookie Policy — ZeroToken"
+        description="Learn about cookies used by ZeroToken website. No advertising cookies."
+        canonicalPath="/cookies"
+      />
       <Header />
       <main className="py-20">
         <div className="container mx-auto px-4 max-w-4xl">

@@ -1,9 +1,15 @@
+import { Meta } from "@/components/SEO/Meta";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 
 const Terms = () => {
   return (
     <div className="min-h-screen">
+      <Meta
+        title="Terms of Service — ZeroToken"
+        description="Terms governing your use of ZeroToken."
+        canonicalPath="/terms"
+      />
       <Header />
       <main className="py-20">
         <div className="container mx-auto px-4 max-w-4xl">

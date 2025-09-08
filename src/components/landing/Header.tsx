@@ -10,7 +10,7 @@ export const Header = () => {
           <div className="flex items-center space-x-2 group">
             <a href="/" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/713e3b96-9497-40e3-b983-51eb217c2ad1.png" 
+                src="/assets/zerotoken-logo.png" 
                 alt="ZeroToken" 
                 className="h-11 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-lg"
               />
@@ -52,7 +52,7 @@ export const Header = () => {
             <div className="relative group">
               <a href="https://www.marsirius.ai" target="_blank" rel="noopener noreferrer">
                 <img 
-                  src="/lovable-uploads/0218f9e8-86b2-4954-a6e1-bf4397000105.png" 
+                  src="/assets/marsirius-logo.png" 
                   alt="Marsirius" 
                   className="h-6 w-auto opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
                 />
