@@ -67,21 +67,21 @@ export const Pricing = () => {
                 <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-lime/30 to-lime/20 backdrop-blur-lg rounded-xl flex items-center justify-center border border-lime/40 shadow-lg shadow-lime/25 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-lime/20 before:to-transparent before:opacity-100 before:transition-all before:duration-500 after:absolute after:inset-0 after:bg-gradient-to-tr after:from-transparent after:via-white/30 after:to-transparent after:opacity-60">
                   <span className="text-3xl font-bold text-lime relative z-10">P</span>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-2">Pro</h3>
-                <p className="text-gray-600 mb-6 text-lg">For power users</p>
-                <div className="text-6xl font-bold text-gray-900 mb-2">$9.99</div>
-                <p className="text-gray-500 text-sm">per month</p>
+                <h3 className="text-3xl font-bold text-gray-950 mb-2">Pro</h3>
+                <p className="text-gray-700 mb-6 text-lg font-medium">For power users</p>
+                <div className="text-6xl font-bold text-gray-950 mb-2">$9.99</div>
+                <p className="text-gray-600 text-sm font-medium">per month</p>
               </div>
               
               <ul className="space-y-4 mb-8 min-h-[240px]">
-                {proFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start text-gray-700">
-                    <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-gray-100 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-gray-600" />
-                    </div>
-                    <span className="font-medium">{feature}</span>
-                  </li>
-                ))}
+                 {proFeatures.map((feature, index) => (
+                   <li key={index} className="flex items-start text-gray-800">
+                     <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-gray-200 rounded-full flex items-center justify-center">
+                       <CheckCircle className="w-4 h-4 text-gray-700" />
+                     </div>
+                     <span className="font-semibold">{feature}</span>
+                   </li>
+                 ))}
               </ul>
               
               <Button 
