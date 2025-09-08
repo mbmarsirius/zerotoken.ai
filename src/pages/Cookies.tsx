@@ -13,47 +13,59 @@ const Cookies = () => {
             </h1>
             
             <div className="space-y-8 text-foreground">
+              <p className="leading-relaxed text-sm text-gray-500 mb-8">
+                <strong>Last updated:</strong> September 8, 2025
+              </p>
+
               <section>
-                <h2 className="font-display text-2xl font-semibold mb-4">What Are Cookies</h2>
+                <h2 className="font-display text-2xl font-semibold mb-4">What are cookies?</h2>
                 <p className="leading-relaxed">
-                  Cookies are small text files stored on your device when you visit our website. 
-                  They help us provide better service and understand how you use ZeroToken.
+                  Small text files stored by your browser to remember preferences and keep sessions working.
                 </p>
               </section>
 
               <section>
-                <h2 className="font-display text-2xl font-semibold mb-4">Essential Cookies</h2>
+                <h2 className="font-display text-2xl font-semibold mb-4">How we use cookies</h2>
                 <p className="leading-relaxed mb-4">
-                  We use essential cookies that are necessary for the website to function:
+                  <strong>Strictly necessary / functional (first-party):</strong>
                 </p>
+                <ul className="list-disc pl-6 space-y-2 mb-4">
+                  <li><code>zt_consent_v1</code> (remembers your first-run consent banner)</li>
+                  <li><code>zt_cloud_save_recaps</code> / <code>zt_raw_opt_in</code> (your privacy toggles)</li>
+                  <li>Auth/session tokens for the website (if you sign in on the site)</li>
+                </ul>
+                <p className="leading-relaxed mb-4">
+                  <strong>Analytics (optional, if enabled):</strong> aggregated, anonymized usage to improve the site/app.
+                </p>
+                <p className="leading-relaxed">
+                  <strong>No advertising cookies.</strong>
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-display text-2xl font-semibold mb-4">Third-party cookies we may use</h2>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Authentication and login state</li>
-                  <li>Security and fraud prevention</li>
-                  <li>User preferences and settings</li>
+                  <li><strong>Stripe</strong> during checkout (fraud prevention, session).</li>
+                  <li><strong>Supabase</strong> for authentication/session (if you sign in on the site).</li>
+                </ul>
+                <p className="leading-relaxed mt-4">
+                  These providers have their own privacy and cookie policies.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-display text-2xl font-semibold mb-4">Your choices</h2>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>You can disable non-essential cookies in your browser.</li>
+                  <li>Inside the extension <strong>Settings</strong>, you can disable cloud saving for handoffs and export/delete your data.</li>
+                  <li>If analytics are enabled, we'll show a banner with an opt-out where required.</li>
                 </ul>
               </section>
 
               <section>
-                <h2 className="font-display text-2xl font-semibold mb-4">Analytics Cookies</h2>
+                <h2 className="font-display text-2xl font-semibold mb-4">Questions?</h2>
                 <p className="leading-relaxed">
-                  We use Plausible Analytics, a privacy-focused analytics service that doesn't 
-                  track individual users or use invasive cookies. This helps us understand 
-                  website usage without compromising your privacy.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="font-display text-2xl font-semibold mb-4">Managing Cookies</h2>
-                <p className="leading-relaxed">
-                  You can control cookies through your browser settings. However, disabling 
-                  essential cookies may affect website functionality.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="font-display text-2xl font-semibold mb-4">Contact</h2>
-                <p className="leading-relaxed">
-                  For cookie-related questions, contact us at privacy@zerotoken.com
+                  <a href="mailto:support@zerotoken.ai" className="text-blue-600 hover:text-blue-800">support@zerotoken.ai</a>
                 </p>
               </section>
             </div>
