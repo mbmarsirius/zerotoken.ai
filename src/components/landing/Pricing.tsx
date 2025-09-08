@@ -1,13 +1,36 @@
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { upgradeToProStripe } from "@/utils/stripe";
 import { CheckCircle } from "lucide-react";
-
 export const Pricing = () => {
-  const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Includes ZeroMeter (live token gauge)", "Checkpoints & basic privacy", "No credit card required"];
-  const proFeatures = ["Unlimited handoffs (Fair-Use applies: 20/hour · 500/month)", "WOW Events Capture", "Faster recap engine", "Includes ZeroMeter (live token gauge)", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
-  const enterpriseFeatures = ["Pay only when you need it", "One handoff includes the curated WOW Events", "Includes ZeroMeter (live token gauge)", "Same continuity quality as Pro, no subscription"];
-  return <section id="pricing" className="py-32 bg-white">
-      <div className="container mx-auto px-4 lg:px-6">
-        <div className="text-center mb-20">
+  const handleUpgrade = async () => {
+    try {
+      const checkoutUrl = await upgradeToProStripe();
+      window.open(checkoutUrl, '_blank');
+    } catch (error) {
+      console.error('Upgrade failed:', error);
+      toast.error("Upgrade failed. Please try again.");
+    }
+  };
+  const freeFeatures = ["3 continuity handoffs total (one-time trial)", "WOW Events Capture", "Checkpoints & basic privacy", "No credit card required"];
+  const proFeatures = ["Unlimited handoffs (Fair-Use applies)", "WOW Events Capture", "Faster recap engine", "Early access to Auto-Prompt & AI Detox (when released)", "Priority support"];
+  const enterpriseFeatures = ["Pay only when you need it", "One handoff includes the curated WOW Events", "Same continuity quality as Pro, no subscription"];
+  return <section id="pricing" className="py-32 bg-gradient-to-br from-pink/25 via-pink/15 to-white relative overflow-hidden bg-cyan-300">
+      {/* Decorative background elements */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-pink/30 to-lime/25 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-lime/25 to-pink/30 rounded-full blur-3xl animate-pulse" style={{
+      animationDelay: '2s'
+    }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-pink/20 to-transparent rounded-full blur-2xl bg-red-200"></div>
+      <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-pink/35 to-transparent rounded-full blur-2xl animate-bounce" style={{
+      animationDelay: '3s'
+    }}></div>
+      <div className="absolute bottom-10 left-20 w-60 h-60 bg-gradient-to-br from-lime/20 to-transparent rounded-full blur-3xl animate-pulse" style={{
+      animationDelay: '4s'
+    }}></div>
+
+      <div className="container mx-auto px-4 lg:px-6 relative">
+        <div className="text-center mb-20 animate-fade-in">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
             Simple pricing
           </h2>
@@ -18,114 +41,109 @@ export const Pricing = () => {
 
         <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-6">
           {/* Free Plan */}
-          <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-lime/10 backdrop-blur-xl border border-lime/50 hover:bg-lime/20 hover:shadow-2xl hover:shadow-lime/40 hover:border-lime/70 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lime/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-lime/20 before:transition-all before:duration-500 shadow-lg shadow-lime/15">
+          <div className="group transform transition-all duration-500 hover:scale-105 animate-fade-in lg:mt-8">
+            <div className="relative p-8 rounded-3xl bg-glass-subtle border border-white/40 backdrop-blur-xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-lime/20 group-hover:border-white/60 h-full">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-700">F</span>
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-lime/30 to-lime/10 rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-500 shadow-xl border border-white/30">
+                  <span className="text-2xl font-bold text-lime">F</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Free (Trial)</h3>
-                <p className="text-gray-600 mb-6">Perfect for getting started</p>
-                <div className="text-5xl font-bold text-gray-900 mb-2">$0</div>
-                <p className="text-gray-500 text-sm">Forever free</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Free (Trial)</h3>
+                <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors">Perfect for getting started</p>
+                <div className="text-5xl font-bold text-lime mb-2">$0</div>
+                <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">Forever free</p>
               </div>
               
               <ul className="space-y-4 mb-8 min-h-[240px]">
-                {freeFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start text-gray-700">
-                    <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-gray-100 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-gray-600" />
+                {freeFeatures.map((feature, index) => <li key={index} className="flex items-start text-foreground/80 group-hover:text-foreground transition-colors">
+                    <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-lime/20 rounded-full flex items-center justify-center border border-lime/30">
+                      <CheckCircle className="w-4 h-4 text-lime" />
                     </div>
                     <span>{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
               
-              <Button 
-                onClick={() => window.location.href = '/install'}
-                size="lg" 
-                className="w-full relative bg-gradient-to-br from-lime/80 to-lime backdrop-blur-lg text-ink border border-lime/30 hover:from-lime hover:to-lime/90 hover:shadow-2xl hover:shadow-lime/40 hover:scale-105 transition-all duration-500 font-semibold overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-              >
-                <span className="relative z-10">Get Started Free</span>
+              <Button variant="pricing-pink" size="lg" className="w-full">
+                Get Started Free
               </Button>
+
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </div>
 
           {/* Pro Plan - Featured */}
-          <div className="relative lg:scale-105">
+          <div className="group transform transition-all duration-500 hover:scale-105 animate-fade-in relative lg:scale-110 lg:shadow-2xl" style={{
+          animationDelay: '0.1s'
+        }}>
             {/* Popular badge */}
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="bg-gradient-to-r from-pink/90 to-pink backdrop-blur-lg text-white text-sm font-semibold px-4 py-2 rounded-full shadow-xl shadow-pink/40 border border-pink/30 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000">
-                <span className="relative z-10">Most Popular</span>
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+              <div className="bg-gradient-to-r from-pink to-lime text-white text-sm font-semibold px-6 py-3 rounded-full shadow-xl animate-glow border border-white/20">
+                <span className="relative">
+                  Most Popular
+                </span>
               </div>
             </div>
             
-            <div className="relative p-8 pt-12 rounded-2xl bg-pink/15 backdrop-blur-xl border-2 border-pink/60 hover:bg-pink/25 hover:shadow-3xl hover:shadow-pink/50 hover:border-pink/80 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-pink/15 before:via-lime/5 before:to-lavender/10 before:opacity-100 hover:before:opacity-100 hover:before:from-pink/25 hover:before:via-lime/10 hover:before:to-lavender/15 before:transition-all before:duration-500 after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-tr after:from-transparent after:via-white/20 after:to-transparent after:opacity-100 hover:after:opacity-100 hover:after:via-white/30 after:transition-all after:duration-500 shadow-xl shadow-pink/25">
+            <div className="relative p-8 pt-12 rounded-3xl bg-glass-premium border-2 border-primary/30 backdrop-blur-xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary/30 group-hover:border-primary/50 h-full">
               <div className="text-center mb-8">
-                <div className="w-20 h-20 mx-auto mb-4 bg-gray-900 rounded-xl flex items-center justify-center">
+                <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-pink to-lime rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-500 shadow-xl border border-white/20">
                   <span className="text-3xl font-bold text-white">P</span>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-2">Pro</h3>
-                <p className="text-gray-600 mb-6 text-lg">For power users</p>
-                <div className="text-6xl font-bold text-gray-900 mb-2">$9.99</div>
-                <p className="text-gray-500 text-sm">per month</p>
+                <h3 className="text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Pro</h3>
+                <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors text-lg">For power users</p>
+                <div className="text-6xl font-bold bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent mb-2">$9.99</div>
+                <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">per month</p>
               </div>
               
               <ul className="space-y-4 mb-8 min-h-[240px]">
-                {proFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start text-gray-700">
-                    <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-gray-100 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-gray-600" />
+                {proFeatures.map((feature, index) => <li key={index} className="flex items-start text-foreground/80 group-hover:text-foreground transition-colors">
+                    <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-gradient-to-br from-pink/30 to-lime/30 rounded-full flex items-center justify-center border border-pink/40">
+                      <CheckCircle className="w-4 h-4 text-pink" />
                     </div>
                     <span className="font-medium">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
               
-              <Button 
-                onClick={() => window.location.href = '/pro'}
-                size="lg" 
-                className="w-full relative bg-gradient-to-br from-pink/90 to-pink backdrop-blur-lg text-white border border-pink/30 hover:from-pink hover:to-pink/80 hover:shadow-2xl hover:shadow-pink/50 hover:scale-105 transition-all duration-500 font-bold text-lg overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-              >
-                <span className="relative z-10">Upgrade to Pro →</span>
+              <Button onClick={handleUpgrade} variant="pricing-lime" size="lg" className="w-full font-semibold text-lg">
+                Upgrade to Pro →
               </Button>
+
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink/5 via-transparent to-lime/5 animate-pulse"></div>
             </div>
           </div>
 
-          {/* Lite PAYG Plan */}
-          <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-lavender/10 backdrop-blur-xl border border-lavender/50 hover:bg-lavender/20 hover:shadow-2xl hover:shadow-lavender/40 hover:border-lavender/70 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lavender/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-lavender/20 before:transition-all before:duration-500 shadow-lg shadow-lavender/15">
+          {/* Enterprise Plan */}
+          <div className="group transform transition-all duration-500 hover:scale-105 animate-fade-in lg:mt-8" style={{
+          animationDelay: '0.2s'
+        }}>
+            <div className="relative p-8 rounded-3xl bg-glass-subtle border border-white/40 backdrop-blur-xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-purple/20 group-hover:border-white/60 h-full">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-700">L</span>
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple/30 to-purple/10 rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-all duration-500 shadow-xl border border-white/30">
+                  <span className="text-2xl font-bold text-purple">E</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Lite PAYG</h3>
-                <p className="text-gray-600 mb-6">For occasional use</p>
-                <div className="text-4xl font-bold text-gray-900 mb-2">$2.99</div>
-                <p className="text-gray-500 text-sm">per handoff</p>
+                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-purple transition-colors">Lite PAYG</h3>
+                <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors">For occasional use</p>
+                <div className="text-4xl font-bold text-purple mb-2">$2.99</div>
+                <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">per handoff</p>
               </div>
               
               <ul className="space-y-4 mb-8 min-h-[240px]">
-                {enterpriseFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-start text-gray-700">
-                    <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-gray-100 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-gray-600" />
+                {enterpriseFeatures.map((feature, index) => <li key={index} className="flex items-start text-foreground/80 group-hover:text-foreground transition-colors">
+                    <div className="w-6 h-6 mr-3 flex-shrink-0 mt-0.5 bg-purple/20 rounded-full flex items-center justify-center border border-purple/30">
+                      <CheckCircle className="w-4 h-4 text-purple" />
                     </div>
                     <span>{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
               
-              <Button 
-                onClick={() => window.location.href = '/lite'}
-                size="lg" 
-                className="w-full relative bg-gradient-to-br from-lavender/80 to-lavender backdrop-blur-lg text-ink border border-lavender/30 hover:from-lavender hover:to-lavender/90 hover:shadow-2xl hover:shadow-lavender/40 hover:scale-105 transition-all duration-500 font-semibold overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-              >
-                <span className="relative z-10">Buy a credit →</span>
+              <Button variant="pricing-lavender" size="lg" className="w-full">
+                Buy a credit →
               </Button>
+
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section>;
 };
