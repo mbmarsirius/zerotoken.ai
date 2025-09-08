@@ -66,11 +66,11 @@ export const Features = () => {
             return (
               <div
                 key={feature.title}
-                className="group text-center transform transition-all duration-500 hover:scale-105 animate-fade-in"
+                className="group text-center transform transition-all duration-500 hover:scale-105 animate-fade-in h-full"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Enhanced liquid glass card */}
-                <div className={`relative p-8 rounded-3xl bg-gradient-to-br ${feature.gradient} border border-white/30 backdrop-blur-xl transition-all duration-700 group-hover:shadow-2xl group-hover:scale-105 hover:border-white/50 overflow-hidden`} style={{
+                <div className={`relative p-8 h-full rounded-3xl bg-gradient-to-br ${feature.gradient} border border-white/30 backdrop-blur-xl transition-all duration-700 group-hover:shadow-2xl group-hover:scale-105 hover:border-white/50 overflow-hidden flex flex-col justify-between min-h-[400px]`} style={{
                   boxShadow: 'var(--shadow-floating), inset 0 1px 0 rgba(255,255,255,0.1)'
                 }}>
                   {/* Noise texture */}
