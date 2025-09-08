@@ -10,7 +10,7 @@ export const Header = () => {
           <div className="flex items-center space-x-2 group">
             <a href="/" className="flex items-center space-x-2">
               <img 
-                src="/assets/zerotoken-logo.png?v=2" 
+                src="/lovable-uploads/d3ceeec1-ae84-473a-a428-2343ef5e15c7.png" 
                 alt="ZeroToken" 
                 className="h-11 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-lg"
               />
