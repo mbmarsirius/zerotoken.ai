@@ -66,10 +66,10 @@ export const FAQ = () => {
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => {
             const Icon = faq.icon;
-            return <AccordionItem key={index} value={`item-${index}`} className="border border-lime/20 rounded-2xl bg-white/60 backdrop-blur-xl hover:bg-gradient-to-br hover:from-lime/5 hover:via-pink/5 hover:to-lavender/5 hover:shadow-2xl hover:shadow-pink/20 hover:border-pink/30 transition-all duration-500 group before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-white/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 relative overflow-hidden">
+            return <AccordionItem key={index} value={`item-${index}`} className="border rounded-2xl transition-all duration-500 group relative overflow-hidden bg-lime/10 border-lime/50 hover:bg-lime/20 hover:shadow-2xl hover:shadow-lime/40 hover:border-lime/70 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lime/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-lime/20 before:transition-all before:duration-500 shadow-lg shadow-lime/15">
                   <AccordionTrigger className="hover:no-underline px-8 py-6 transition-all duration-500 group-hover:text-pink relative z-10">
                     <div className="flex items-center space-x-4 text-left">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-lime/20 to-lime/10 backdrop-blur-lg flex items-center justify-center group-hover:from-pink/20 group-hover:to-pink/10 group-hover:scale-110 transition-all duration-500 border border-lime/20 group-hover:border-pink/30 group-hover:shadow-lg group-hover:shadow-pink/20">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink/20 to-pink/10 backdrop-blur-lg flex items-center justify-center group-hover:from-pink/30 group-hover:to-pink/20 group-hover:scale-110 transition-all duration-500 border border-pink/30 group-hover:border-pink/50 shadow-lg shadow-pink/15">
                         <Icon size={20} className="text-pink group-hover:text-pink transition-all duration-300" strokeWidth={1.5} />
                       </div>
                       <span className="font-semibold text-xl text-gray-900 group-hover:text-pink transition-colors duration-300">
@@ -91,7 +91,7 @@ export const FAQ = () => {
 
         {/* Contact Support */}
         <div className="text-center mt-20">
-          <div className="max-w-md mx-auto p-8 rounded-2xl bg-white/60 backdrop-blur-xl border border-lime/20 hover:bg-gradient-to-br hover:from-lime/5 hover:via-pink/5 hover:to-lavender/5 hover:border-pink/30 hover:shadow-2xl hover:shadow-pink/20 transition-all duration-500 relative before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-white/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+          <div className="max-w-md mx-auto p-8 rounded-2xl backdrop-blur-xl border relative overflow-hidden bg-pink/10 border-pink/50 hover:bg-pink/20 hover:shadow-2xl hover:shadow-pink/40 hover:border-pink/70 transition-all duration-500 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-pink/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-pink/20 before:transition-all before:duration-500 shadow-lg shadow-pink/15">
             <div className="relative z-10">
               <h3 className="text-2xl font-semibold mb-4 text-gray-900">Still have questions?</h3>
               <p className="text-gray-600 mb-8 text-lg">

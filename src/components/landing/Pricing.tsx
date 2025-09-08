@@ -19,7 +19,7 @@ export const Pricing = () => {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-6">
           {/* Free Plan */}
           <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-white/60 backdrop-blur-xl border border-lime/30 hover:bg-lime/10 hover:shadow-xl hover:shadow-lime/20 hover:border-lime/50 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lime/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+            <div className="relative p-8 rounded-2xl bg-lime/10 backdrop-blur-xl border border-lime/50 hover:bg-lime/20 hover:shadow-2xl hover:shadow-lime/40 hover:border-lime/70 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lime/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-lime/20 before:transition-all before:duration-500 shadow-lg shadow-lime/15">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
                   <span className="text-2xl font-bold text-gray-700">F</span>
@@ -60,7 +60,7 @@ export const Pricing = () => {
               </div>
             </div>
             
-            <div className="relative p-8 pt-12 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-pink/40 hover:bg-pink/10 hover:shadow-2xl hover:shadow-pink/30 hover:border-pink/60 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-pink/15 before:via-lime/5 before:to-lavender/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-tr after:from-transparent after:via-white/20 after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-500">
+            <div className="relative p-8 pt-12 rounded-2xl bg-pink/15 backdrop-blur-xl border-2 border-pink/60 hover:bg-pink/25 hover:shadow-3xl hover:shadow-pink/50 hover:border-pink/80 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-pink/15 before:via-lime/5 before:to-lavender/10 before:opacity-100 hover:before:opacity-100 hover:before:from-pink/25 hover:before:via-lime/10 hover:before:to-lavender/15 before:transition-all before:duration-500 after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-tr after:from-transparent after:via-white/20 after:to-transparent after:opacity-100 hover:after:opacity-100 hover:after:via-white/30 after:transition-all after:duration-500 shadow-xl shadow-pink/25">
               <div className="text-center mb-8">
                 <div className="w-20 h-20 mx-auto mb-4 bg-gray-900 rounded-xl flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">P</span>
@@ -94,7 +94,7 @@ export const Pricing = () => {
 
           {/* Lite PAYG Plan */}
           <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-white/60 backdrop-blur-xl border border-lavender/30 hover:bg-lavender/10 hover:shadow-xl hover:shadow-lavender/20 hover:border-lavender/50 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lavender/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+            <div className="relative p-8 rounded-2xl bg-lavender/10 backdrop-blur-xl border border-lavender/50 hover:bg-lavender/20 hover:shadow-2xl hover:shadow-lavender/40 hover:border-lavender/70 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lavender/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-lavender/20 before:transition-all before:duration-500 shadow-lg shadow-lavender/15">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
                   <span className="text-2xl font-bold text-gray-700">L</span>
@@ -127,5 +127,5 @@ export const Pricing = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
 };
