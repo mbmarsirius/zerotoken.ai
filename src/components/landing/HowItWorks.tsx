@@ -3,14 +3,8 @@ import { Chrome } from "lucide-react";
 import { InstallationFlow } from "./infographics/InstallationFlow";
 export const HowItWorks = () => {
   const [isActive] = useState(true);
-  return <section id="how-it-works" className="py-32 bg-gradient-to-br from-lime/10 via-white to-pink/10 relative overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl opacity-60"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-pink/20 to-lime/20 rounded-full blur-3xl opacity-60"></div>
-      </div>
-
-      <div className="container mx-auto px-4 lg:px-6 relative">
+  return <section id="how-it-works" className="py-32 bg-white">
+      <div className="container mx-auto px-4 lg:px-6">
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900">
@@ -44,8 +38,8 @@ export const HowItWorks = () => {
 
         {/* Simple CTA */}
         <div className="text-center mt-20">
-          <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-lime/20 to-pink/20 rounded-full border border-lime/30">
-            <Chrome size={24} className="text-lime-600" />
+          <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gray-100 rounded-full border border-gray-200">
+            <Chrome size={24} className="text-gray-600" />
             <span className="text-lg font-semibold text-gray-900">
               Ready to get started with ZeroToken?
             </span>
