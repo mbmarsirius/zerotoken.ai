@@ -52,7 +52,7 @@ export const Header = () => {
             <div className="relative group">
               <a href="https://www.marsirius.ai" target="_blank" rel="noopener noreferrer">
                 <img 
-                  src="/assets/marsirius-logo.png?v=2" 
+                  src="/lovable-uploads/834de80d-75ef-4c38-a1e2-05ec14b7a565.png" 
                   alt="Marsirius" 
                   className="h-6 w-auto opacity-70 hover:opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
                 />
