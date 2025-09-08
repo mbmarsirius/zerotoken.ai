@@ -21,8 +21,8 @@ export const Pricing = () => {
           <div className="lg:mt-8">
             <div className="relative p-8 rounded-2xl bg-lime/10 backdrop-blur-xl border border-lime/50 hover:bg-lime/20 hover:shadow-2xl hover:shadow-lime/40 hover:border-lime/70 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lime/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-lime/20 before:transition-all before:duration-500 shadow-lg shadow-lime/15">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-700">F</span>
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-lavender/30 to-lavender/20 backdrop-blur-lg rounded-xl flex items-center justify-center border border-lavender/40 shadow-lg shadow-lavender/25 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-lavender/20 before:to-transparent before:opacity-100 before:transition-all before:duration-500 after:absolute after:inset-0 after:bg-gradient-to-tr after:from-transparent after:via-white/30 after:to-transparent after:opacity-60">
+                  <span className="text-2xl font-bold text-lavender relative z-10">F</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Free (Trial)</h3>
                 <p className="text-gray-600 mb-6">Perfect for getting started</p>
@@ -62,8 +62,8 @@ export const Pricing = () => {
             
             <div className="relative p-8 pt-12 rounded-2xl bg-pink/15 backdrop-blur-xl border-2 border-pink/60 hover:bg-pink/25 hover:shadow-3xl hover:shadow-pink/50 hover:border-pink/80 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-pink/15 before:via-lime/5 before:to-lavender/10 before:opacity-100 hover:before:opacity-100 hover:before:from-pink/25 hover:before:via-lime/10 hover:before:to-lavender/15 before:transition-all before:duration-500 after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-tr after:from-transparent after:via-white/20 after:to-transparent after:opacity-100 hover:after:opacity-100 hover:after:via-white/30 after:transition-all after:duration-500 shadow-xl shadow-pink/25">
               <div className="text-center mb-8">
-                <div className="w-20 h-20 mx-auto mb-4 bg-gray-900 rounded-xl flex items-center justify-center">
-                  <span className="text-3xl font-bold text-white">P</span>
+                <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-lime/30 to-lime/20 backdrop-blur-lg rounded-xl flex items-center justify-center border border-lime/40 shadow-lg shadow-lime/25 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-lime/20 before:to-transparent before:opacity-100 before:transition-all before:duration-500 after:absolute after:inset-0 after:bg-gradient-to-tr after:from-transparent after:via-white/30 after:to-transparent after:opacity-60">
+                  <span className="text-3xl font-bold text-lime relative z-10">P</span>
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-2">Pro</h3>
                 <p className="text-gray-600 mb-6 text-lg">For power users</p>
@@ -96,8 +96,8 @@ export const Pricing = () => {
           <div className="lg:mt-8">
             <div className="relative p-8 rounded-2xl bg-lavender/10 backdrop-blur-xl border border-lavender/50 hover:bg-lavender/20 hover:shadow-2xl hover:shadow-lavender/40 hover:border-lavender/70 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lavender/10 before:to-transparent before:opacity-100 hover:before:opacity-100 hover:before:from-lavender/20 before:transition-all before:duration-500 shadow-lg shadow-lavender/15">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl font-bold text-gray-700">L</span>
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-pink/30 to-pink/20 backdrop-blur-lg rounded-xl flex items-center justify-center border border-pink/40 shadow-lg shadow-pink/25 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-pink/20 before:to-transparent before:opacity-100 before:transition-all before:duration-500 after:absolute after:inset-0 after:bg-gradient-to-tr after:from-transparent after:via-white/30 after:to-transparent after:opacity-60">
+                  <span className="text-2xl font-bold text-pink relative z-10">L</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Lite PAYG</h3>
                 <p className="text-gray-600 mb-6">For occasional use</p>
