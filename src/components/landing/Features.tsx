@@ -33,7 +33,7 @@ export const Features = () => {
   ];
 
   return (
-    <section className="py-32 bg-gradient-to-b from-white via-white to-lavender/20 relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-br from-lime/15 via-pink/10 to-lavender/15 relative overflow-hidden">
       {/* Enhanced liquid background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0" style={{backgroundImage: 'var(--gradient-liquid)'}}></div>
