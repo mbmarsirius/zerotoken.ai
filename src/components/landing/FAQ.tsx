@@ -66,13 +66,13 @@ export const FAQ = () => {
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => {
             const Icon = faq.icon;
-            return <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-2xl bg-white hover:shadow-lg transition-all duration-300 group">
-                  <AccordionTrigger className="hover:no-underline px-8 py-6 transition-all duration-300">
+            return <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-2xl bg-white hover:shadow-lg hover:border-pink/30 hover:shadow-pink/10 transition-all duration-300 group">
+                  <AccordionTrigger className="hover:no-underline px-8 py-6 transition-all duration-300 group-hover:text-pink">
                     <div className="flex items-center space-x-4 text-left">
-                      <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                        <Icon size={20} className="text-gray-600" strokeWidth={1.5} />
+                      <div className="w-12 h-12 rounded-xl bg-lime/10 flex items-center justify-center group-hover:bg-pink/10 transition-colors">
+                        <Icon size={20} className="text-pink group-hover:text-pink transition-colors" strokeWidth={1.5} />
                       </div>
-                      <span className="font-semibold text-xl text-gray-900">
+                      <span className="font-semibold text-xl text-gray-900 group-hover:text-pink transition-colors">
                         {faq.question}
                       </span>
                     </div>
@@ -91,12 +91,12 @@ export const FAQ = () => {
 
         {/* Contact Support */}
         <div className="text-center mt-20">
-          <div className="max-w-md mx-auto p-8 rounded-2xl bg-gray-50 border border-gray-200">
+          <div className="max-w-md mx-auto p-8 rounded-2xl bg-white border border-lime/20 hover:border-pink/30 hover:shadow-lg hover:shadow-pink/10 transition-all duration-300">
             <h3 className="text-2xl font-semibold mb-4 text-gray-900">Still have questions?</h3>
             <p className="text-gray-600 mb-8 text-lg">
               Our support team is here to help
             </p>
-            <Button asChild className="bg-gray-900 text-white hover:bg-gray-800 px-8 py-3 text-lg font-semibold rounded-xl transition-all duration-300">
+            <Button asChild className="bg-pink text-white hover:bg-pink/90 px-8 py-3 text-lg font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-pink/30">
               <a href="mailto:support@zerotoken.ai">
                 Contact Support
               </a>

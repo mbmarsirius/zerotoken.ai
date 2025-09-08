@@ -52,11 +52,11 @@ export const Features = () => {
                 key={feature.title}
                 className="group text-center h-full"
               >
-                <div className="relative p-8 h-full rounded-2xl border border-gray-200 bg-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between min-h-[320px]">
-                  <div className="w-16 h-16 mx-auto mb-6 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gray-50 transition-colors">
+                <div className="relative p-8 h-full rounded-2xl border border-gray-200 bg-white hover:shadow-lg hover:border-pink/30 hover:shadow-pink/10 transition-all duration-300 flex flex-col justify-between min-h-[320px]">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-lime/10 rounded-xl flex items-center justify-center group-hover:bg-pink/10 group-hover:shadow-lg group-hover:shadow-pink/20 transition-all duration-300">
                     <Icon 
                       size={28} 
-                      className="text-gray-700" 
+                      className="text-pink group-hover:text-pink" 
                       strokeWidth={1.5} 
                     />
                   </div>

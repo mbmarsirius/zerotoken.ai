@@ -36,15 +36,14 @@ export const HowItWorks = () => {
           </div>
         </div>
 
-        {/* Simple CTA */}
-        <div className="text-center mt-20">
-          <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gray-100 rounded-full border border-gray-200">
-            <Chrome size={24} className="text-gray-600" />
-            <span className="text-lg font-semibold text-gray-900">
-              Ready to get started with ZeroToken?
-            </span>
+          <div className="text-center mt-20">
+            <div className="inline-flex items-center space-x-4 px-8 py-4 bg-lime/10 rounded-full border border-lime/20 hover:bg-pink/10 hover:border-pink/30 transition-all duration-300 group">
+              <Chrome size={24} className="text-pink group-hover:text-pink transition-colors" />
+              <span className="text-lg font-semibold text-gray-900 group-hover:text-pink transition-colors">
+                Ready to get started with ZeroToken?
+              </span>
+            </div>
           </div>
-        </div>
       </div>
     </section>;
 };

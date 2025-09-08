@@ -19,7 +19,7 @@ export const Pricing = () => {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-6">
           {/* Free Plan */}
           <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-lg transition-all duration-300 h-full">
+            <div className="relative p-8 rounded-2xl bg-white border border-lime/20 hover:shadow-lg hover:shadow-lime/10 hover:border-lime/40 transition-all duration-300 h-full">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
                   <span className="text-2xl font-bold text-gray-700">F</span>
@@ -44,7 +44,7 @@ export const Pricing = () => {
               <Button 
                 onClick={() => window.location.href = '/install'}
                 size="lg" 
-                className="w-full bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 font-semibold"
+                className="w-full bg-lime text-ink hover:bg-lime/90 transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-lime/30"
               >
                 Get Started Free
               </Button>
@@ -55,12 +55,12 @@ export const Pricing = () => {
           <div className="relative lg:scale-105">
             {/* Popular badge */}
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="bg-gray-900 text-white text-sm font-semibold px-4 py-2 rounded-full">
+              <div className="bg-pink text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg shadow-pink/30">
                 Most Popular
               </div>
             </div>
             
-            <div className="relative p-8 pt-12 rounded-2xl bg-white border-2 border-gray-900 hover:shadow-xl transition-all duration-300 h-full">
+            <div className="relative p-8 pt-12 rounded-2xl bg-white border-2 border-pink hover:shadow-xl hover:shadow-pink/20 transition-all duration-300 h-full">
               <div className="text-center mb-8">
                 <div className="w-20 h-20 mx-auto mb-4 bg-gray-900 rounded-xl flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">P</span>
@@ -85,7 +85,7 @@ export const Pricing = () => {
               <Button 
                 onClick={() => window.location.href = '/pro'}
                 size="lg" 
-                className="w-full bg-gray-900 text-white font-bold text-lg hover:bg-gray-800 transition-all duration-300"
+                className="w-full bg-pink text-white font-bold text-lg hover:bg-pink/90 transition-all duration-300 hover:shadow-lg hover:shadow-pink/30"
               >
                 Upgrade to Pro →
               </Button>
@@ -94,7 +94,7 @@ export const Pricing = () => {
 
           {/* Lite PAYG Plan */}
           <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-lg transition-all duration-300 h-full">
+            <div className="relative p-8 rounded-2xl bg-white border border-lavender/20 hover:shadow-lg hover:shadow-lavender/10 hover:border-lavender/40 transition-all duration-300 h-full">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
                   <span className="text-2xl font-bold text-gray-700">L</span>
@@ -119,7 +119,7 @@ export const Pricing = () => {
               <Button 
                 onClick={() => window.location.href = '/lite'}
                 size="lg" 
-                className="w-full bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 font-semibold"
+                className="w-full bg-lavender text-ink hover:bg-lavender/90 transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-lavender/30"
               >
                 Buy a credit →
               </Button>
