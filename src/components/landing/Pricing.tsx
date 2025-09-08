@@ -66,7 +66,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button variant="pricing-pink" size="lg" className="w-full">
+              <Button variant="brand-outline" size="lg" className="w-full bg-white text-gray-900 border-2 border-lime hover:bg-lime hover:text-white hover:shadow-xl hover:shadow-lime/30 transition-all duration-300 font-semibold">
                 Get Started Free
               </Button>
 
@@ -107,7 +107,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button onClick={handleUpgrade} variant="pricing-lime" size="lg" className="w-full font-semibold text-lg">
+              <Button onClick={handleUpgrade} size="lg" className="w-full bg-gradient-to-r from-pink to-lime text-white font-bold text-lg hover:from-pink/90 hover:to-lime/90 hover:scale-105 hover:shadow-2xl hover:shadow-pink/40 active:scale-95 transition-all duration-300 border-0 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-skew-x-12 before:translate-x-[-100%] hover:before:translate-x-[200%] before:transition-transform before:duration-600">
                 Upgrade to Pro →
               </Button>
 
@@ -140,7 +140,7 @@ export const Pricing = () => {
                 ))}
               </ul>
               
-              <Button variant="pricing-lavender" size="lg" className="w-full">
+              <Button size="lg" className="w-full bg-white text-lavender border-2 border-lavender hover:bg-lavender hover:text-white hover:shadow-xl hover:shadow-lavender/30 transition-all duration-300 font-semibold hover:scale-105 active:scale-95">
                 Buy a credit →
               </Button>
 
