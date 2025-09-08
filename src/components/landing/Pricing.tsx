@@ -85,9 +85,12 @@ export const Pricing = () => {
               </ul>
               
               <Button 
-                onClick={() => navigate('/pro')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/pro');
+                }}
                 size="lg" 
-                className="w-full relative bg-gradient-to-br from-pink/90 to-pink backdrop-blur-lg text-white border border-pink/30 hover:from-pink hover:to-pink/80 hover:shadow-2xl hover:shadow-pink/50 hover:scale-105 transition-all duration-500 font-bold text-lg overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
+                className="w-full relative bg-gradient-to-br from-pink/90 to-pink backdrop-blur-lg text-white border border-pink/30 hover:from-pink hover:to-pink/80 hover:shadow-2xl hover:shadow-pink/50 hover:scale-105 transition-all duration-500 font-bold text-lg overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 cursor-pointer"
               >
                 <span className="relative z-10">Upgrade to Pro →</span>
               </Button>
