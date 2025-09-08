@@ -19,7 +19,7 @@ export const Pricing = () => {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-6">
           {/* Free Plan */}
           <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-white border border-lime/20 hover:shadow-lg hover:shadow-lime/10 hover:border-lime/40 transition-all duration-300 h-full">
+            <div className="relative p-8 rounded-2xl bg-white/60 backdrop-blur-xl border border-lime/30 hover:bg-lime/10 hover:shadow-xl hover:shadow-lime/20 hover:border-lime/50 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lime/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
                   <span className="text-2xl font-bold text-gray-700">F</span>
@@ -44,9 +44,9 @@ export const Pricing = () => {
               <Button 
                 onClick={() => window.location.href = '/install'}
                 size="lg" 
-                className="w-full bg-lime text-ink hover:bg-lime/90 transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-lime/30"
+                className="w-full relative bg-gradient-to-br from-lime/80 to-lime backdrop-blur-lg text-ink border border-lime/30 hover:from-lime hover:to-lime/90 hover:shadow-2xl hover:shadow-lime/40 hover:scale-105 transition-all duration-500 font-semibold overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
               >
-                Get Started Free
+                <span className="relative z-10">Get Started Free</span>
               </Button>
             </div>
           </div>
@@ -55,12 +55,12 @@ export const Pricing = () => {
           <div className="relative lg:scale-105">
             {/* Popular badge */}
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="bg-pink text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg shadow-pink/30">
-                Most Popular
+              <div className="bg-gradient-to-r from-pink/90 to-pink backdrop-blur-lg text-white text-sm font-semibold px-4 py-2 rounded-full shadow-xl shadow-pink/40 border border-pink/30 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000">
+                <span className="relative z-10">Most Popular</span>
               </div>
             </div>
             
-            <div className="relative p-8 pt-12 rounded-2xl bg-white border-2 border-pink hover:shadow-xl hover:shadow-pink/20 transition-all duration-300 h-full">
+            <div className="relative p-8 pt-12 rounded-2xl bg-white/70 backdrop-blur-xl border-2 border-pink/40 hover:bg-pink/10 hover:shadow-2xl hover:shadow-pink/30 hover:border-pink/60 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-pink/15 before:via-lime/5 before:to-lavender/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-tr after:from-transparent after:via-white/20 after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-500">
               <div className="text-center mb-8">
                 <div className="w-20 h-20 mx-auto mb-4 bg-gray-900 rounded-xl flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">P</span>
@@ -85,16 +85,16 @@ export const Pricing = () => {
               <Button 
                 onClick={() => window.location.href = '/pro'}
                 size="lg" 
-                className="w-full bg-pink text-white font-bold text-lg hover:bg-pink/90 transition-all duration-300 hover:shadow-lg hover:shadow-pink/30"
+                className="w-full relative bg-gradient-to-br from-pink/90 to-pink backdrop-blur-lg text-white border border-pink/30 hover:from-pink hover:to-pink/80 hover:shadow-2xl hover:shadow-pink/50 hover:scale-105 transition-all duration-500 font-bold text-lg overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
               >
-                Upgrade to Pro →
+                <span className="relative z-10">Upgrade to Pro →</span>
               </Button>
             </div>
           </div>
 
           {/* Lite PAYG Plan */}
           <div className="lg:mt-8">
-            <div className="relative p-8 rounded-2xl bg-white border border-lavender/20 hover:shadow-lg hover:shadow-lavender/10 hover:border-lavender/40 transition-all duration-300 h-full">
+            <div className="relative p-8 rounded-2xl bg-white/60 backdrop-blur-xl border border-lavender/30 hover:bg-lavender/10 hover:shadow-xl hover:shadow-lavender/20 hover:border-lavender/50 transition-all duration-500 h-full before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-lavender/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-xl flex items-center justify-center">
                   <span className="text-2xl font-bold text-gray-700">L</span>
@@ -119,9 +119,9 @@ export const Pricing = () => {
               <Button 
                 onClick={() => window.location.href = '/lite'}
                 size="lg" 
-                className="w-full bg-lavender text-ink hover:bg-lavender/90 transition-all duration-300 font-semibold hover:shadow-lg hover:shadow-lavender/30"
+                className="w-full relative bg-gradient-to-br from-lavender/80 to-lavender backdrop-blur-lg text-ink border border-lavender/30 hover:from-lavender hover:to-lavender/90 hover:shadow-2xl hover:shadow-lavender/40 hover:scale-105 transition-all duration-500 font-semibold overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
               >
-                Buy a credit →
+                <span className="relative z-10">Buy a credit →</span>
               </Button>
             </div>
           </div>

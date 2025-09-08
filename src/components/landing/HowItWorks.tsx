@@ -37,9 +37,9 @@ export const HowItWorks = () => {
         </div>
 
           <div className="text-center mt-20">
-            <div className="inline-flex items-center space-x-4 px-8 py-4 bg-lime/10 rounded-full border border-lime/20 hover:bg-pink/10 hover:border-pink/30 transition-all duration-300 group">
-              <Chrome size={24} className="text-pink group-hover:text-pink transition-colors" />
-              <span className="text-lg font-semibold text-gray-900 group-hover:text-pink transition-colors">
+            <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-lime/20 to-lime/10 backdrop-blur-xl rounded-full border border-lime/30 hover:from-pink/20 hover:to-pink/10 hover:border-pink/40 hover:shadow-xl hover:shadow-pink/20 hover:scale-105 transition-all duration-500 group relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000 before:rounded-full">
+              <Chrome size={24} className="text-pink group-hover:text-pink transition-colors relative z-10" />
+              <span className="text-lg font-semibold text-gray-900 group-hover:text-pink transition-colors relative z-10">
                 Ready to get started with ZeroToken?
               </span>
             </div>

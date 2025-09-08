@@ -52,11 +52,11 @@ export const Features = () => {
                 key={feature.title}
                 className="group text-center h-full"
               >
-                <div className="relative p-8 h-full rounded-2xl border border-gray-200 bg-white hover:shadow-lg hover:border-pink/30 hover:shadow-pink/10 transition-all duration-300 flex flex-col justify-between min-h-[320px]">
-                  <div className="w-16 h-16 mx-auto mb-6 bg-lime/10 rounded-xl flex items-center justify-center group-hover:bg-pink/10 group-hover:shadow-lg group-hover:shadow-pink/20 transition-all duration-300">
+                <div className="relative p-8 h-full rounded-2xl border border-lime/20 bg-white/60 backdrop-blur-xl hover:bg-gradient-to-br hover:from-lime/10 hover:via-pink/5 hover:to-lavender/10 hover:shadow-2xl hover:shadow-pink/20 hover:border-pink/30 transition-all duration-500 flex flex-col justify-between min-h-[320px] before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+                  <div className="relative z-10 w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-lime/20 to-lime/10 backdrop-blur-lg rounded-xl flex items-center justify-center group-hover:from-pink/20 group-hover:to-pink/10 group-hover:shadow-xl group-hover:shadow-pink/30 group-hover:scale-110 transition-all duration-500 border border-lime/20 group-hover:border-pink/30">
                     <Icon 
                       size={28} 
-                      className="text-pink group-hover:text-pink" 
+                      className="text-pink group-hover:text-pink transition-all duration-300" 
                       strokeWidth={1.5} 
                     />
                   </div>

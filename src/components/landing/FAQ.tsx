@@ -66,13 +66,13 @@ export const FAQ = () => {
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => {
             const Icon = faq.icon;
-            return <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-2xl bg-white hover:shadow-lg hover:border-pink/30 hover:shadow-pink/10 transition-all duration-300 group">
-                  <AccordionTrigger className="hover:no-underline px-8 py-6 transition-all duration-300 group-hover:text-pink">
+            return <AccordionItem key={index} value={`item-${index}`} className="border border-lime/20 rounded-2xl bg-white/60 backdrop-blur-xl hover:bg-gradient-to-br hover:from-lime/5 hover:via-pink/5 hover:to-lavender/5 hover:shadow-2xl hover:shadow-pink/20 hover:border-pink/30 transition-all duration-500 group before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-white/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 relative overflow-hidden">
+                  <AccordionTrigger className="hover:no-underline px-8 py-6 transition-all duration-500 group-hover:text-pink relative z-10">
                     <div className="flex items-center space-x-4 text-left">
-                      <div className="w-12 h-12 rounded-xl bg-lime/10 flex items-center justify-center group-hover:bg-pink/10 transition-colors">
-                        <Icon size={20} className="text-pink group-hover:text-pink transition-colors" strokeWidth={1.5} />
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-lime/20 to-lime/10 backdrop-blur-lg flex items-center justify-center group-hover:from-pink/20 group-hover:to-pink/10 group-hover:scale-110 transition-all duration-500 border border-lime/20 group-hover:border-pink/30 group-hover:shadow-lg group-hover:shadow-pink/20">
+                        <Icon size={20} className="text-pink group-hover:text-pink transition-all duration-300" strokeWidth={1.5} />
                       </div>
-                      <span className="font-semibold text-xl text-gray-900 group-hover:text-pink transition-colors">
+                      <span className="font-semibold text-xl text-gray-900 group-hover:text-pink transition-colors duration-300">
                         {faq.question}
                       </span>
                     </div>
@@ -91,16 +91,18 @@ export const FAQ = () => {
 
         {/* Contact Support */}
         <div className="text-center mt-20">
-          <div className="max-w-md mx-auto p-8 rounded-2xl bg-white border border-lime/20 hover:border-pink/30 hover:shadow-lg hover:shadow-pink/10 transition-all duration-300">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">Still have questions?</h3>
-            <p className="text-gray-600 mb-8 text-lg">
-              Our support team is here to help
-            </p>
-            <Button asChild className="bg-pink text-white hover:bg-pink/90 px-8 py-3 text-lg font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-pink/30">
-              <a href="mailto:support@zerotoken.ai">
-                Contact Support
-              </a>
-            </Button>
+          <div className="max-w-md mx-auto p-8 rounded-2xl bg-white/60 backdrop-blur-xl border border-lime/20 hover:bg-gradient-to-br hover:from-lime/5 hover:via-pink/5 hover:to-lavender/5 hover:border-pink/30 hover:shadow-2xl hover:shadow-pink/20 transition-all duration-500 relative before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-white/10 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500">
+            <div className="relative z-10">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Still have questions?</h3>
+              <p className="text-gray-600 mb-8 text-lg">
+                Our support team is here to help
+              </p>
+              <Button asChild className="relative bg-gradient-to-br from-pink/90 to-pink backdrop-blur-lg text-white border border-pink/30 hover:from-pink hover:to-pink/80 hover:shadow-2xl hover:shadow-pink/40 hover:scale-105 px-8 py-3 text-lg font-semibold rounded-xl transition-all duration-500 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700">
+                <a href="mailto:support@zerotoken.ai">
+                  <span className="relative z-10">Contact Support</span>
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
