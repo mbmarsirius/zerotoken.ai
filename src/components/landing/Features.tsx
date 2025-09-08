@@ -53,7 +53,7 @@ export const Features = () => {
       <div className="container mx-auto px-4 lg:px-6 relative">
         <div className="text-center mb-20 animate-fade-in">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 tracking-tight">
-            Powerfull Features
+            Powerful Features
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Everything you need to keep your AI conversations organized and efficient
