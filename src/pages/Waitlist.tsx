@@ -217,35 +217,35 @@ const Waitlist = () => {
         <main className="min-h-screen flex items-center justify-center px-4 py-20">
           <div className="max-w-2xl mx-auto text-center space-y-8">
             <div className="space-y-6">
-              <div className="w-20 h-20 mx-auto bg-gradient-to-br from-lime to-pink rounded-full flex items-center justify-center animate-bounce-gentle">
+              <div className="w-20 h-20 mx-auto bg-gradient-to-br from-lime to-lime/80 rounded-full flex items-center justify-center animate-bounce-gentle">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               
               <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-                You're on the list!
-              </h1>
-                <p className="text-xl text-muted-foreground max-w-xl mx-auto">
+                <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground">
+                  You're on the list!
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-xl mx-auto font-display">
                   Get ready for something extraordinary. We'll notify you as soon as ZeroToken launches.
                 </p>
               </div>
             </div>
 
-            <div className="bg-card/60 backdrop-blur-xl border border-pink/20 rounded-2xl p-8 space-y-6 shadow-2xl">
+            <div className="bg-card/50 backdrop-blur-2xl border border-border/30 rounded-2xl p-8 space-y-6 shadow-xl">
               <div className="space-y-6">
                 <div className="text-center space-y-4">
                   <h3 className="text-3xl font-display font-bold text-foreground">
                     Congratulations! 🎉
                   </h3>
-                  <div className="p-6 bg-gradient-to-br from-lime/10 via-pink/10 to-lavender/10 rounded-2xl border border-lime/20 backdrop-blur-xl">
-                    <p className="text-lg font-semibold text-foreground mb-2">
+                  <div className="p-6 bg-gradient-to-br from-lime/10 via-card/20 to-card/30 rounded-2xl border border-lime/20 backdrop-blur-xl">
+                    <p className="text-lg font-semibold font-display text-foreground mb-2">
                       You're in the Founding 5,000!
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground font-display">
                       As one of our first 5,000 members, you'll receive <span className="font-bold text-lime">3 months of ZeroToken Pro</span> completely free when we launch.
                     </p>
                     {typeof founderClaimed === 'number' && founderClaimed > 5000 && (
-                      <p className="text-muted-foreground mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+                      <p className="text-muted-foreground font-display mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
                         🚀 You're queued for the <span className="font-semibold text-red-600 dark:text-red-400">Priority Wave</span>. We'll notify you the moment we go live!
                       </p>
                     )}
@@ -256,7 +256,7 @@ const Waitlist = () => {
 
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
               <Users className="w-5 h-5" />
-              <span>{waitlistCount.toLocaleString()} people are waiting</span>
+              <span className="font-display">{waitlistCount.toLocaleString()} people are waiting</span>
             </div>
           </div>
         </main>
