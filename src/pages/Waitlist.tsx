@@ -137,7 +137,7 @@ const Waitlist = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-pink/20 via-lime/20 to-lavender/20 rounded-full blur-3xl animate-pulse"></div>
               <img src="/lovable-uploads/fae4b52f-ca68-4783-acf7-f8ca0bc7856c.png" alt="ZeroToken Cross Logo" style={{
               filter: 'drop-shadow(0 0 20px rgba(236,72,153,0.4)) drop-shadow(0 0 40px rgba(193,255,114,0.3))'
-            }} className="relative w-24 h-18 mx-auto hue-rotate-" />
+            }} className="relative w-36 h-27 mx-auto hue-rotate-" />
             </div>
             
             <div className="space-y-4">
