@@ -12,7 +12,9 @@ import { CheckCircle, Users, Gem, Share, Linkedin } from "lucide-react";
 
 // TypeScript workaround for outdated Supabase types
 const rpc = (name: string, args?: any) => (supabase as any).rpc(name, args);
-const invokeFn = (name: string, payload: any) => (supabase as any).functions.invoke(name, { body: payload });
+const invokeFn = (name: string, payload: any) => (supabase as any).functions.invoke(name, {
+  body: payload
+});
 
 // Custom hook for founder claimed with polling
 const useFounderClaimed = () => {
@@ -20,13 +22,14 @@ const useFounderClaimed = () => {
   const [isLoading, setIsLoading] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
-
   const fetchClaimed = async () => {
     try {
       if (abortControllerRef.current) abortControllerRef.current.abort();
       abortControllerRef.current = new AbortController();
-      
-      const { data, error } = await rpc('get_founder_claimed');
+      const {
+        data,
+        error
+      } = await rpc('get_founder_claimed');
       if (!error && typeof data === 'number') {
         setClaimed(data);
         setIsLoading(false);
@@ -37,58 +40,51 @@ const useFounderClaimed = () => {
       setIsLoading(false);
     }
   };
-
   useEffect(() => {
     fetchClaimed();
     intervalRef.current = setInterval(fetchClaimed, 15000); // Reduced to 15s for more frequent updates
-    
+
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (abortControllerRef.current) abortControllerRef.current.abort();
     };
   }, []);
-
-  return { claimed, isLoading };
+  return {
+    claimed,
+    isLoading
+  };
 };
 
 // Founding Ribbon Component
-const FoundingRibbon = ({ claimed }: { claimed: number | null }) => {
+const FoundingRibbon = ({
+  claimed
+}: {
+  claimed: number | null;
+}) => {
   const isOver5000 = typeof claimed === 'number' && claimed > 5000;
-  
-  return (
-    <div className="mx-auto mt-6 w-full max-w-4xl px-4" aria-live="polite">
-      <div
-        className={`text-center font-display rounded-2xl border px-8 py-6 shadow-2xl transition-all duration-700 ${
-          isOver5000 
-            ? 'bg-gradient-to-r from-red-500/10 to-red-600/10 border-red-500/30 text-red-600 dark:text-red-400 shadow-red-500/20' 
-            : 'bg-card/50 border-border/30 text-foreground shadow-lg'
-        } backdrop-blur-2xl hover:shadow-3xl hover:scale-[1.02]`}
-      >
-        {isOver5000
-          ? (
-            <div className="space-y-2">
+  return <div className="mx-auto mt-6 w-full max-w-4xl px-4" aria-live="polite">
+      <div className={`text-center font-display rounded-2xl border px-8 py-6 shadow-2xl transition-all duration-700 ${isOver5000 ? 'bg-gradient-to-r from-red-500/10 to-red-600/10 border-red-500/30 text-red-600 dark:text-red-400 shadow-red-500/20' : 'bg-card/50 border-border/30 text-foreground shadow-lg'} backdrop-blur-2xl hover:shadow-3xl hover:scale-[1.02]`}>
+        {isOver5000 ? <div className="space-y-2">
               <div className="text-2xl font-bold">🚀 Founding 5,000 REACHED!</div>
               <div className="text-lg">Priority Wave opening soon • <span className="font-black text-xl text-lime">{claimed?.toLocaleString()}</span>/5,000 claimed</div>
-            </div>
-          )
-          : (
-            <div className="space-y-2">
+            </div> : <div className="space-y-2">
               <div className="text-2xl font-bold">💎 Founding 5,000</div>
               <div className="text-lg text-muted-foreground">3 months Pro at launch • <span className="font-black text-xl text-lime">{claimed?.toLocaleString() ?? 0}</span>/5,000 claimed</div>
-            </div>
-          )
-        }
+            </div>}
       </div>
-    </div>
-  );
+    </div>;
 };
 
 // Progress Meter Component  
-const FounderMeter = ({ claimed, total = 5000 }: { claimed: number | null; total?: number }) => {
-  const percentage = claimed ? Math.min((claimed / total) * 100, 100) : 0;
-  
-  return (
-    <div className="mx-auto mt-8 w-full max-w-4xl px-4">
+const FounderMeter = ({
+  claimed,
+  total = 5000
+}: {
+  claimed: number | null;
+  total?: number;
+}) => {
+  const percentage = claimed ? Math.min(claimed / total * 100, 100) : 0;
+  return <div className="mx-auto mt-8 w-full max-w-4xl px-4">
       <div className="space-y-6">
         <div className="flex justify-between text-lg font-display font-semibold text-foreground">
           <span className="text-foreground">
@@ -99,14 +95,7 @@ const FounderMeter = ({ claimed, total = 5000 }: { claimed: number | null; total
           </span>
         </div>
         <div className="relative">
-          <Progress 
-            value={percentage} 
-            className="h-6 relative overflow-hidden rounded-full bg-muted/30 backdrop-blur-sm border border-border/50 shadow-inner transition-all duration-1000 hover:shadow-lg"
-            role="progressbar"
-            aria-valuenow={claimed ?? 0}
-            aria-valuemin={0}
-            aria-valuemax={total}
-          />
+          <Progress value={percentage} className="h-6 relative overflow-hidden rounded-full bg-muted/30 backdrop-blur-sm border border-border/50 shadow-inner transition-all duration-1000 hover:shadow-lg" role="progressbar" aria-valuenow={claimed ?? 0} aria-valuemin={0} aria-valuemax={total} />
           {/* Animated glow effect */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-lime/10 to-transparent animate-pulse pointer-events-none"></div>
         </div>
@@ -116,10 +105,8 @@ const FounderMeter = ({ claimed, total = 5000 }: { claimed: number | null; total
           </p>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 const Waitlist = () => {
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
@@ -128,9 +115,8 @@ const Waitlist = () => {
   const [referralCode, setReferralCode] = useState("");
   const [waitlistCount, setWaitlistCount] = useState(0);
   const [copyStatus, setCopyStatus] = useState<string>("");
-  
   const referredBy = searchParams.get("ref");
-  
+
   // Robust param reading with fallback
   const sp = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
   const offer = (searchParams.get('offer') || sp.get('offer') || 'zt3m').trim().toLowerCase(); // Default to zt3m
@@ -138,22 +124,24 @@ const Waitlist = () => {
   const utm_source = (searchParams.get('utm_source') || sp.get('utm_source') || '').trim();
   const utm_campaign = (searchParams.get('utm_campaign') || sp.get('utm_campaign') || '').trim();
   const utm_content = (searchParams.get('utm_content') || sp.get('utm_content') || '').trim();
-  
-  const { claimed: founderClaimed, isLoading: founderLoading } = useFounderClaimed();
-  
+  const {
+    claimed: founderClaimed,
+    isLoading: founderLoading
+  } = useFounderClaimed();
   useEffect(() => {
     fetchWaitlistCount();
   }, []);
-  
   const fetchWaitlistCount = async () => {
     try {
-      const { data, error } = await rpc('get_waitlist_count');
+      const {
+        data,
+        error
+      } = await rpc('get_waitlist_count');
       if (!error && typeof data === 'number') setWaitlistCount(data);
     } catch (err) {
       console.error('Failed to fetch waitlist count:', err);
     }
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) {
@@ -163,32 +151,35 @@ const Waitlist = () => {
     setIsSubmitting(true);
     try {
       // Use RPC for idempotent server-side logic
-      const { data, error } = await rpc('create_waitlist', {
+      const {
+        data,
+        error
+      } = await rpc('create_waitlist', {
         p_email: email.trim(),
-        p_referred_by: referredBy,
+        p_referred_by: referredBy
       });
       if (error) throw error;
-      const row = Array.isArray(data) ? (data[0] as any) : null;
+      const row = Array.isArray(data) ? data[0] as any : null;
       if (row?.out_referral_code) {
         setReferralCode(row.out_referral_code);
         setIsSubmitted(true);
         toast.success("You're on the waitlist!");
         await fetchWaitlistCount();
         // Write campaign metadata (best-effort, non-blocking)
-        try{
+        try {
           await rpc('update_waitlist_meta', {
             p_email: email.trim(),
             p_offer: offer || null,
             p_source: src || null,
             p_utm_source: utm_source || null,
             p_utm_campaign: utm_campaign || null,
-            p_utm_content: utm_content || null,
+            p_utm_content: utm_content || null
           });
-        }catch{}
+        } catch {}
         // Fire-and-forget welcome email
         try {
           await invokeFn('waitlist_send_welcome', {
-            email: email.trim(), 
+            email: email.trim(),
             referral_code: row.out_referral_code
           });
         } catch {}
@@ -200,7 +191,6 @@ const Waitlist = () => {
       setIsSubmitting(false);
     }
   };
-  
   const copyReferralLink = () => {
     const link = `https://zerotoken.ai/waitlist?ref=${referralCode}`;
     navigator.clipboard.writeText(link);
@@ -208,7 +198,6 @@ const Waitlist = () => {
     toast.success("Referral link copied!");
     setTimeout(() => setCopyStatus(""), 1500);
   };
-
   if (isSubmitted) {
     return <div className="min-h-screen bg-lavender">
         <Meta title="You're on the list! - ZeroToken Waitlist" description="Successfully joined the ZeroToken waitlist. Share your referral link to unlock bonus features." canonicalPath="/waitlist" />
@@ -244,11 +233,9 @@ const Waitlist = () => {
                     <p className="text-muted-foreground font-display">
                       As one of our first 5,000 members, you'll receive <span className="font-bold text-lime">3 months of ZeroToken Pro</span> completely free when we launch.
                     </p>
-                    {typeof founderClaimed === 'number' && founderClaimed > 5000 && (
-                      <p className="text-muted-foreground font-display mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+                    {typeof founderClaimed === 'number' && founderClaimed > 5000 && <p className="text-muted-foreground font-display mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
                         🚀 You're queued for the <span className="font-semibold text-red-600 dark:text-red-400">Priority Wave</span>. We'll notify you the moment we go live!
-                      </p>
-                    )}
+                      </p>}
                   </div>
                 </div>
               </div>
@@ -264,26 +251,21 @@ const Waitlist = () => {
         <Footer />
       </div>;
   }
-
   return <div className="min-h-screen bg-lavender">
       <Meta title="Join the ZeroToken Waitlist" description="Be among the first 5,000 members and unlock 3 months ZeroToken Pro free at launch. Founding member benefits included." canonicalPath="/waitlist" />
       <Header />
       
       {/* Always show Founding Ribbon and Progress Meter */}
-      {founderLoading ? (
-        <div className="mx-auto mt-6 w-full max-w-4xl px-4">
+      {founderLoading ? <div className="mx-auto mt-6 w-full max-w-4xl px-4">
           <div className="bg-gradient-to-r from-muted/30 to-muted/50 h-12 rounded-xl animate-pulse backdrop-blur-sm border border-muted/20"></div>
           <div className="mt-6 space-y-3">
             <div className="bg-gradient-to-r from-muted/20 to-muted/40 h-5 rounded animate-pulse"></div>
             <div className="bg-gradient-to-r from-muted/30 to-muted/50 h-4 rounded animate-pulse border border-muted/20"></div>
           </div>
-        </div>
-      ) : (
-        <>
+        </div> : <>
           <FoundingRibbon claimed={founderClaimed} />
           <FounderMeter claimed={founderClaimed} />
-        </>
-      )}
+        </>}
       
       <main className="min-h-screen flex items-center justify-center px-4 py-20">
         <div className="max-w-2xl mx-auto text-center space-y-12">
@@ -310,21 +292,9 @@ const Waitlist = () => {
           <div className="relative bg-gradient-to-br from-card/20 via-card/10 to-card/20 backdrop-blur-3xl border border-white/20 rounded-3xl p-8 md:p-12 space-y-8 shadow-[0_8px_32px_rgba(31,38,135,0.37),0_0_1px_rgba(255,255,255,0.4)_inset,0_0_60px_rgba(193,255,114,0.1)_inset] animate-scale-in before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-white/10 before:via-transparent before:to-pink/5 before:p-[1px] before:-z-10 before:backdrop-blur-sm hover:shadow-[0_12px_40px_rgba(31,38,135,0.5),0_0_80px_rgba(193,255,114,0.15)_inset] hover:scale-[1.02] transition-all duration-500">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-4">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email address" 
-                  value={email} 
-                  onChange={e => setEmail(e.target.value)} 
-                  className="h-14 text-lg bg-background/60 border-border/50 focus:border-lime focus:ring-lime/20 rounded-xl px-6 backdrop-blur-sm shadow-inner hover:bg-background/80 transition-all duration-300" 
-                  disabled={isSubmitting} 
-                />
+                <Input type="email" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)} className="h-14 text-lg bg-background/60 border-border/50 focus:border-lime focus:ring-lime/20 rounded-xl px-6 backdrop-blur-sm shadow-inner hover:bg-background/80 transition-all duration-300" disabled={isSubmitting} />
                 
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting} 
-                  size="xl" 
-                  className="w-full h-14 text-lg font-bold bg-gradient-to-r from-pink to-lime text-white rounded-xl hover:shadow-2xl hover:shadow-lime/30 hover:scale-105 transition-all duration-300 border-0 disabled:opacity-50 disabled:cursor-not-allowed hover:from-pink/90 hover:to-lime/90"
-                >
+                <Button type="submit" disabled={isSubmitting} size="xl" className="w-full h-14 text-lg font-bold bg-gradient-to-r from-pink to-lime text-white rounded-xl hover:shadow-2xl hover:shadow-lime/30 hover:scale-105 transition-all duration-300 border-0 disabled:opacity-50 disabled:cursor-not-allowed hover:from-pink/90 hover:to-lime/90">
                   {isSubmitting ? <div className="flex items-center justify-center space-x-2">
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                       <span>Joining the Founding 5,000...</span>
@@ -339,8 +309,8 @@ const Waitlist = () => {
               </p>
               
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <Users className="w-4 h-4" />
-                <span className="text-sm font-display">Currently {waitlistCount.toLocaleString()} people are waiting...</span>
+                
+                
               </div>
             </div>
           </div>
