@@ -8,6 +8,10 @@ import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { CheckCircle, Users, Gem, Share } from "lucide-react";
+
+// TypeScript workaround for outdated Supabase types
+const rpc = (name: string, args?: any) => (supabase as any).rpc(name, args);
+const invokeFn = (name: string, payload: any) => (supabase as any).functions.invoke(name, { body: payload });
 const Waitlist = () => {
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
@@ -15,12 +19,17 @@ const Waitlist = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [referralCode, setReferralCode] = useState("");
   const [waitlistCount, setWaitlistCount] = useState(0);
+  
   const referredBy = searchParams.get("ref");
-  const offer = (searchParams.get("offer") || "").trim().toLowerCase();
-  const src = (searchParams.get("src") || "").trim();
-  const utm_source = (searchParams.get("utm_source") || "").trim();
-  const utm_campaign = (searchParams.get("utm_campaign") || "").trim();
-  const utm_content = (searchParams.get("utm_content") || "").trim();
+  
+  // Robust param reading with fallback
+  const sp = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
+  const offer = (searchParams.get('offer') || sp.get('offer') || '').trim().toLowerCase();
+  const src = (searchParams.get('src') || sp.get('src') || '').trim();
+  const utm_source = (searchParams.get('utm_source') || sp.get('utm_source') || '').trim();
+  const utm_campaign = (searchParams.get('utm_campaign') || sp.get('utm_campaign') || '').trim();
+  const utm_content = (searchParams.get('utm_content') || sp.get('utm_content') || '').trim();
+  
   const [founderClaimed, setFounderClaimed] = useState<number | null>(null);
   useEffect(() => {
     fetchWaitlistCount();
@@ -28,7 +37,7 @@ const Waitlist = () => {
   }, []);
   const fetchWaitlistCount = async () => {
     try {
-      const { data, error } = await supabase.rpc('get_waitlist_count');
+      const { data, error } = await rpc('get_waitlist_count');
       if (!error && typeof data === 'number') setWaitlistCount(data);
     } catch (err) {
       console.error('Failed to fetch waitlist count:', err);
@@ -37,7 +46,7 @@ const Waitlist = () => {
 
   const fetchFounderCount = async () => {
     try{
-      const { data, error } = await supabase.rpc('get_founder_claimed');
+      const { data, error } = await rpc('get_founder_claimed');
       if (!error && typeof data === 'number') setFounderClaimed(data);
     }catch(err){ console.error('Founder counter failed:', err); }
   };
@@ -50,7 +59,7 @@ const Waitlist = () => {
     setIsSubmitting(true);
     try {
       // Use RPC for idempotent server-side logic
-      const { data, error } = await supabase.rpc('create_waitlist', {
+      const { data, error } = await rpc('create_waitlist', {
         p_email: email.trim(),
         p_referred_by: referredBy,
       });
@@ -63,7 +72,7 @@ const Waitlist = () => {
         await fetchWaitlistCount();
         // Write campaign metadata (best-effort, non-blocking)
         try{
-          await supabase.rpc('update_waitlist_meta', {
+          await rpc('update_waitlist_meta', {
             p_email: email.trim(),
             p_offer: offer || null,
             p_source: src || null,
@@ -74,8 +83,9 @@ const Waitlist = () => {
         }catch{}
         // Fire-and-forget welcome email
         try {
-          await supabase.functions.invoke('waitlist_send_welcome', {
-            body: { email: email.trim(), referral_code: row.out_referral_code },
+          await invokeFn('waitlist_send_welcome', {
+            email: email.trim(), 
+            referral_code: row.out_referral_code
           });
         } catch {}
         if (offer === 'zt3m') fetchFounderCount();
