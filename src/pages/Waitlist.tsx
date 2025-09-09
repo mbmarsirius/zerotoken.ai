@@ -83,7 +83,7 @@ const FounderMeter = ({
   claimed: number | null;
   total?: number;
 }) => {
-  const percentage = claimed ? Math.min(claimed / total * 100, 100) : 0;
+  const percentage = claimed && claimed > 0 ? Math.min((claimed / total) * 100, 100) : 0;
   return <div className="mx-auto mt-8 w-full max-w-4xl px-4">
       <div className="space-y-6">
         <div className="flex justify-between text-lg font-display font-semibold text-foreground">
@@ -91,7 +91,7 @@ const FounderMeter = ({
             {claimed?.toLocaleString() ?? 0} of {total.toLocaleString()} claimed
           </span>
           <span className="text-lime font-bold">
-            {percentage.toFixed(1)}%
+            {percentage < 1 ? percentage.toFixed(2) : percentage.toFixed(1)}%
           </span>
         </div>
         <div className="relative">
