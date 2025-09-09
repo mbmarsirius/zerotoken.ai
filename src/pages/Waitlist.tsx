@@ -30,6 +30,7 @@ const useFounderClaimed = () => {
       if (!error && typeof data === 'number') {
         setClaimed(data);
         setIsLoading(false);
+        console.log('Founder claimed updated:', data); // Debug log
       }
     } catch (err) {
       console.error('Founder counter failed:', err);
@@ -39,7 +40,7 @@ const useFounderClaimed = () => {
 
   useEffect(() => {
     fetchClaimed();
-    intervalRef.current = setInterval(fetchClaimed, 25000); // 25s polling
+    intervalRef.current = setInterval(fetchClaimed, 15000); // Reduced to 15s for more frequent updates
     
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -57,15 +58,15 @@ const FoundingRibbon = ({ claimed }: { claimed: number | null }) => {
   return (
     <div className="mx-auto mt-6 w-full max-w-4xl px-4" aria-live="polite">
       <div
-        className={`text-center text-sm font-semibold rounded-xl border px-4 py-2 shadow transition-all duration-300 ${
+        className={`text-center text-lg font-bold rounded-xl border px-6 py-4 shadow-lg transition-all duration-500 ${
           isOver5000 
-            ? 'bg-red-500/15 border-red-500/45 text-red-700 dark:text-red-300' 
-            : 'bg-blue-500/15 border-white/20 text-foreground'
-        }`}
+            ? 'bg-gradient-to-r from-red-500/20 to-red-600/20 border-red-500/50 text-red-700 dark:text-red-300 shadow-red-500/20' 
+            : 'bg-gradient-to-r from-lime/20 via-pink/10 to-lavender/20 border-lime/40 text-foreground shadow-lime/20'
+        } backdrop-blur-xl hover:scale-105 transform animate-pulse`}
       >
         {isOver5000
-          ? <>Founding 5,000 reached — Priority Wave opening soon. <span className="font-bold">{claimed?.toLocaleString()}</span>/5,000 claimed</>
-          : <>Founding 5,000 — 3 months Pro at launch. <span className="font-bold">{claimed?.toLocaleString() ?? 0}</span>/5,000 claimed</>
+          ? <>🚀 <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Founding 5,000 REACHED!</span> — Priority Wave opening soon. <span className="font-black text-2xl">{claimed?.toLocaleString()}</span>/5,000 claimed</>
+          : <>💎 <span className="bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">Founding 5,000</span> — 3 months Pro at launch. <span className="font-black text-2xl bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent">{claimed?.toLocaleString() ?? 0}</span>/5,000 claimed</>
         }
       </div>
     </div>
@@ -77,20 +78,33 @@ const FounderMeter = ({ claimed, total = 5000 }: { claimed: number | null; total
   const percentage = claimed ? Math.min((claimed / total) * 100, 100) : 0;
   
   return (
-    <div className="mx-auto mt-4 w-full max-w-4xl px-4">
-      <div className="space-y-2">
-        <div className="flex justify-between text-sm text-muted-foreground">
-          <span>{claimed?.toLocaleString() ?? 0} of {total.toLocaleString()} claimed</span>
-          <span>{percentage.toFixed(1)}%</span>
+    <div className="mx-auto mt-6 w-full max-w-4xl px-4">
+      <div className="space-y-4">
+        <div className="flex justify-between text-base font-semibold text-foreground">
+          <span className="bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent">
+            {claimed?.toLocaleString() ?? 0} of {total.toLocaleString()} claimed
+          </span>
+          <span className="bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">
+            {percentage.toFixed(1)}%
+          </span>
         </div>
-        <Progress 
-          value={percentage} 
-          className="h-3 relative overflow-hidden rounded-full bg-gradient-to-r from-muted/30 to-muted/50 backdrop-blur-sm border border-white/10 shadow-[0_0_20px_rgba(193,255,114,0.2)] transition-all duration-500"
-          role="progressbar"
-          aria-valuenow={claimed ?? 0}
-          aria-valuemin={0}
-          aria-valuemax={total}
-        />
+        <div className="relative">
+          <Progress 
+            value={percentage} 
+            className="h-4 relative overflow-hidden rounded-full bg-gradient-to-r from-muted/20 to-muted/40 backdrop-blur-sm border-2 border-lime/30 shadow-[0_0_30px_rgba(193,255,114,0.4),0_0_10px_rgba(236,72,153,0.3)_inset] transition-all duration-700 hover:shadow-[0_0_40px_rgba(193,255,114,0.6)]"
+            role="progressbar"
+            aria-valuenow={claimed ?? 0}
+            aria-valuemin={0}
+            aria-valuemax={total}
+          />
+          {/* Animated shine effect */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse pointer-events-none"></div>
+        </div>
+        <div className="text-center">
+          <p className="text-sm text-muted-foreground">
+            ⚡ Real-time counter • Updates every 15 seconds
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -248,10 +262,10 @@ const Waitlist = () => {
       {/* Always show Founding Ribbon and Progress Meter */}
       {founderLoading ? (
         <div className="mx-auto mt-6 w-full max-w-4xl px-4">
-          <div className="bg-muted/50 h-10 rounded-xl animate-pulse"></div>
-          <div className="mt-4 space-y-2">
-            <div className="bg-muted/30 h-4 rounded animate-pulse"></div>
-            <div className="bg-muted/30 h-2 rounded animate-pulse"></div>
+          <div className="bg-gradient-to-r from-muted/30 to-muted/50 h-12 rounded-xl animate-pulse backdrop-blur-sm border border-muted/20"></div>
+          <div className="mt-6 space-y-3">
+            <div className="bg-gradient-to-r from-muted/20 to-muted/40 h-5 rounded animate-pulse"></div>
+            <div className="bg-gradient-to-r from-muted/30 to-muted/50 h-4 rounded animate-pulse border border-muted/20"></div>
           </div>
         </div>
       ) : (
