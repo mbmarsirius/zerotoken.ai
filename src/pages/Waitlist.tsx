@@ -85,7 +85,7 @@ const FounderMeter = ({ claimed, total = 5000 }: { claimed: number | null; total
         </div>
         <Progress 
           value={percentage} 
-          className="h-2 transition-all duration-300"
+          className="h-3 relative overflow-hidden rounded-full bg-gradient-to-r from-muted/30 to-muted/50 backdrop-blur-sm border border-white/10 shadow-[0_0_20px_rgba(193,255,114,0.2)] transition-all duration-500"
           role="progressbar"
           aria-valuenow={claimed ?? 0}
           aria-valuemin={0}
@@ -208,39 +208,25 @@ const Waitlist = () => {
             </div>
 
             <div className="bg-card/60 backdrop-blur-xl border border-pink/20 rounded-2xl p-8 space-y-6 shadow-2xl">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-display font-semibold text-foreground">
-                  Share your referral link
-                </h3>
-                <p className="text-muted-foreground">
-                  Invite 3 friends and unlock <span className="font-semibold text-lime">3 months Pro</span> when we launch
-                </p>
-                <p className="text-muted-foreground">
-                  <span className="font-semibold">You unlocked 3 months of Pro at launch.</span>
-                  {typeof founderClaimed === 'number' && founderClaimed > 5000 && (
-                    <> You're queued for the <span className="font-semibold">Priority Wave</span>. We'll notify you the moment we go live on the Chrome Web Store.</>
-                  )}
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="flex-1 p-4 bg-muted/50 rounded-xl border border-border/50 font-mono text-sm text-muted-foreground break-all">
-                  zerotoken.ai/waitlist?ref={referralCode}
+              <div className="space-y-6">
+                <div className="text-center space-y-4">
+                  <h3 className="text-3xl font-display font-bold bg-gradient-to-r from-pink via-lime to-lavender bg-clip-text text-transparent">
+                    Congratulations! 🎉
+                  </h3>
+                  <div className="p-6 bg-gradient-to-br from-lime/10 via-pink/10 to-lavender/10 rounded-2xl border border-lime/20 backdrop-blur-xl">
+                    <p className="text-lg font-semibold text-foreground mb-2">
+                      You're in the Founding 5,000!
+                    </p>
+                    <p className="text-muted-foreground">
+                      As one of our first 5,000 members, you'll receive <span className="font-bold text-lime">3 months of ZeroToken Pro</span> completely free when we launch.
+                    </p>
+                    {typeof founderClaimed === 'number' && founderClaimed > 5000 && (
+                      <p className="text-muted-foreground mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+                        🚀 You're queued for the <span className="font-semibold text-red-600 dark:text-red-400">Priority Wave</span>. We'll notify you the moment we go live!
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <Button onClick={copyReferralLink} variant="outline" className="shrink-0 bg-gradient-to-r from-pink to-lime text-white border-0 hover:scale-105 transition-all duration-300">
-                  <Share className="w-4 h-4 mr-2" />
-                  {copyStatus || "Copy Link"}
-                </Button>
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("I joined ZeroToken's Founding 5000 — 3 months Pro on launch!")}&url=${encodeURIComponent(`https://zerotoken.ai/waitlist?ref=${referralCode}`)}`}
-                  target="_blank" rel="noopener"
-                  className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-sky-400 text-black font-semibold hover:opacity-90"
-                >Tweet</a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://zerotoken.ai/waitlist?ref=${referralCode}`)}`}
-                  target="_blank" rel="noopener"
-                  className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:opacity-90"
-                ><Linkedin className="w-4 h-4 mr-1" />LinkedIn</a>
               </div>
             </div>
 
@@ -256,7 +242,7 @@ const Waitlist = () => {
   }
 
   return <div className="min-h-screen bg-lavender">
-      <Meta title="Join the ZeroToken Waitlist" description="Be among the first to experience ZeroToken. Get 3 months Pro + Founding Member access when we launch." canonicalPath="/waitlist" />
+      <Meta title="Join the ZeroToken Waitlist" description="Be among the first 5,000 members and unlock 3 months ZeroToken Pro free at launch. Founding member benefits included." canonicalPath="/waitlist" />
       <Header />
       
       {/* Always show Founding Ribbon and Progress Meter */}
@@ -291,29 +277,41 @@ const Waitlist = () => {
                 Join the ZeroToken Waitlist
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up">
-                Be among the first. Invite 3 friends and unlock <span className="font-semibold text-lime">3 months Pro</span> when we launch.
+                Be among the first 5,000 members and unlock <span className="font-semibold text-lime">3 months ZeroToken Pro</span> free at launch.
               </p>
             </div>
           </div>
 
-          {/* Form Section */}
-          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl p-8 md:p-12 space-y-8 shadow-[0_8px_32px_rgba(31,38,135,0.37),0_0_1px_rgba(255,255,255,0.4)_inset,0_0_60px_rgba(255,255,255,0.1)_inset] animate-scale-in before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-pink/10 before:p-[1px] before:-z-10 before:backdrop-blur-sm">
+          {/* Form Section with Enhanced Glass Effect */}
+          <div className="relative bg-gradient-to-br from-card/20 via-card/10 to-card/20 backdrop-blur-3xl border border-white/20 rounded-3xl p-8 md:p-12 space-y-8 shadow-[0_8px_32px_rgba(31,38,135,0.37),0_0_1px_rgba(255,255,255,0.4)_inset,0_0_60px_rgba(193,255,114,0.1)_inset] animate-scale-in before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-white/10 before:via-transparent before:to-pink/5 before:p-[1px] before:-z-10 before:backdrop-blur-sm hover:shadow-[0_12px_40px_rgba(31,38,135,0.5),0_0_80px_rgba(193,255,114,0.15)_inset] hover:scale-[1.02] transition-all duration-500">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-4">
-                <Input type="email" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)} className="h-14 text-lg bg-background/50 border-border/50 focus:border-pink focus:ring-pink/20 rounded-xl px-6" disabled={isSubmitting} />
+                <Input 
+                  type="email" 
+                  placeholder="Enter your email address" 
+                  value={email} 
+                  onChange={e => setEmail(e.target.value)} 
+                  className="h-14 text-lg bg-background/60 border-border/50 focus:border-lime focus:ring-lime/20 rounded-xl px-6 backdrop-blur-sm shadow-inner hover:bg-background/80 transition-all duration-300" 
+                  disabled={isSubmitting} 
+                />
                 
-                <Button type="submit" disabled={isSubmitting} size="xl" className="w-full h-14 text-lg font-bold bg-gradient-to-r from-pink to-lime text-white rounded-xl hover:shadow-2xl hover:shadow-pink/30 hover:scale-105 transition-all duration-300 border-0 disabled:opacity-50 disabled:cursor-not-allowed">
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting} 
+                  size="xl" 
+                  className="w-full h-14 text-lg font-bold bg-gradient-to-r from-pink to-lime text-white rounded-xl hover:shadow-2xl hover:shadow-lime/30 hover:scale-105 transition-all duration-300 border-0 disabled:opacity-50 disabled:cursor-not-allowed hover:from-pink/90 hover:to-lime/90"
+                >
                   {isSubmitting ? <div className="flex items-center justify-center space-x-2">
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      <span>Joining...</span>
-                    </div> : "Join the Waitlist"}
+                      <span>Joining the Founding 5,000...</span>
+                    </div> : "Join the Founding 5,000"}
                 </Button>
               </div>
             </form>
 
             <div className="space-y-4">
               <p className="text-sm text-muted-foreground">
-                Invite 3 friends and unlock <span className="font-semibold text-lime">3 months Pro</span>.
+                Join the first 5,000 members and unlock <span className="font-semibold text-lime">3 months ZeroToken Pro</span> free.
               </p>
               
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
@@ -323,13 +321,13 @@ const Waitlist = () => {
             </div>
           </div>
 
-          {/* Benefits */}
+          {/* Benefits with Enhanced Hover Effects */}
           <div className="grid gap-4 md:gap-6 text-left max-w-lg mx-auto">
-            {["Early access to ZeroToken", "3 months Pro subscription free", "Exclusive Founding Member badge", "Priority support & feedback channel"].map((benefit, index) => <div key={index} className="flex items-center space-x-3 p-4 bg-card/40 backdrop-blur-sm rounded-xl border border-border/30 animate-fade-in-up" style={{
+            {["First 5,000 founding members", "3 months ZeroToken Pro free", "Exclusive Founding Badge", "Priority launch access"].map((benefit, index) => <div key={index} className="group flex items-center space-x-3 p-4 bg-card/40 backdrop-blur-sm rounded-xl border border-border/30 animate-fade-in-up hover:bg-card/60 hover:border-lime/30 hover:shadow-lg hover:shadow-lime/10 hover:scale-105 transition-all duration-300" style={{
             animationDelay: `${index * 0.1}s`
           }}>
-                <CheckCircle className="w-5 h-5 text-lime shrink-0" />
-                <span className="text-muted-foreground">{benefit}</span>
+                <CheckCircle className="w-5 h-5 text-lime shrink-0 group-hover:scale-110 transition-transform duration-300" />
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{benefit}</span>
               </div>)}
           </div>
         </div>
