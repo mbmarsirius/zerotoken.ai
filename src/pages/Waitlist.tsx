@@ -231,7 +231,7 @@ const Waitlist = () => {
                       You're in the Founding 5,000!
                     </p>
                     <p className="text-muted-foreground font-display">
-                      As one of our first 5,000 members, you'll receive <span className="font-bold text-lime">3 months of ZeroToken Pro</span> completely free when we launch.
+                      As one of our first 5,000 members, you'll receive <span className="font-bold text-[#ff66c4]">3 months of ZeroToken Pro</span> completely free when we launch.
                     </p>
                     {typeof founderClaimed === 'number' && founderClaimed > 5000 && <p className="text-muted-foreground font-display mt-3 p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
                         🚀 You're queued for the <span className="font-semibold text-red-600 dark:text-red-400">Priority Wave</span>. We'll notify you the moment we go live!
@@ -241,10 +241,7 @@ const Waitlist = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-2 text-muted-foreground">
-              <Users className="w-5 h-5" />
-              <span className="font-display">{waitlistCount.toLocaleString()} people are waiting</span>
-            </div>
+            
           </div>
         </main>
         
