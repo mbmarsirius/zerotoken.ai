@@ -58,12 +58,12 @@ export const Header = () => {
           {/* CTA & Marsirius Icon */}
           <div className="flex items-center space-x-4">
             <Button 
-              onClick={() => navigate('/pro')}
+              onClick={() => handleNavigation('/waitlist')}
               variant="hero-primary"
               size="default"
               className="font-semibold"
             >
-              Upgrade to Pro
+              Join Waitlist
             </Button>
             <div className="relative group">
               <a href="https://www.marsirius.ai" target="_blank" rel="noopener noreferrer">

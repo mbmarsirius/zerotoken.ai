@@ -12,6 +12,7 @@ import Cookies from "./pages/Cookies";
 import Install from "./pages/Install";
 import Pro from "./pages/Pro";
 import Lite from "./pages/Lite";
+import Waitlist from "./pages/Waitlist";
 import BillingSuccess from "./pages/BillingSuccess";
 import BillingCancel from "./pages/BillingCancel";
 import NotFound from "./pages/NotFound";
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/install" element={<Install />} />
             <Route path="/pro" element={<Pro />} />
             <Route path="/lite" element={<Lite />} />
+            <Route path="/waitlist" element={<Waitlist />} />
             <Route path="/billing/success" element={<BillingSuccess />} />
             <Route path="/billing/cancel" element={<BillingCancel />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
