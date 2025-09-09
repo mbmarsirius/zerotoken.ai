@@ -151,7 +151,7 @@ const Waitlist = () => {
           </div>
 
           {/* Form Section */}
-          <div className="bg-card/60 backdrop-blur-xl border border-pink/20 rounded-2xl p-8 md:p-12 space-y-8 shadow-2xl animate-scale-in">
+          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/10 backdrop-blur-2xl border border-white/20 rounded-2xl p-8 md:p-12 space-y-8 shadow-[0_8px_32px_rgba(31,38,135,0.37),0_0_1px_rgba(255,255,255,0.4)_inset,0_0_60px_rgba(255,255,255,0.1)_inset] animate-scale-in before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-pink/10 before:p-[1px] before:-z-10 before:backdrop-blur-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-4">
                 <Input type="email" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)} className="h-14 text-lg bg-background/50 border-border/50 focus:border-pink focus:ring-pink/20 rounded-xl px-6" disabled={isSubmitting} />
