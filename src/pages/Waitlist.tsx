@@ -21,8 +21,16 @@ const Waitlist = () => {
   }, []);
   const fetchWaitlistCount = async () => {
     try {
-      const { data, error } = await supabase.rpc('get_waitlist_count');
-      if (!error && typeof data === 'number') setWaitlistCount(data);
+      const {
+        count,
+        error
+      } = await supabase.from('waitlist' as any).select('*', {
+        count: 'exact',
+        head: true
+      });
+      if (!error && count !== null) {
+        setWaitlistCount(count);
+      }
     } catch (err) {
       console.error('Failed to fetch waitlist count:', err);
     }
@@ -35,24 +43,22 @@ const Waitlist = () => {
     }
     setIsSubmitting(true);
     try {
-      // Use RPC for idempotent server-side logic
-      const { data, error } = await supabase.rpc('create_waitlist', {
-        p_email: email.trim(),
-        p_referred_by: referredBy,
-      });
+      // Generate a simple referral code
+      const newReferralCode = Math.random().toString(36).substring(2, 10).toUpperCase();
+      const {
+        data,
+        error
+      } = await supabase.from('waitlist' as any).insert({
+        email: email.trim(),
+        referral_code: newReferralCode,
+        referred_by: referredBy
+      }).select().single();
       if (error) throw error;
-      const row = Array.isArray(data) ? (data[0] as any) : null;
-      if (row?.out_referral_code) {
-        setReferralCode(row.out_referral_code);
+      if (data) {
+        setReferralCode((data as any).referral_code);
         setIsSubmitted(true);
         toast.success("You're on the waitlist!");
         await fetchWaitlistCount();
-        // Fire-and-forget welcome email
-        try {
-          await supabase.functions.invoke('waitlist_send_welcome', {
-            body: { email: email.trim(), referral_code: row.out_referral_code },
-          });
-        } catch {}
       }
     } catch (error: any) {
       console.error('Waitlist submission error:', error);
