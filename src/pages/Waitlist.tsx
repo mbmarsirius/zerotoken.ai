@@ -24,12 +24,9 @@ const Waitlist = () => {
 
   const fetchWaitlistCount = async () => {
     try {
-      const { count, error } = await supabase
-        .from('waitlist' as any)
-        .select('*', { count: 'exact', head: true });
-      if (!error && count !== null) {
-        setWaitlistCount(count);
-      }
+      // Prefer RPC for count (server-side)
+      const { data, error } = await supabase.rpc('get_waitlist_count');
+      if (!error && typeof data === 'number') setWaitlistCount(data);
     } catch (err) {
       console.error('Failed to fetch waitlist count:', err);
     }
@@ -44,23 +41,13 @@ const Waitlist = () => {
 
     setIsSubmitting(true);
     try {
-      // Generate a simple referral code
-      const newReferralCode = Math.random().toString(36).substring(2, 10).toUpperCase();
-      
+      // Use RPC create_waitlist to be idempotent and server-generated code
       const { data, error } = await supabase
-        .from('waitlist' as any)
-        .insert({
-          email: email.trim(),
-          referral_code: newReferralCode,
-          referred_by: referredBy
-        })
-        .select()
-        .single();
+        .rpc('create_waitlist', { p_email: email.trim(), p_referred_by: referredBy });
 
       if (error) throw error;
-      
-      if (data) {
-        setReferralCode((data as any).referral_code);
+      if (data && Array.isArray(data) && data[0]) {
+        setReferralCode((data[0] as any).referral_code);
         setIsSubmitted(true);
         toast.success("You're on the waitlist!");
         await fetchWaitlistCount();
