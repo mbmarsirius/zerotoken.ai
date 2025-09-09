@@ -141,7 +141,7 @@ const Waitlist = () => {
             </div>
             
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold bg-gradient-to-r from-pink via-lime to-lavender bg-clip-text text-transparent animate-fade-in-up">
+              <h1 className="text-5xl md:text-6xl font-display font-bold bg-gradient-to-r from-pink via-lime to-lavender bg-clip-text text-transparent animate-fade-in-up lg:text-7xl">
                 Join the ZeroToken Waitlist
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up">
