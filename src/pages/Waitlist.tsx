@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { CheckCircle, Users, Gem, Share } from "lucide-react";
+import { CheckCircle, Users, Gem, Share, Zap, Crown, HeartHandshake, Headphones, Twitter, Linkedin, Shield } from "lucide-react";
 const Waitlist = () => {
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
@@ -97,7 +97,7 @@ const Waitlist = () => {
             <div className="bg-card/60 backdrop-blur-xl border border-pink/20 rounded-2xl p-8 space-y-6 shadow-2xl">
               <div className="space-y-4">
                 <h3 className="text-2xl font-display font-semibold text-foreground">
-                  Share your referral link
+                  You're in! Share your referral link below 🎉
                 </h3>
                 <p className="text-muted-foreground">
                   Invite 3 friends and unlock <span className="font-semibold text-lime">3 months Pro</span> when we launch
@@ -111,6 +111,27 @@ const Waitlist = () => {
                 <Button onClick={copyReferralLink} variant="outline" className="shrink-0 bg-gradient-to-r from-pink to-lime text-white border-0 hover:scale-105 transition-all duration-300">
                   <Share className="w-4 h-4 mr-2" />
                   Copy Link
+                </Button>
+              </div>
+              
+              <div className="flex gap-3 justify-center">
+                <Button
+                  onClick={() => window.open(`https://twitter.com/intent/tweet?text=Just%20joined%20the%20@ZeroToken%20waitlist!%20🚀%20Join%20me%20and%20get%20early%20access%20plus%20exclusive%20rewards&url=https://zerotoken.ai/waitlist?ref=${referralCode}`, '_blank')}
+                  variant="outline"
+                  size="sm"
+                  className="bg-black hover:bg-gray-800 text-white border-gray-600"
+                >
+                  <Twitter className="w-4 h-4 mr-2" />
+                  Share on X
+                </Button>
+                <Button
+                  onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=https://zerotoken.ai/waitlist?ref=${referralCode}`, '_blank')}
+                  variant="outline"
+                  size="sm"
+                  className="bg-blue-600 hover:bg-blue-700 text-white border-blue-500"
+                >
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  LinkedIn
                 </Button>
               </div>
             </div>
@@ -142,10 +163,13 @@ const Waitlist = () => {
             
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-display font-bold bg-gradient-to-r from-pink via-lime to-lavender bg-clip-text text-transparent animate-fade-in-up lg:text-7xl">
-                Join the ZeroToken Waitlist
+                Join the ZeroToken Waitlist 🚀
               </h1>
+              <div className="inline-block px-4 py-2 bg-gradient-to-r from-pink/20 to-lime/20 border border-pink/30 rounded-full text-sm font-semibold text-foreground animate-pulse">
+                ⚡ Limited Founding Member spots available
+              </div>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up">
-                Be among the first. Get <span className="font-semibold text-lime">1 month Pro + Founding Member badge</span> when we launch.
+                Be among the first. Get <span className="font-bold text-lime bg-lime/10 px-2 py-1 rounded-lg">1 month Pro + Exclusive Founding Member badge</span> when we launch.
               </p>
             </div>
           </div>
@@ -160,30 +184,57 @@ const Waitlist = () => {
                   {isSubmitting ? <div className="flex items-center justify-center space-x-2">
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                       <span>Joining...</span>
-                    </div> : "Join the Waitlist"}
+                    </div> : "Join the Waitlist 🚀"}
                 </Button>
+              </div>
+              
+              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground/70 bg-background/30 rounded-lg p-2">
+                <Shield className="w-4 h-4" />
+                <span>Privacy-first: Your email is safe. No spam.</span>
               </div>
             </form>
 
             <div className="space-y-4">
-              <p className="text-sm text-muted-foreground">
-                Invite 3 friends and unlock <span className="font-semibold text-lime">3 months Pro</span>.
-              </p>
+              <div className="bg-gradient-to-r from-pink/10 via-lime/5 to-lavender/10 border border-pink/20 rounded-xl p-4">
+                <h4 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+                  <Gem className="w-5 h-5 text-lime" />
+                  Referral Rewards
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/30">
+                    <div className="w-8 h-8 bg-gradient-to-r from-lime to-pink rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">3</span>
+                    </div>
+                    <span className="text-sm text-muted-foreground">Invite 3 friends → <span className="font-semibold text-lime">Get 3 months Pro</span></span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 bg-background/50 rounded-lg border border-border/30">
+                    <div className="w-8 h-8 bg-gradient-to-r from-lavender to-pink rounded-full flex items-center justify-center">
+                      <Crown className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-sm text-muted-foreground">Invite 10 friends → <span className="font-semibold text-lavender">Earn Lifetime Founding Badge</span></span>
+                  </div>
+                </div>
+              </div>
               
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <Users className="w-4 h-4" />
-                <span className="text-sm">Currently {waitlistCount.toLocaleString()} people are waiting...</span>
+              <div className="flex items-center justify-center gap-2 text-muted-foreground bg-gradient-to-r from-pink/5 to-lime/5 border border-pink/10 rounded-xl p-3">
+                <div className="text-2xl">🔥</div>
+                <span className="font-semibold">1,247 already joined this week</span>
               </div>
             </div>
           </div>
 
           {/* Benefits */}
           <div className="grid gap-4 md:gap-6 text-left max-w-lg mx-auto">
-            {["Early access to ZeroToken", "1 month Pro subscription free", "Exclusive Founding Member badge", "Priority support & feedback channel"].map((benefit, index) => <div key={index} className="flex items-center space-x-3 p-4 bg-card/40 backdrop-blur-sm rounded-xl border border-border/30 animate-fade-in-up" style={{
+            {[
+              { icon: Zap, text: "Early access to ZeroToken" },
+              { icon: Crown, text: "1 month Pro subscription free" },
+              { icon: Gem, text: "Exclusive Founding Member badge" },
+              { icon: Headphones, text: "Priority support & feedback channel" }
+            ].map((benefit, index) => <div key={index} className="flex items-center space-x-3 p-4 bg-card/40 backdrop-blur-sm rounded-xl border border-border/30 animate-fade-in-up" style={{
             animationDelay: `${index * 0.1}s`
           }}>
-                <CheckCircle className="w-5 h-5 text-lime shrink-0" />
-                <span className="text-muted-foreground">{benefit}</span>
+                <benefit.icon className="w-5 h-5 text-lime shrink-0" />
+                <span className="text-muted-foreground">{benefit.text}</span>
               </div>)}
           </div>
         </div>
