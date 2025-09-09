@@ -16,8 +16,15 @@ const Waitlist = () => {
   const [referralCode, setReferralCode] = useState("");
   const [waitlistCount, setWaitlistCount] = useState(0);
   const referredBy = searchParams.get("ref");
+  const offer = (searchParams.get("offer") || "").trim().toLowerCase();
+  const src = (searchParams.get("src") || "").trim();
+  const utm_source = (searchParams.get("utm_source") || "").trim();
+  const utm_campaign = (searchParams.get("utm_campaign") || "").trim();
+  const utm_content = (searchParams.get("utm_content") || "").trim();
+  const [founderClaimed, setFounderClaimed] = useState<number | null>(null);
   useEffect(() => {
     fetchWaitlistCount();
+    if (offer === 'zt3m') fetchFounderCount();
   }, []);
   const fetchWaitlistCount = async () => {
     try {
@@ -26,6 +33,13 @@ const Waitlist = () => {
     } catch (err) {
       console.error('Failed to fetch waitlist count:', err);
     }
+  };
+
+  const fetchFounderCount = async () => {
+    try{
+      const { data, error } = await supabase.rpc('get_founder_claimed');
+      if (!error && typeof data === 'number') setFounderClaimed(data);
+    }catch(err){ console.error('Founder counter failed:', err); }
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,12 +61,24 @@ const Waitlist = () => {
         setIsSubmitted(true);
         toast.success("You're on the waitlist!");
         await fetchWaitlistCount();
+        // Write campaign metadata (best-effort, non-blocking)
+        try{
+          await supabase.rpc('update_waitlist_meta', {
+            p_email: email.trim(),
+            p_offer: offer || null,
+            p_source: src || null,
+            p_utm_source: utm_source || null,
+            p_utm_campaign: utm_campaign || null,
+            p_utm_content: utm_content || null,
+          });
+        }catch{}
         // Fire-and-forget welcome email
         try {
           await supabase.functions.invoke('waitlist_send_welcome', {
             body: { email: email.trim(), referral_code: row.out_referral_code },
           });
         } catch {}
+        if (offer === 'zt3m') fetchFounderCount();
       }
     } catch (error: any) {
       console.error('Waitlist submission error:', error);
@@ -96,6 +122,14 @@ const Waitlist = () => {
                 <p className="text-muted-foreground">
                   Invite 3 friends and unlock <span className="font-semibold text-lime">3 months Pro</span> when we launch
                 </p>
+                {offer === 'zt3m' && (
+                  <p className="text-muted-foreground">
+                    <span className="font-semibold">You unlocked 3 months of Pro at launch.</span>
+                    {typeof founderClaimed === 'number' && founderClaimed > 5000 && (
+                      <> You’re queued for the <span className="font-semibold">Priority Wave</span>. We’ll notify you the moment we go live on the Chrome Web Store.</>
+                    )}
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -106,6 +140,11 @@ const Waitlist = () => {
                   <Share className="w-4 h-4 mr-2" />
                   Copy Link
                 </Button>
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("I joined ZeroToken’s Founding 5000 — 3 months Pro on launch!")}&url=${encodeURIComponent(`https://zerotoken.ai/waitlist?ref=${referralCode}`)}`}
+                  target="_blank" rel="noopener"
+                  className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-sky-400 text-black font-semibold hover:opacity-90"
+                >Tweet</a>
               </div>
             </div>
 
@@ -122,6 +161,21 @@ const Waitlist = () => {
   return <div className="min-h-screen bg-lavender">
       <Meta title="Join the ZeroToken Waitlist" description="Be among the first to experience ZeroToken. Get 1 month Pro + Founding Member badge when we launch." canonicalPath="/waitlist" />
       <Header />
+      {offer === 'zt3m' && (
+        <div className="mx-auto mt-6 w-full max-w-4xl px-4">
+          <div
+            className="text-center text-sm font-semibold rounded-xl border px-4 py-2 shadow"
+            style={{
+              background: typeof founderClaimed === 'number' && founderClaimed > 5000 ? 'rgba(239,68,68,.15)' : 'rgba(161, 196, 253, .15)',
+              borderColor: typeof founderClaimed === 'number' && founderClaimed > 5000 ? 'rgba(239,68,68,.45)' : 'rgba(255,255,255,.2)'
+            }}
+          >
+            {typeof founderClaimed === 'number' && founderClaimed > 5000
+              ? <>Founding 5,000 reached — Priority Wave opening soon. <span className="font-bold">{founderClaimed.toLocaleString()}</span>/5,000 claimed</>
+              : <>Founding 5,000 — 3 months Pro at launch. <span className="font-bold">{(founderClaimed ?? 0).toLocaleString()}</span>/5,000 claimed</>}
+          </div>
+        </div>
+      )}
       
       <main className="min-h-screen flex items-center justify-center px-4 py-20">
         <div className="max-w-2xl mx-auto text-center space-y-12">
