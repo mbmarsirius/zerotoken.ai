@@ -73,7 +73,7 @@ const Waitlist = () => {
     toast.success("Referral link copied!");
   };
   if (isSubmitted) {
-    return <div className="min-h-screen bg-gradient-to-br from-background via-background to-pink/5">
+    return <div className="min-h-screen bg-lavender">
         <Meta title="You're on the list! - ZeroToken Waitlist" description="Successfully joined the ZeroToken waitlist. Share your referral link to unlock bonus features." canonicalPath="/waitlist" />
         <Header />
         
@@ -125,7 +125,7 @@ const Waitlist = () => {
         <Footer />
       </div>;
   }
-  return <div className="min-h-screen bg-gradient-to-br from-background via-background to-pink/5">
+  return <div className="min-h-screen bg-lavender">
       <Meta title="Join the ZeroToken Waitlist" description="Be among the first to experience ZeroToken. Get 1 month Pro + Founding Member badge when we launch." canonicalPath="/waitlist" />
       <Header />
       
