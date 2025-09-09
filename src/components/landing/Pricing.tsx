@@ -44,7 +44,7 @@ export const Pricing = () => {
               </ul>
               
               <Button 
-                onClick={() => navigate('/install')}
+                onClick={() => navigate('/waitlist')}
                 size="lg" 
                 className="w-full relative bg-gradient-to-br from-lime/80 to-lime backdrop-blur-lg text-ink border border-lime/30 hover:from-lime hover:to-lime/90 hover:shadow-2xl hover:shadow-lime/40 hover:scale-105 transition-all duration-500 font-semibold overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700"
               >

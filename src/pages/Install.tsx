@@ -1,9 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Install = () => {
+  const navigate = useNavigate();
+  // Soft redirect to waitlist to align with new flow
+  if (typeof window !== 'undefined') {
+    setTimeout(() => { try{ navigate('/waitlist'); }catch{} }, 0);
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/90 to-background/80">
       <Header />
