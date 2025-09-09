@@ -58,15 +58,25 @@ const FoundingRibbon = ({ claimed }: { claimed: number | null }) => {
   return (
     <div className="mx-auto mt-6 w-full max-w-4xl px-4" aria-live="polite">
       <div
-        className={`text-center text-lg font-bold rounded-xl border px-6 py-4 shadow-lg transition-all duration-500 ${
+        className={`text-center font-display rounded-2xl border px-8 py-6 shadow-2xl transition-all duration-700 ${
           isOver5000 
-            ? 'bg-gradient-to-r from-red-500/20 to-red-600/20 border-red-500/50 text-red-700 dark:text-red-300 shadow-red-500/20' 
-            : 'bg-gradient-to-r from-lime/20 via-pink/10 to-lavender/20 border-lime/40 text-foreground shadow-lime/20'
-        } backdrop-blur-xl hover:scale-105 transform animate-pulse`}
+            ? 'bg-gradient-to-r from-red-500/10 to-red-600/10 border-red-500/30 text-red-600 dark:text-red-400 shadow-red-500/20' 
+            : 'bg-card/50 border-border/30 text-foreground shadow-lg'
+        } backdrop-blur-2xl hover:shadow-3xl hover:scale-[1.02]`}
       >
         {isOver5000
-          ? <>🚀 <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">Founding 5,000 REACHED!</span> — Priority Wave opening soon. <span className="font-black text-2xl">{claimed?.toLocaleString()}</span>/5,000 claimed</>
-          : <>💎 <span className="bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">Founding 5,000</span> — 3 months Pro at launch. <span className="font-black text-2xl bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent">{claimed?.toLocaleString() ?? 0}</span>/5,000 claimed</>
+          ? (
+            <div className="space-y-2">
+              <div className="text-2xl font-bold">🚀 Founding 5,000 REACHED!</div>
+              <div className="text-lg">Priority Wave opening soon • <span className="font-black text-xl text-lime">{claimed?.toLocaleString()}</span>/5,000 claimed</div>
+            </div>
+          )
+          : (
+            <div className="space-y-2">
+              <div className="text-2xl font-bold">💎 Founding 5,000</div>
+              <div className="text-lg text-muted-foreground">3 months Pro at launch • <span className="font-black text-xl text-lime">{claimed?.toLocaleString() ?? 0}</span>/5,000 claimed</div>
+            </div>
+          )
         }
       </div>
     </div>
@@ -78,31 +88,31 @@ const FounderMeter = ({ claimed, total = 5000 }: { claimed: number | null; total
   const percentage = claimed ? Math.min((claimed / total) * 100, 100) : 0;
   
   return (
-    <div className="mx-auto mt-6 w-full max-w-4xl px-4">
-      <div className="space-y-4">
-        <div className="flex justify-between text-base font-semibold text-foreground">
-          <span className="bg-gradient-to-r from-pink to-lime bg-clip-text text-transparent">
+    <div className="mx-auto mt-8 w-full max-w-4xl px-4">
+      <div className="space-y-6">
+        <div className="flex justify-between text-lg font-display font-semibold text-foreground">
+          <span className="text-foreground">
             {claimed?.toLocaleString() ?? 0} of {total.toLocaleString()} claimed
           </span>
-          <span className="bg-gradient-to-r from-lime to-pink bg-clip-text text-transparent">
+          <span className="text-lime font-bold">
             {percentage.toFixed(1)}%
           </span>
         </div>
         <div className="relative">
           <Progress 
             value={percentage} 
-            className="h-4 relative overflow-hidden rounded-full bg-gradient-to-r from-muted/20 to-muted/40 backdrop-blur-sm border-2 border-lime/30 shadow-[0_0_30px_rgba(193,255,114,0.4),0_0_10px_rgba(236,72,153,0.3)_inset] transition-all duration-700 hover:shadow-[0_0_40px_rgba(193,255,114,0.6)]"
+            className="h-6 relative overflow-hidden rounded-full bg-muted/30 backdrop-blur-sm border border-border/50 shadow-inner transition-all duration-1000 hover:shadow-lg"
             role="progressbar"
             aria-valuenow={claimed ?? 0}
             aria-valuemin={0}
             aria-valuemax={total}
           />
-          {/* Animated shine effect */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse pointer-events-none"></div>
+          {/* Animated glow effect */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-lime/10 to-transparent animate-pulse pointer-events-none"></div>
         </div>
         <div className="text-center">
-          <p className="text-sm text-muted-foreground">
-            ⚡ Real-time counter • Updates every 15 seconds
+          <p className="text-sm text-muted-foreground font-display">
+            Real-time counter • Updates every 15 seconds
           </p>
         </div>
       </div>
@@ -212,9 +222,9 @@ const Waitlist = () => {
               </div>
               
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-pink via-lime to-lavender bg-clip-text text-transparent">
-                  You're on the list!
-                </h1>
+              <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground">
+                You're on the list!
+              </h1>
                 <p className="text-xl text-muted-foreground max-w-xl mx-auto">
                   Get ready for something extraordinary. We'll notify you as soon as ZeroToken launches.
                 </p>
@@ -224,7 +234,7 @@ const Waitlist = () => {
             <div className="bg-card/60 backdrop-blur-xl border border-pink/20 rounded-2xl p-8 space-y-6 shadow-2xl">
               <div className="space-y-6">
                 <div className="text-center space-y-4">
-                  <h3 className="text-3xl font-display font-bold bg-gradient-to-r from-pink via-lime to-lavender bg-clip-text text-transparent">
+                  <h3 className="text-3xl font-display font-bold text-foreground">
                     Congratulations! 🎉
                   </h3>
                   <div className="p-6 bg-gradient-to-br from-lime/10 via-pink/10 to-lavender/10 rounded-2xl border border-lime/20 backdrop-blur-xl">
@@ -287,7 +297,7 @@ const Waitlist = () => {
             </div>
             
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl font-display font-bold bg-gradient-to-r from-pink via-lime to-lavender bg-clip-text text-transparent animate-fade-in-up lg:text-7xl">
+              <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground animate-fade-in-up lg:text-7xl">
                 Join the ZeroToken Waitlist
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up">
@@ -324,24 +334,24 @@ const Waitlist = () => {
             </form>
 
             <div className="space-y-4">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground font-display">
                 Join the first 5,000 members and unlock <span className="font-semibold text-lime">3 months ZeroToken Pro</span> free.
               </p>
               
               <div className="flex items-center justify-center gap-2 text-muted-foreground">
                 <Users className="w-4 h-4" />
-                <span className="text-sm">Currently {waitlistCount.toLocaleString()} people are waiting...</span>
+                <span className="text-sm font-display">Currently {waitlistCount.toLocaleString()} people are waiting...</span>
               </div>
             </div>
           </div>
 
-          {/* Benefits with Enhanced Hover Effects */}
+          {/* Benefits with Clean Design */}
           <div className="grid gap-4 md:gap-6 text-left max-w-lg mx-auto">
-            {["First 5,000 founding members", "3 months ZeroToken Pro free", "Exclusive Founding Badge", "Priority launch access"].map((benefit, index) => <div key={index} className="group flex items-center space-x-3 p-4 bg-card/40 backdrop-blur-sm rounded-xl border border-border/30 animate-fade-in-up hover:bg-card/60 hover:border-lime/30 hover:shadow-lg hover:shadow-lime/10 hover:scale-105 transition-all duration-300" style={{
+            {["First 5,000 founding members", "3 months ZeroToken Pro free", "Exclusive Founding Badge", "Priority launch access"].map((benefit, index) => <div key={index} className="group flex items-center space-x-3 p-4 bg-card/30 backdrop-blur-sm rounded-xl border border-border/20 animate-fade-in-up hover:bg-card/50 hover:border-border/40 hover:shadow-lg transition-all duration-300" style={{
             animationDelay: `${index * 0.1}s`
           }}>
                 <CheckCircle className="w-5 h-5 text-lime shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{benefit}</span>
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 font-display">{benefit}</span>
               </div>)}
           </div>
         </div>
