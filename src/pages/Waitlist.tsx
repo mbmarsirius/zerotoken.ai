@@ -63,7 +63,7 @@ const FoundingRibbon = ({
 }) => {
   const isOver5000 = typeof claimed === 'number' && claimed > 5000;
   return <div className="mx-auto mt-6 w-full max-w-4xl px-4" aria-live="polite">
-      <div className={`text-center font-display rounded-2xl border px-8 py-6 shadow-2xl transition-all duration-700 ${isOver5000 ? 'bg-gradient-to-r from-red-500/10 to-red-600/10 border-red-500/30 text-red-600 dark:text-red-400 shadow-red-500/20' : 'bg-card/50 border-border/30 text-foreground shadow-lg'} backdrop-blur-2xl hover:shadow-3xl hover:scale-[1.02]`}>
+      <div className={`text-center font-display rounded-2xl border px-8 py-6 shadow-2xl transition-all duration-700 backdrop-blur-3xl bg-gradient-to-br from-background/20 via-card/30 to-background/20 border-white/20 hover:bg-gradient-to-br hover:from-lime/10 hover:via-pink/5 hover:to-lime/10 hover:border-lime/30 hover:shadow-[0_0_40px_rgba(193,255,114,0.3)] hover:scale-[1.02] ${isOver5000 ? 'text-red-600 dark:text-red-400' : 'text-foreground'} relative before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/5 before:via-transparent before:to-pink/5 before:p-[1px] before:-z-10`}>
         {isOver5000 ? <div className="space-y-2">
               <div className="text-2xl font-bold">🚀 Founding 5,000 REACHED!</div>
               <div className="text-lg">Priority Wave opening soon • <span className="font-black text-xl text-lime">{claimed?.toLocaleString()}</span>/5,000 claimed</div>
