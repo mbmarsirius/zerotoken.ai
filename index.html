@@ -36,10 +36,12 @@ const ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI
 
 async function checkout(sku){
   try{
+    const success = `${location.origin}/pay/success?sku=${encodeURIComponent(sku)}`;
+    const cancel  = `${location.origin}/pay/cancel`;
     const res = await fetch(`${SUPABASE_URL}/functions/v1/stripe_create_checkout`, {
       method:"POST",
       headers:{ "content-type":"application/json","authorization":`Bearer ${ANON}`,"apikey":ANON },
-      body: JSON.stringify({ sku }) // "zt_pro_monthly" | "zt_lite_payg"
+      body: JSON.stringify({ sku, success_url: success, cancel_url: cancel })
     });
     const j = await res.json().catch(()=>null);
     if(j && j.url){ location.href=j.url; return; }

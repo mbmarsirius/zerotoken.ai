@@ -15,6 +15,9 @@ import Lite from "./pages/Lite";
 import Waitlist from "./pages/Waitlist";
 import BillingSuccess from "./pages/BillingSuccess";
 import BillingCancel from "./pages/BillingCancel";
+import PaySuccess from "./pages/PaySuccess";
+import PayCancel from "./pages/PayCancel";
+import SuccessRedirect from "./pages/SuccessRedirect";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ const App = () => (
             <Route path="/waitlist" element={<Waitlist />} />
             <Route path="/billing/success" element={<BillingSuccess />} />
             <Route path="/billing/cancel" element={<BillingCancel />} />
+            <Route path="/pay/success" element={<PaySuccess />} />
+            <Route path="/pay/cancel" element={<PayCancel />} />
+            <Route path="/success" element={<SuccessRedirect />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
