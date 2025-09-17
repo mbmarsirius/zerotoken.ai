@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Meta } from "@/components/SEO/Meta";
 import { Header } from "@/components/landing/Header";
@@ -18,6 +19,25 @@ const PaySuccess = () => {
   } else if (isLite) {
     message = "Thanks for your purchase. A Lite credit has been added to your account.";
   }
+
+  // Auto-refresh parent window and close this tab
+  useEffect(() => {
+    try {
+      // Arkadaki sayfayı yenile (panel plan/kredi bilgisini günceller)
+      if (window.opener && !window.opener.closed) {
+        window.opener.location.reload();
+      }
+    } catch(e) {}
+    
+    // Bu sekmeyi kısa gecikme sonrası kapat
+    const timer = setTimeout(() => {
+      try { 
+        window.close(); 
+      } catch(e) {}
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
