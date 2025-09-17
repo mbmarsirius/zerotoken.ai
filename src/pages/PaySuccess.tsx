@@ -50,9 +50,18 @@ const PaySuccess = () => {
               <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 tracking-tight">
                 Payment successful — you're all set
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl text-gray-600 leading-relaxed mb-4">
                 {message}
               </p>
+              
+              {/* Refresh instruction for Pro/Lite purchases */}
+              {(isPro || isLite) && (
+                <div className="bg-gradient-to-r from-lime/10 to-lime/5 border border-lime/20 rounded-xl p-4 mt-6">
+                  <p className="text-lime-700 font-medium text-lg">
+                    💡 Don't forget to refresh your ZeroToken tab to activate your updated plan!
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Action Buttons */}
