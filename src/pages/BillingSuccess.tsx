@@ -1,17 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
-
 const BillingSuccess = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-lavender via-lavender/80 to-lavender/60">
         <div className="container mx-auto px-4 lg:px-6 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             
             {/* Title */}
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight">
+            <h1 className="text-5xl font-display font-bold leading-tight text-inherit md:text-7xl">
               Payment successful
             </h1>
 
@@ -24,21 +22,11 @@ const BillingSuccess = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-              <Button 
-                onClick={() => window.location.href = '/#how-it-works'}
-                variant="hero-primary" 
-                size="xl" 
-                className="min-w-48 shadow-2xl"
-              >
+              <Button onClick={() => window.location.href = '/#how-it-works'} variant="hero-primary" size="xl" className="min-w-48 shadow-2xl">
                 Open How it works
               </Button>
               
-              <Button 
-                onClick={() => window.location.href = '/#pricing'}
-                variant="hero-outline" 
-                size="xl" 
-                className="min-w-48"
-              >
+              <Button onClick={() => window.location.href = '/#pricing'} variant="hero-outline" size="xl" className="min-w-48">
                 Go to Pricing
               </Button>
             </div>
@@ -46,8 +34,6 @@ const BillingSuccess = () => {
         </div>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default BillingSuccess;
