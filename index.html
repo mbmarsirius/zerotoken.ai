@@ -30,5 +30,38 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script src="/app.js"></script>
+    <script>
+const SUPABASE_URL="https://ppvergvfxththbwtjsmu.supabase.co";
+const ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwdmVyZ3ZmeHRodGhid3Rqc211Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxODk0MjAsImV4cCI6MjA3MTc2NTQyMH0.GAgKvepBkOaPjFi9i462AGc007dWG-uefj94iw_EgoI";
+
+async function checkout(sku){
+  try{
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/stripe_create_checkout`, {
+      method:"POST",
+      headers:{ "content-type":"application/json","authorization":`Bearer ${ANON}`,"apikey":ANON },
+      body: JSON.stringify({ sku }) // "zt_pro_monthly" | "zt_lite_payg"
+    });
+    const j = await res.json().catch(()=>null);
+    if(j && j.url){ location.href=j.url; return; }
+  }catch(e){}
+  alert("Checkout açılırken bir sorun oldu. Lütfen tekrar deneyin.");
+}
+
+function wirePricingButtons(){
+  const btns = [
+    document.getElementById("btn-pro"),
+    document.getElementById("btn-lite"),
+    ...document.querySelectorAll("[data-sku]")
+  ].filter(Boolean);
+  btns.forEach(btn=>{
+    if(btn.__zt_wired) return;
+    btn.__zt_wired = true;
+    const sku = btn.getAttribute("data-sku") || (btn.id==="btn-pro" ? "zt_pro_monthly" : "zt_lite_payg");
+    btn.addEventListener("click", ()=> checkout(sku));
+  });
+}
+document.addEventListener("DOMContentLoaded", wirePricingButtons);
+document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) wirePricingButtons(); });
+    </script>
   </body>
 </html>
