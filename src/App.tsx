@@ -18,6 +18,7 @@ import BillingCancel from "./pages/BillingCancel";
 import PaySuccess from "./pages/PaySuccess";
 import PayCancel from "./pages/PayCancel";
 import SuccessRedirect from "./pages/SuccessRedirect";
+import AuthCallback from "./pages/AuthCallback";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/pay/success" element={<PaySuccess />} />
             <Route path="/pay/cancel" element={<PayCancel />} />
             <Route path="/success" element={<SuccessRedirect />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
