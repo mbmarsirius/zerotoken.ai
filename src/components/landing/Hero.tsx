@@ -66,8 +66,8 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button onClick={() => navigate('/waitlist')} variant="hero-primary" size="xl" className="min-w-48 shadow-2xl">
-              Join Waitlist →
+            <Button onClick={() => window.open('https://chromewebstore.google.com/detail/alhbkpcjielfigjdioeieajichhknmpp', '_blank')} variant="hero-primary" size="xl" className="min-w-48 shadow-2xl">
+              Install Free →
             </Button>
             
             <Button onClick={scrollToHowItWorks} variant="hero-outline" size="xl" className="min-w-48">
