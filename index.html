@@ -25,14 +25,67 @@
     <meta name="twitter:site" content="@zerotoken_ai" />
     <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/kb726fN2KtQlSI0lB7gZqePcaDH3/social-images/social-1757599972834-ztic.png">
     
-    <!-- Twitter conversion tracking base code -->
+    <!-- X Ads (Twitter) conversion tracking base code -->
     <script>
-    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments)},
+    s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
     a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-    twq('config','qh4mn');
+    twq('config','qh4mn');  /* my account pixel id */
     </script>
-    <!-- End Twitter conversion tracking base code -->
+    <!-- End base code -->
+    
+    <!-- X Ads event for "Install Free" CTA -->
+    <script>
+    (function () {
+      // Fire the X Ads event (use my Event ID from X Ads)
+      function fireInstallFreeEvent() {
+        try {
+          twq('event', 'tw-qh4mn-qh4mn', {
+            content_type: 'cta',
+            conversion_id: 'install_free_click',
+            description: 'Clicked Install Free on zerotoken.ai'
+          });
+        } catch (e) { /* no-op */ }
+      }
+
+      // Heuristics to find the Install Free CTA reliably
+      function matchesInstallFree(el) {
+        if (!el) return false;
+        const text = (el.innerText || '').trim().toLowerCase();
+        const id = (el.id || '').toLowerCase();
+        const cls = (el.className || '').toString().toLowerCase();
+        const href = (el.getAttribute && el.getAttribute('href')) || '';
+
+        return /install\s*free/.test(text) ||
+               id === 'install-free' ||
+               /install[-_ ]?free/.test(id) ||
+               /install[-_ ]?free/.test(cls) ||
+               /install/i.test(href);
+      }
+
+      function bindInstallFree(root) {
+        const candidates = root.querySelectorAll('a, button, [role="button"]');
+        candidates.forEach(function (el) {
+          if (el._ztBound) return;
+          if (matchesInstallFree(el)) {
+            el.addEventListener('click', fireInstallFreeEvent, { passive: true });
+            el._ztBound = true;
+          }
+        });
+      }
+
+      // Initial bind + handle SPA/dynamic DOM updates
+      document.addEventListener('DOMContentLoaded', function () { bindInstallFree(document); });
+      new MutationObserver(function (mutations) {
+        mutations.forEach(function (m) {
+          m.addedNodes && m.addedNodes.forEach(function (n) {
+            if (n && n.querySelectorAll) bindInstallFree(n);
+          });
+        });
+      }).observe(document.documentElement, { childList: true, subtree: true });
+    })();
+    </script>
+    <!-- End event code -->
   </head>
 
   <body>
